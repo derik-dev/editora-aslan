@@ -1,0 +1,273 @@
+# DESCRITIVO DO PROJETO
+
+## SITE INSTITUCIONAL COM LOJA VIRTUAL — EDITORA ASLAN
+
+Desenvolvimento de um site moderno, responsivo e estratégico para a Editora Aslan, com foco em apresentar os serviços editoriais, captar novos autores, divulgar mentorias e projetos de coautoria, comercializar livros e fortalecer a presença da marca no Brasil, em Portugal e na Europa.
+
+O projeto deverá seguir a identidade visual da Editora Aslan, utilizando uma comunicação sofisticada, criativa e inspiradora, com elementos relacionados à literatura, escrita, imaginação e transformação de ideias em livros.
+
+## Objetivos do site
+
+* Apresentar a Editora Aslan e seus diferenciais.
+* Atrair pessoas que desejam escrever ou publicar um livro.
+* Gerar solicitações de avaliação e reuniões comerciais.
+* Divulgar e captar interessados para as mentorias.
+* Apresentar projetos de coautoria.
+* Comercializar livros por meio da loja virtual.
+* Divulgar cursos online.
+* Publicar conteúdos sobre livros, escrita e mercado editorial.
+* Fortalecer a autoridade e o posicionamento digital da editora.
+
+## Estrutura do menu
+
+* Editora Aslan
+* Publique o seu livro
+* Mentorias
+* Projetos de Coautoria
+* Loja Virtual
+* Cursos Online
+* Blog
+* Contato
+
+## Página inicial — Editora Aslan
+
+A página principal apresentará a proposta da editora, seus serviços, diferenciais e processo editorial.
+
+O banner principal deverá conter uma imagem criativa de uma mulher escrevendo em um notebook, cercada por um universo de magia, fantasia, letras e elementos visuais relacionados à criação de histórias.
+
+Título principal:
+
+“A próxima grande história pode estar dentro de você.”
+
+A página deverá apresentar:
+
+* História e posicionamento da Editora Aslan.
+* Serviços oferecidos aos autores.
+* Construção e estruturação da ideia.
+* Desenvolvimento da obra.
+* Criação de título e subtítulo.
+* Escrita e aprimoramento textual.
+* Revisão e copidesque.
+* Diagramação e projeto gráfico.
+* Criação de capa e identidade visual.
+* Publicação física e digital.
+* Marketing editorial.
+* Lançamento no Brasil, em Portugal e na Europa.
+* Diferenciais da editora.
+* Público ideal.
+* Processo editorial em etapas.
+* Chamadas para ação direcionadas ao WhatsApp ou formulário.
+
+## Página “Publique o seu livro”
+
+Página destinada a pessoas que possuem uma ideia, manuscrito ou conteúdo e desejam transformá-lo em um livro profissional.
+
+A página deverá conter:
+
+* Banner com um livro de capa personalizada.
+* Espaços demonstrativos com “Seu título aqui” e “Seu nome aqui”.
+* Explicação sobre publicação física e digital.
+* Possibilidade de produzir desde um único exemplar até grandes quantidades.
+* Publicação em diferentes cidades, países e idiomas.
+* Apresentação do conceito de projeto editorial feito sob medida.
+* Imagem criativa de um livro usando gravata-borboleta e uma mão realizando sua medição com fita métrica.
+* Explicação do processo de avaliação gratuita.
+* Formulário para solicitação de avaliação.
+* Botões de chamada para reunião ou contato.
+
+## Página de Mentorias
+
+Área destinada à apresentação das mentorias oferecidas pela Editora Aslan.
+
+### Mentoria Do Zero ao Lançamento
+
+Mentoria individual para pessoas que possuem uma ideia, história, método ou conhecimento, mas ainda não sabem como transformar esse conteúdo em um livro.
+
+A página deverá apresentar:
+
+* Objetivos da mentoria.
+* Público indicado.
+* Conteúdos trabalhados.
+* Avaliação inicial de duas horas.
+* Doze encontros individuais online.
+* Estruturação da ideia central, capítulos, narrativa, título e subtítulo.
+* Direcionamento para escrita e lançamento.
+* Valor informado de 1.500 euros.
+* Formulário de candidatura.
+
+### Mentoria Desbloqueio Criativo
+
+Mentoria destinada a autores que começaram a escrever, mas enfrentam bloqueios criativos, insegurança, perfeccionismo ou dificuldade para continuar.
+
+A página deverá apresentar:
+
+* Explicação sobre bloqueio criativo.
+* Metodologia aplicada.
+* Técnicas de foco, visualização, hipnose e PNL.
+* Avaliação individual de duas horas.
+* Seis sessões online.
+* Áudio exclusivo de indução hipnótica.
+* Benefícios da mentoria.
+* Público indicado.
+* Respostas para objeções comuns.
+* Valor informado de 1.200 euros.
+* Formulário de candidatura.
+
+Os formulários deverão ser enviados para:
+
+[ericpereira@editoraaslan.com](mailto:ericpereira@editoraaslan.com)
+
+## Página de Projetos de Coautoria
+
+Página destinada à apresentação de projetos editoriais nos quais vários autores participam de uma mesma obra, cada um escrevendo seu próprio capítulo.
+
+A página deverá apresentar:
+
+* Explicação sobre o funcionamento da coautoria.
+* Benefícios de participar de um livro coletivo.
+* Posicionamento e construção de autoridade.
+* Organização editorial, revisão, capa, diagramação e publicação.
+* Possibilidades de projetos no Brasil e em Portugal.
+* Formulário para interessados.
+
+O formulário deverá solicitar:
+
+* Nome.
+* Profissão.
+* E-mail.
+* WhatsApp.
+* Tema sobre o qual deseja escrever.
+* País de interesse.
+* Informação sobre livros já publicados.
+* Solicitação de contato da equipe.
+
+## Loja Virtual
+
+Desenvolvimento de uma loja virtual integrada ao site para comercialização dos livros publicados pela Editora Aslan.
+
+Cada produto deverá possuir:
+
+* Imagem da capa.
+* Imagem da contracapa.
+* Galeria de imagens.
+* Opção de ampliar as imagens.
+* Título do livro.
+* Nome do autor.
+* Sinopse.
+* Valor.
+* Formas de pagamento.
+* Botão para comprar.
+* Produtos relacionados.
+
+A loja também deverá incluir:
+
+* Página de catálogo.
+* Página individual de cada livro.
+* Carrinho de compras.
+* Finalização de pedido.
+* Cadastro de produtos.
+* Controle básico de pedidos.
+* Integração com meios de pagamento definidos pelo cliente.
+* Layout adaptado para computador, tablet e celular.
+
+## Página de Cursos Online
+
+Página destinada à divulgação dos cursos da Editora Aslan.
+
+Inicialmente, será apresentado o curso:
+
+“Como Escrever o Seu Livro — Do Zero ao Lançamento”
+
+A página deverá conter:
+
+* Banner do curso.
+* Imagem de um homem escrevendo no notebook com papéis e anotações.
+* Descrição do conteúdo.
+* Informação de que o curso possui mais de 20 horas de aulas gravadas.
+* Explicação sobre estruturação da ideia, capítulos, título e lançamento.
+* Integração futura com a Hotmart.
+
+Enquanto o curso estiver fechado, deverá ser exibido um formulário de lista de espera com:
+
+* Nome.
+* Profissão.
+* Cidade.
+* E-mail.
+* WhatsApp.
+* Nível atual de desenvolvimento da ideia do livro.
+
+## Blog
+
+Criação de uma área de conteúdos para fortalecer o SEO, gerar autoridade e compartilhar informações sobre livros, escrita e mercado editorial.
+
+O blog será dividido em três categorias principais:
+
+### Livro do Mês
+
+Recomendação mensal de um livro acompanhada por um breve resumo ou análise.
+
+### Deixa Te Contar
+
+Área para publicação de ideias, textos, soluções, reflexões e técnicas de escrita.
+
+### Agenda
+
+Área destinada à divulgação de lançamentos de livros, feiras, eventos literários e atividades realizadas em Portugal e no Brasil.
+
+## Página de Contato
+
+Página com informações de contato e formulário geral.
+
+Contatos principais:
+
+* Portugal: +351 935 402 570
+* Brasil: (11) 98466-3444
+
+A página deverá apresentar:
+
+* Botões de WhatsApp.
+* Bandeiras identificando Portugal e Brasil.
+* E-mail.
+* Formulário de contato.
+* Links para redes sociais.
+* Endereço, caso seja fornecido posteriormente.
+
+## Funcionalidades gerais
+
+* Design moderno e personalizado.
+* Site totalmente responsivo.
+* Navegação rápida e intuitiva.
+* Botões de contato pelo WhatsApp.
+* Formulários integrados ao e-mail.
+* Gerenciamento de livros e conteúdos.
+* Loja virtual completa.
+* Integração com meios de pagamento.
+* Área de blog.
+* Otimização básica para mecanismos de busca.
+* Certificado de segurança SSL.
+* Integração com redes sociais.
+* Links para Brasil e Portugal.
+* Estrutura preparada para futuras expansões.
+
+## SEO
+
+O site deverá ser estruturado para trabalhar termos relacionados a:
+
+* Editora de livros.
+* Publicar livro.
+* Publicar livro no Brasil.
+* Publicar livro em Portugal.
+* Editora para novos autores.
+* Como escrever um livro.
+* Mentoria para escritores.
+* Revisão de livros.
+* Diagramação de livros.
+* Criação de capa de livro.
+* Lançamento de livro.
+* Marketing editorial.
+* Publicação de eBook.
+* Livro físico e digital.
+
+## Resultado esperado
+
+Ao final do projeto, a Editora Aslan terá um site institucional completo, moderno e profissional, capaz de apresentar seus serviços, captar novos autores, divulgar mentorias e projetos editoriais, vender livros online e fortalecer sua autoridade no mercado editorial.
