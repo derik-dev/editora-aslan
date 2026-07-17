@@ -229,17 +229,17 @@ h1, h2, h3 {
 }
 
 .brand__logo {
-  width: clamp(258px, 20.5vw, 330px);
+  width: clamp(282px, 22.5vw, 364px);
   height: auto;
-  max-height: 82px;
+  max-height: 92px;
   object-fit: contain;
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.32));
 }
 
 .site-header--scrolled .brand__logo,
 .nav-open .brand__logo {
-  width: clamp(232px, 18vw, 290px);
-  max-height: 72px;
+  width: clamp(256px, 20vw, 320px);
+  max-height: 82px;
 }
 
 .brand__name {
@@ -1475,21 +1475,21 @@ h1, h2, h3 {
 .book::before {
   content: "";
   position: absolute;
-  top: 20px;
-  bottom: 20px;
-  left: -22px;
+  top: 10px;
+  bottom: 10px;
+  left: -12px;
   z-index: 5;
-  width: 24px;
-  border-radius: 20px 0 0 20px;
+  width: 12px;
+  border-radius: 3px 0 0 3px;
   background: linear-gradient(90deg, var(--espresso), var(--gold) 55%, var(--bronze));
-  box-shadow: -10px 0 24px rgba(0, 0, 0, 0.28);
+  box-shadow: -6px 0 16px rgba(0, 0, 0, 0.28);
 }
 
 .book-base,
 .page {
   position: absolute;
   inset: 0;
-  border-radius: 4px 10px 10px 4px;
+  border-radius: 2px 4px 4px 2px;
   transform-style: preserve-3d;
 }
 
@@ -1509,7 +1509,7 @@ h1, h2, h3 {
   content: "";
   position: absolute;
   inset: 28px;
-  border: 1px solid rgba(217, 169, 110, 0.34);
+  border: 1px solid rgba(217, 169, 110, 0.12);
   pointer-events: none;
 }
 

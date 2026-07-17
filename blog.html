@@ -40,53 +40,68 @@
 
   <main>
 
-    <!-- HERO — Capa editorial de revista -->
+    <!-- HERO — Editorial premium dark -->
     <section class="hero-blog">
-      <div class="hero-blog__inner">
-        <div class="hero-blog__side reveal">
-          <div class="hero-blog__masthead">
-            <span class="hero-blog__masthead-name">Editorial Aslan</span>
-            <span class="hero-blog__masthead-issue">Nº 12 · MMXXV</span>
-          </div>
+      <div class="hero-blog__bg" aria-hidden="true">
+        <span class="hero-blog__grain"></span>
+        <span class="hero-blog__glow hero-blog__glow--tl"></span>
+        <span class="hero-blog__glow hero-blog__glow--br"></span>
+      </div>
 
-          <span class="hero-blog__eyebrow">Revista mensal · Blog</span>
-          <h1 class="hero-blog__title">Leituras, ideias e <em>agenda literária.</em></h1>
+      <!-- Masthead strip -->
+      <div class="hero-blog__masthead">
+        <span class="hero-blog__masthead-name">Editorial Aslan</span>
+        <span class="hero-blog__masthead-rule" aria-hidden="true"></span>
+        <span class="hero-blog__masthead-tag">Revista mensal · Blog</span>
+        <span class="hero-blog__masthead-issue">Nº 12 · MMXXV</span>
+      </div>
+
+      <!-- Grade principal -->
+      <div class="hero-blog__inner">
+
+        <!-- Coluna esquerda -->
+        <div class="hero-blog__side reveal">
+          <h1 class="hero-blog__title">
+            Leituras, ideias e
+            <em>agenda literária.</em>
+          </h1>
           <p class="hero-blog__lead">Um blog editorial dividido em três eixos: leituras críticas, reflexões autorais e o calendário literário no Brasil e em Portugal.</p>
 
-          <div class="hero-blog__cats">
+          <nav class="hero-blog__cats" aria-label="Seções do blog">
             <a class="hero-blog__cat" href="#livro-do-mes">
-              <span class="hero-blog__cat-num">I.</span>
+              <span class="hero-blog__cat-num">I</span>
               <span class="hero-blog__cat-name">Livro do Mês</span>
-              <span class="hero-blog__cat-page">P. 02</span>
+              <span class="hero-blog__cat-arrow" aria-hidden="true">→</span>
             </a>
             <a class="hero-blog__cat" href="#deixa-te-contar">
-              <span class="hero-blog__cat-num">II.</span>
+              <span class="hero-blog__cat-num">II</span>
               <span class="hero-blog__cat-name">Deixa te contar</span>
-              <span class="hero-blog__cat-page">P. 14</span>
+              <span class="hero-blog__cat-arrow" aria-hidden="true">→</span>
             </a>
             <a class="hero-blog__cat" href="#agenda">
-              <span class="hero-blog__cat-num">III.</span>
+              <span class="hero-blog__cat-num">III</span>
               <span class="hero-blog__cat-name">Agenda literária</span>
-              <span class="hero-blog__cat-page">P. 28</span>
+              <span class="hero-blog__cat-arrow" aria-hidden="true">→</span>
             </a>
-          </div>
+          </nav>
         </div>
 
-        <div class="hero-blog__cover reveal reveal--late" aria-hidden="true">
-          <div class="hero-blog__cover-head">
-            <span>Editorial Aslan · Nº 12</span>
-            <span>MMXXV</span>
+        <!-- Coluna direita: destaque da edição -->
+        <div class="hero-blog__issue reveal reveal--late">
+          <span class="hero-blog__issue-watermark" aria-hidden="true">12</span>
+          <div class="hero-blog__issue-body">
+            <p class="hero-blog__issue-kicker">Destaque desta edição</p>
+            <h2 class="hero-blog__issue-title">
+              O legado de uma boa história —
+              <em>leitura crítica.</em>
+            </h2>
           </div>
-          <span class="hero-blog__cover-mark">A</span>
-          <div>
-            <p style="color:var(--gold-bright);font:700 0.68rem/1 var(--font-body);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:14px;">Destaque desta edição</p>
-            <h2 class="hero-blog__cover-headline">O legado de uma boa história — <em>leitura crítica.</em></h2>
-          </div>
-          <div class="hero-blog__cover-foot">
+          <div class="hero-blog__issue-foot">
             <span>Livro do mês</span>
             <span>Nov · 2025</span>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -101,19 +116,19 @@
       </div>
 
       <div class="blog-cats">
-        <article class="blog-cat reveal">
+        <article class="blog-cat reveal" data-num="I">
           <span class="blog-cat__num">I</span>
           <h3 class="blog-cat__title">Livro do Mês</h3>
           <p class="blog-cat__desc">Uma recomendação editorial por mês, acompanhada de resumo, análise e leitura crítica. Escolhas que valorizam títulos com força de linguagem, ideia e impacto.</p>
           <a class="blog-cat__link" href="#livro-do-mes">Ver categoria →</a>
         </article>
-        <article class="blog-cat reveal">
+        <article class="blog-cat reveal" data-num="II">
           <span class="blog-cat__num">II</span>
           <h3 class="blog-cat__title">Deixa Te Contar</h3>
           <p class="blog-cat__desc">Ideias, textos, soluções, reflexões e técnicas de escrita. O espaço mais autoral do blog — pensamento editorial em forma de crônica curta.</p>
           <a class="blog-cat__link" href="#deixa-te-contar">Ver categoria →</a>
         </article>
-        <article class="blog-cat reveal">
+        <article class="blog-cat reveal" data-num="III">
           <span class="blog-cat__num">III</span>
           <h3 class="blog-cat__title">Agenda</h3>
           <p class="blog-cat__desc">Divulgação de lançamentos, feiras, eventos literários e atividades em Portugal e no Brasil. Um calendário editorial vivo.</p>
