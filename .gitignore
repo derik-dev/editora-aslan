@@ -1,0 +1,9 @@
+.claude/
+.agents/
+.codex/
+.env
+.env.*
+node_modules/
+.vercel/
+.DS_Store
+Thumbs.db

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
@@ -40,144 +40,155 @@
 
   <main>
 
-    <!-- HERO — Prateleira de livros -->
-    <section class="hero-shop">
-      <div class="hero-shop__inner">
-        <div class="hero-shop__top reveal">
-          <div>
-            <p class="hero-shop__eyebrow"><span aria-hidden="true"></span><span>Editora Aslan · Loja Virtual</span></p>
-            <h1 class="hero-shop__title">A prateleira dos <em>livros que publicamos.</em></h1>
-          </div>
-          <p class="hero-shop__side">Cada obra deste catálogo passou por direção editorial, projeto gráfico e revisão profissional. Livros físicos e digitais para leitores em Brasil, Portugal e Europa.</p>
+    <!-- HERO -->
+    <section class="sh-hero">
+      <div class="sh-hero__bg" aria-hidden="true">
+        <span class="sh-hero__grain"></span>
+        <span class="sh-hero__sheen"></span>
+        <span class="sh-hero__glow sh-hero__glow--top"></span>
+        <span class="sh-hero__glow sh-hero__glow--btm"></span>
+        <span class="sh-hero__page sh-hero__page--1"></span>
+        <span class="sh-hero__page sh-hero__page--2"></span>
+        <span class="sh-hero__page sh-hero__page--3"></span>
+      </div>
+
+      <div class="sh-hero__inner">
+
+        <div class="sh-hero__text reveal">
+
+          <h1 class="sh-hero__title">
+            <span class="sh-hero__title-line">A prateleira</span>
+            <em>
+              <span class="sh-hero__title-line">dos livros</span>
+              <span class="sh-hero__title-line">que publicamos.</span>
+            </em>
+          </h1>
+          <p class="sh-hero__lead">Cada obra deste catálogo passou por direção editorial, projeto gráfico e revisão profissional. Livros físicos e digitais para leitores em Brasil, Portugal e Europa.</p>
+          <a class="button button--gold" href="#catalogo">Ver catálogo</a>
         </div>
 
-        <div class="hero-shop__shelf reveal reveal--late" aria-hidden="true">
-          <div class="hero-shop__book">
-            <span class="hero-shop__book-seal">Editora Aslan</span>
-            <span class="hero-shop__book-title">Legado</span>
-            <span class="hero-shop__book-author">Antologia</span>
+        <div class="sh-hero__shelf reveal reveal--late" aria-hidden="true">
+          <div class="sh-hero__book sh-hero__book--1">
+            <span class="sh-hero__book-label">Editora Aslan</span>
+            <strong class="sh-hero__book-title">Legado</strong>
+            <span class="sh-hero__book-author">Antologia</span>
           </div>
-          <div class="hero-shop__book">
-            <span class="hero-shop__book-seal">Editora Aslan</span>
-            <span class="hero-shop__book-title">Mentes que escrevem</span>
-            <span class="hero-shop__book-author">Coletânea</span>
+          <div class="sh-hero__book sh-hero__book--2">
+            <span class="sh-hero__book-label">Editora Aslan</span>
+            <strong class="sh-hero__book-title">Mentes que escrevem</strong>
+            <span class="sh-hero__book-author">Coletânea</span>
           </div>
-          <div class="hero-shop__book">
-            <span class="hero-shop__book-seal">Editora Aslan</span>
-            <span class="hero-shop__book-title">Do papel ao mercado</span>
-            <span class="hero-shop__book-author">Eric Pereira</span>
+          <div class="sh-hero__book sh-hero__book--3">
+            <span class="sh-hero__book-label">Editora Aslan</span>
+            <strong class="sh-hero__book-title">Do papel ao mercado</strong>
+            <span class="sh-hero__book-author">Eric Pereira</span>
           </div>
-          <div class="hero-shop__book">
-            <span class="hero-shop__book-seal">eBook · Kindle</span>
-            <span class="hero-shop__book-title">Manifesto autoral</span>
-            <span class="hero-shop__book-author">Coletânea</span>
-          </div>
-          <div class="hero-shop__book">
-            <span class="hero-shop__book-seal">Editora Aslan</span>
-            <span class="hero-shop__book-title">O primeiro passo</span>
-            <span class="hero-shop__book-author">Vários autores</span>
-          </div>
-          <div class="hero-shop__book">
-            <span class="hero-shop__book-seal">Editora Aslan</span>
-            <span class="hero-shop__book-title">A rota até o livro</span>
-            <span class="hero-shop__book-author">Guia editorial</span>
+          <div class="sh-hero__book sh-hero__book--4">
+            <span class="sh-hero__book-label">eBook · Kindle</span>
+            <strong class="sh-hero__book-title">Manifesto autoral</strong>
+            <span class="sh-hero__book-author">Coletânea</span>
           </div>
         </div>
+
       </div>
     </section>
 
-    <section class="page-block">
-      <div class="reveal" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 8px;">
-        <div>
-          <p class="page-block__eyebrow">
-            <span class="page-block__eyebrow-line" aria-hidden="true"></span>
-            <span>Catálogo editorial</span>
-          </p>
-          <h2 class="page-block__title">Explore o <em>catálogo.</em></h2>
+    <!-- CATÁLOGO -->
+    <section class="sh-catalog" id="catalogo">
+      <div class="sh-catalog__inner">
+
+        <div class="sh-catalog__header reveal">
+          <h2 class="sh-catalog__heading">Catálogo <em>editorial</em></h2>
+          <div class="sh-catalog__filters" role="group" aria-label="Filtrar por categoria">
+            <button class="sh-filter sh-filter--active" type="button">Todos</button>
+            <button class="sh-filter" type="button">Coautoria</button>
+            <button class="sh-filter" type="button">Individuais</button>
+            <button class="sh-filter" type="button">eBook</button>
+          </div>
         </div>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <span style="padding: 8px 14px; border: 1px solid var(--gold); color: var(--bronze); font: 700 0.7rem/1 var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; background: rgba(255, 255, 255, 0.6);">Todos</span>
-          <span style="padding: 8px 14px; border: 1px solid rgba(112, 64, 16, 0.2); color: var(--ink-muted); font: 700 0.7rem/1 var(--font-body); letter-spacing: 0.2em; text-transform: uppercase;">Coautoria</span>
-          <span style="padding: 8px 14px; border: 1px solid rgba(112, 64, 16, 0.2); color: var(--ink-muted); font: 700 0.7rem/1 var(--font-body); letter-spacing: 0.2em; text-transform: uppercase;">Individuais</span>
-          <span style="padding: 8px 14px; border: 1px solid rgba(112, 64, 16, 0.2); color: var(--ink-muted); font: 700 0.7rem/1 var(--font-body); letter-spacing: 0.2em; text-transform: uppercase;">eBook</span>
+
+        <div class="sh-catalog__grid">
+
+          <article class="sh-item reveal">
+            <div class="sh-item__cover">
+              <span class="sh-item__seal">Editora Aslan</span>
+              <strong class="sh-item__name">Legado</strong>
+              <span class="sh-item__tag">Antologia · vários autores</span>
+            </div>
+            <div class="sh-item__body">
+              <p class="sh-item__authors">Vários autores</p>
+              <h3 class="sh-item__title">Legado — histórias que atravessam o tempo</h3>
+              <p class="sh-item__desc">Uma coletânea de vinte especialistas que exploram o conceito de deixar marca profissional e pessoal.</p>
+              <div class="sh-item__footer">
+                <span class="sh-item__price">R$ 89,90</span>
+                <a class="sh-item__cta" href="#">Comprar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="sh-item reveal">
+            <div class="sh-item__cover sh-item__cover--forest">
+              <span class="sh-item__seal">Editora Aslan</span>
+              <strong class="sh-item__name">Mentes que escrevem</strong>
+              <span class="sh-item__tag">Coletânea editorial</span>
+            </div>
+            <div class="sh-item__body">
+              <p class="sh-item__authors">Vários autores</p>
+              <h3 class="sh-item__title">Mentes que escrevem</h3>
+              <p class="sh-item__desc">Reflexões sobre o processo criativo, escrita e a relação entre pensamento e narrativa.</p>
+              <div class="sh-item__footer">
+                <span class="sh-item__price">R$ 79,90</span>
+                <a class="sh-item__cta" href="#">Comprar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="sh-item reveal">
+            <div class="sh-item__cover sh-item__cover--wine">
+              <span class="sh-item__seal">Editora Aslan</span>
+              <strong class="sh-item__name">Do papel ao mercado</strong>
+              <span class="sh-item__tag">Guia editorial</span>
+            </div>
+            <div class="sh-item__body">
+              <p class="sh-item__authors">Eric Pereira</p>
+              <h3 class="sh-item__title">Do papel ao mercado</h3>
+              <p class="sh-item__desc">Guia prático sobre o processo editorial: da estruturação da ideia à publicação profissional.</p>
+              <div class="sh-item__footer">
+                <span class="sh-item__price">R$ 69,90</span>
+                <a class="sh-item__cta" href="#">Comprar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="sh-item reveal">
+            <div class="sh-item__cover sh-item__cover--slate">
+              <span class="sh-item__seal">Editora Aslan · eBook</span>
+              <strong class="sh-item__name">Manifesto autoral</strong>
+              <span class="sh-item__tag">eBook Kindle</span>
+            </div>
+            <div class="sh-item__body">
+              <p class="sh-item__authors">Vários autores</p>
+              <h3 class="sh-item__title">Manifesto autoral</h3>
+              <p class="sh-item__desc">Ensaios curtos sobre o ato de escrever, a coragem de publicar e a arte de deixar legado.</p>
+              <div class="sh-item__footer">
+                <span class="sh-item__price">R$ 29,90</span>
+                <a class="sh-item__cta" href="#">Comprar</a>
+              </div>
+            </div>
+          </article>
+
         </div>
-      </div>
 
-      <div class="catalog-grid">
-        <article class="catalog-item reveal">
-          <div class="catalog-item__cover">
-            <span class="catalog-item__seal">Editora Aslan</span>
-            <strong>Legado</strong>
-            <span class="catalog-item__author">Antologia · vários autores</span>
+        <!-- Em breve -->
+        <div class="sh-coming reveal">
+          <div class="sh-coming__text">
+            <p class="sh-coming__label">Em breve</p>
+            <h3 class="sh-coming__heading">Carrinho, checkout e envio internacional</h3>
+            <p class="sh-coming__desc">A loja completa está sendo integrada. Enquanto isso, para adquirir qualquer título fale diretamente com a nossa equipe.</p>
           </div>
-          <div class="catalog-item__body">
-            <p class="catalog-item__author-name">Vários autores</p>
-            <h3 class="catalog-item__title">Legado — histórias que atravessam o tempo</h3>
-            <p class="catalog-item__desc">Uma coletânea de vinte especialistas que exploram o conceito de deixar marca profissional e pessoal.</p>
-            <div class="catalog-item__footer">
-              <span class="catalog-item__price">R$ 89,90</span>
-              <a class="catalog-item__buy" href="#">Comprar →</a>
-            </div>
-          </div>
-        </article>
+          <a class="button button--gold" href="https://wa.me/351935402570">Falar com a equipe</a>
+        </div>
 
-        <article class="catalog-item reveal">
-          <div class="catalog-item__cover">
-            <span class="catalog-item__seal">Editora Aslan</span>
-            <strong>Mentes que escrevem</strong>
-            <span class="catalog-item__author">Coletânea editorial</span>
-          </div>
-          <div class="catalog-item__body">
-            <p class="catalog-item__author-name">Vários autores</p>
-            <h3 class="catalog-item__title">Mentes que escrevem</h3>
-            <p class="catalog-item__desc">Reflexões sobre o processo criativo, escrita e a relação entre pensamento e narrativa.</p>
-            <div class="catalog-item__footer">
-              <span class="catalog-item__price">R$ 79,90</span>
-              <a class="catalog-item__buy" href="#">Comprar →</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="catalog-item reveal">
-          <div class="catalog-item__cover">
-            <span class="catalog-item__seal">Editora Aslan</span>
-            <strong>Do papel ao mercado</strong>
-            <span class="catalog-item__author">Guia editorial</span>
-          </div>
-          <div class="catalog-item__body">
-            <p class="catalog-item__author-name">Eric Pereira</p>
-            <h3 class="catalog-item__title">Do papel ao mercado</h3>
-            <p class="catalog-item__desc">Guia prático sobre o processo editorial: da estruturação da ideia à publicação profissional.</p>
-            <div class="catalog-item__footer">
-              <span class="catalog-item__price">R$ 69,90</span>
-              <a class="catalog-item__buy" href="#">Comprar →</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="catalog-item reveal">
-          <div class="catalog-item__cover">
-            <span class="catalog-item__seal">Editora Aslan · eBook</span>
-            <strong>Manifesto autoral</strong>
-            <span class="catalog-item__author">eBook Kindle</span>
-          </div>
-          <div class="catalog-item__body">
-            <p class="catalog-item__author-name">Vários autores</p>
-            <h3 class="catalog-item__title">Manifesto autoral</h3>
-            <p class="catalog-item__desc">Ensaios curtos sobre o ato de escrever, a coragem de publicar e a arte de deixar legado.</p>
-            <div class="catalog-item__footer">
-              <span class="catalog-item__price">R$ 29,90</span>
-              <a class="catalog-item__buy" href="#">Comprar →</a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="reveal" style="text-align: center; margin-top: 60px; padding: 40px; background: var(--paper-warm); border: 1px solid var(--line);">
-        <p style="color: var(--bronze); font: 700 0.7rem/1 var(--font-body); letter-spacing: 0.22em; text-transform: uppercase;">Em breve</p>
-        <h3 style="margin-top: 14px; font-family: var(--font-display); font-size: 1.5rem; font-weight: 460; color: var(--ink);">Carrinho, checkout e envio internacional</h3>
-        <p style="margin-top: 12px; color: var(--ink-muted); font-size: 0.95rem; max-width: 55ch; margin-left: auto; margin-right: auto;">A loja completa está sendo integrada. Enquanto isso, para adquirir qualquer título, fale diretamente com a nossa equipe pelo WhatsApp.</p>
-        <a class="button button--bronze" href="https://wa.me/351935402570" style="margin-top: 20px;">Falar com a equipe</a>
       </div>
     </section>
 
@@ -188,7 +199,8 @@
       <div class="site-footer__brand">
         <img class="site-footer__logo" src="./logo-gold-horizontal.png" alt="Editora Aslan" width="182" height="52">
         <p class="site-footer__tagline">Brasil - Portugal - Europa</p>
-      </div>      <div class="site-footer__contact">
+      </div>
+      <div class="site-footer__contact">
         <a class="site-footer__link" href="mailto:ericpereira@editoraaslan.com">ericpereira@editoraaslan.com</a>
         <a class="site-footer__link site-footer__phone" href="https://wa.me/351935402570">+351 935 402 570 · Portugal</a>
         <a class="site-footer__link site-footer__phone" href="https://wa.me/5511984663444">(11) 98466-3444 · Brasil</a>
@@ -199,5 +211,3 @@
   <script src="./assets/site.js"></script>
 </body>
 </html>
-
-
