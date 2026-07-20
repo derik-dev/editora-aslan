@@ -1,0 +1,864 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Editorial — Editora Aslan</title>
+  <meta name="description" content="Conteúdos sobre livros, escrita e mercado editorial. Livro do Mês, Deixa Te Contar e Agenda de eventos literários no Brasil e em Portugal.">
+  <link rel="canonical" href="https://www.editoraaslan.com/blog">
+  <link rel="icon" href="./uploads/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./assets/pages.css">
+  <style>
+    /* ── AGENDA LITERÁRIA ── */
+    .agenda-countries {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    @media (max-width: 560px) { .agenda-countries { grid-template-columns: 1fr; } }
+
+    .agenda-country {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px 28px;
+      border: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color .22s, background .22s;
+      font-family: inherit;
+      border-radius: 2px;
+    }
+    .agenda-country:hover { border-color: var(--bronze); }
+    .agenda-country--active { border-color: var(--bronze); background: var(--paper-warm); }
+
+    .agenda-country__flag { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
+    .agenda-country__text { flex: 1; min-width: 0; }
+    .agenda-country__name {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 460;
+      color: var(--ink);
+    }
+    .agenda-country__count {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      margin-top: 3px;
+      letter-spacing: 0.04em;
+    }
+    .agenda-country__arrow {
+      font-size: 1.1rem;
+      color: var(--bronze);
+      flex-shrink: 0;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .agenda-country--active .agenda-country__arrow { opacity: 1; }
+
+    .agenda-panel--hidden { display: none; }
+
+    .agenda-month {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 40px 0 0;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .agenda-month:first-child { margin-top: 0; }
+    .agenda-month__label {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .agenda-month__line { flex: 1; height: 1px; background: var(--line); }
+
+    .agenda-event {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 0 28px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    @media (max-width: 560px) { .agenda-event { grid-template-columns: 1fr; gap: 12px 0; } }
+
+    .agenda-event__date-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding-top: 3px;
+    }
+    .agenda-event__days {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--bronze);
+      line-height: 1;
+    }
+    .agenda-event__month-short {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: -2px;
+    }
+    .agenda-event__status {
+      display: inline-block;
+      padding: 3px 9px;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .agenda-event__status--done  { background: rgba(0,0,0,.07); color: var(--ink-muted); }
+    .agenda-event__status--next  { background: rgba(181,137,58,.18); color: var(--bronze); }
+    .agenda-event__status--soon  { background: rgba(181,137,58,.09); color: var(--bronze); }
+
+    .agenda-event__body { min-width: 0; }
+    .agenda-event__title {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      font-weight: 460;
+      color: var(--ink);
+      margin: 0 0 6px;
+      line-height: 1.25;
+    }
+    .agenda-event__location {
+      font-size: 0.78rem;
+      color: var(--bronze);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .agenda-event__desc {
+      font-size: 0.88rem;
+      line-height: 1.72;
+      color: var(--ink-muted);
+      margin: 0;
+    }
+
+    .agenda-pt-soon {
+      padding: 56px 40px;
+      text-align: center;
+      background: var(--paper-warm);
+      border: 1px solid var(--line);
+    }
+    .agenda-pt-soon__label {
+      color: var(--bronze);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin: 0 0 14px;
+    }
+    .agenda-pt-soon__title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 460;
+      margin: 0 0 12px;
+      color: var(--ink);
+    }
+    .agenda-pt-soon__body {
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+      max-width: 48ch;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── BLOG DTC CTA ── */
+    .blog-dtc-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 48px;
+      padding: 36px 40px;
+      background: var(--ink);
+    }
+    .blog-dtc-cta__label {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+    .blog-dtc-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 300;
+      margin: 0 0 4px;
+      color: #F3EBDA;
+      letter-spacing: -.02em;
+    }
+    .blog-dtc-cta__title em { font-style: italic; color: var(--bronze); }
+    .blog-dtc-cta__sub { font-size: 0.88rem; color: rgba(243,235,218,.6); margin: 0; }
+  </style>
+</head>
+<body class="page">
+
+  <header class="site-header site-header--scrolled">
+    <div class="site-header__inner">
+      <a class="brand" href="./index.html">
+        <img class="brand__logo" src="./logo-gold-horizontal.png" alt="Editora Aslan" width="204" height="58">
+      </a>
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <a class="nav__item" href="./index.html">Editora Aslan</a>
+        <a class="nav__item" href="./publique-o-seu-livro.html">Publique o seu livro</a>
+        <a class="nav__item" href="./mentorias.html">Mentorias</a>
+        <a class="nav__item" href="./coautoria.html">Coautoria</a>
+        <a class="nav__item" href="./loja.html">Loja Virtual</a>
+        <a class="nav__item" href="./cursos.html">Cursos Online</a>
+        <a class="nav__item nav__item--active" href="./blog.html" aria-current="page">Blog</a>
+        <a class="nav__cta" href="./contato.html">Contato</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO — Editorial premium dark -->
+    <section class="hero-blog">
+      <div class="hero-blog__bg" aria-hidden="true">
+        <span class="hero-blog__grain"></span>
+        <span class="hero-blog__glow hero-blog__glow--tl"></span>
+        <span class="hero-blog__glow hero-blog__glow--br"></span>
+      </div>
+
+      <!-- Masthead strip -->
+      <div class="hero-blog__masthead">
+        <span class="hero-blog__masthead-name">Editorial Aslan</span>
+        <span class="hero-blog__masthead-rule" aria-hidden="true"></span>
+        <span class="hero-blog__masthead-tag">Revista mensal · Blog</span>
+        <span class="hero-blog__masthead-issue">Nº 07 · Jul · MMXXVI</span>
+      </div>
+
+      <!-- Grade principal -->
+      <div class="hero-blog__inner">
+
+        <!-- Coluna esquerda -->
+        <div class="hero-blog__side reveal">
+          <h1 class="hero-blog__title">
+            Leituras, ideias e
+            <em>agenda literária.</em>
+          </h1>
+          <p class="hero-blog__lead">Um blog editorial dividido em três eixos: leituras críticas, reflexões autorais e o calendário literário no Brasil e em Portugal.</p>
+
+          <nav class="hero-blog__cats" aria-label="Seções do blog">
+            <span class="hero-blog__cat" style="opacity:.35; cursor:default;" aria-hidden="true">
+              <span class="hero-blog__cat-num">I</span>
+              <span class="hero-blog__cat-name">Livro do Mês</span>
+            </span>
+            <a class="hero-blog__cat" href="#deixa-te-contar">
+              <span class="hero-blog__cat-num">II</span>
+              <span class="hero-blog__cat-name">Deixa te contar</span>
+              <span class="hero-blog__cat-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="hero-blog__cat" href="#agenda">
+              <span class="hero-blog__cat-num">III</span>
+              <span class="hero-blog__cat-name">Agenda literária</span>
+              <span class="hero-blog__cat-arrow" aria-hidden="true">→</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Coluna direita: destaque da edição -->
+        <a class="hero-blog__issue reveal reveal--late" href="./artigo-como-comecar-meu-livro.html" style="text-decoration:none; display:block;">
+          <span class="hero-blog__issue-watermark" aria-hidden="true">01</span>
+          <div class="hero-blog__issue-body">
+            <p class="hero-blog__issue-kicker">Destaque desta edição</p>
+            <h2 class="hero-blog__issue-title">
+              Tenho uma boa ideia, mas não sei como
+              <em>começar meu livro.</em>
+            </h2>
+          </div>
+          <div class="hero-blog__issue-foot">
+            <span>Deixa te contar</span>
+            <span>Jul · 2026</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- 3 CATEGORIAS -->
+    <section class="page-block">
+      <div class="reveal" style="max-width: 780px; margin: 0 auto 20px; text-align: center;">
+        <p class="page-block__eyebrow" style="justify-content: center;">
+          <span class="page-block__eyebrow-line" aria-hidden="true"></span>
+          <span>Categorias</span>
+        </p>
+        <h2 class="page-block__title">Três eixos <em>editoriais.</em></h2>
+      </div>
+
+      <div class="blog-cats">
+        <article class="blog-cat reveal" data-num="I" style="opacity:.5;">
+          <span class="blog-cat__num">I</span>
+          <h3 class="blog-cat__title">Livro do Mês</h3>
+          <p class="blog-cat__desc">Uma recomendação editorial por mês, com análise e leitura crítica. Em preparação — voltamos em breve com novas escolhas.</p>
+          <span class="blog-cat__link" style="cursor:default; color:var(--ink-muted);">Em breve</span>
+        </article>
+        <article class="blog-cat reveal" data-num="II">
+          <span class="blog-cat__num">II</span>
+          <h3 class="blog-cat__title">Deixa Te Contar</h3>
+          <p class="blog-cat__desc">Ideias, textos, soluções, reflexões e técnicas de escrita. O espaço mais autoral do blog — pensamento editorial em forma de crônica curta.</p>
+          <a class="blog-cat__link" href="#deixa-te-contar">Ver categoria →</a>
+        </article>
+        <article class="blog-cat reveal" data-num="III">
+          <span class="blog-cat__num">III</span>
+          <h3 class="blog-cat__title">Agenda</h3>
+          <p class="blog-cat__desc">Divulgação de lançamentos, feiras, eventos literários e atividades em Portugal e no Brasil. Um calendário editorial vivo.</p>
+          <a class="blog-cat__link" href="#agenda">Ver categoria →</a>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- DEIXA TE CONTAR -->
+    <section class="page-block" id="deixa-te-contar" style="background: var(--paper-warm); max-width: none;">
+      <div style="max-width: 1320px; margin: 0 auto;">
+        <div class="reveal" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <p class="page-block__eyebrow">
+              <span class="page-block__eyebrow-line" aria-hidden="true"></span>
+              <span>Categoria II</span>
+            </p>
+            <h2 class="page-block__title">Deixa te <em>contar.</em></h2>
+          </div>
+          <a class="button button--outline" href="#">Ver todos</a>
+        </div>
+
+        <div class="blog-posts">
+          <article class="blog-post reveal">
+            <div class="blog-post__img"></div>
+            <div>
+              <div class="blog-post__meta">
+                <span>Guia editorial</span>
+                <em>15 min de leitura</em>
+              </div>
+              <h3 class="blog-post__title">Tenho uma boa ideia, mas não sei como começar meu livro</h3>
+              <p class="blog-post__excerpt">O problema aparece quando você se senta diante de uma página em branco. Este guia mostra como transformar uma ideia em um projeto concreto — com 10 passos práticos e um desafio de sete dias para quem quer realmente começar.</p>
+              <a class="blog-post__more" href="./artigo-como-comecar-meu-livro.html">Ler artigo →</a>
+            </div>
+          </article>
+          <article class="blog-post reveal">
+            <div class="blog-post__img"></div>
+            <div>
+              <div class="blog-post__meta">
+                <span>Percursos editoriais</span>
+                <em>35 min de leitura</em>
+              </div>
+              <h3 class="blog-post__title">O que os grandes escritores podem nos ensinar com seu percurso</h3>
+              <p class="blog-post__excerpt">Antes do sucesso, existe uma história que quase ninguém vê. As trajetórias de 10 autores que mudaram o mercado editorial — e o que elas revelam sobre persistência, posicionamento e a força de um catálogo.</p>
+              <a class="blog-post__more" href="./artigo-grandes-escritores.html">Ler artigo →</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="blog-dtc-cta reveal">
+          <div class="blog-dtc-cta__content">
+            <p class="blog-dtc-cta__label">Editora Aslan</p>
+            <h3 class="blog-dtc-cta__title">Ajudamos você a escrever <em>o seu livro.</em></h3>
+            <p class="blog-dtc-cta__sub">Do Zero ao Lançamento.</p>
+          </div>
+          <a class="button button--bronze" href="./publique-o-seu-livro.html">Publicar meu livro →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AGENDA -->
+    <section class="page-block" id="agenda">
+      <div class="reveal" style="margin-bottom: 40px;">
+        <p class="page-block__eyebrow">
+          <span class="page-block__eyebrow-line" aria-hidden="true"></span>
+          <span>Categoria III</span>
+        </p>
+        <h2 class="page-block__title">Agenda <em>literária.</em></h2>
+      </div>
+
+      <!-- Seletores de país -->
+      <div class="agenda-countries reveal">
+        <button class="agenda-country agenda-country--active" data-target="agenda-brasil" type="button">
+          <span class="agenda-country__flag">🇧🇷</span>
+          <div class="agenda-country__text">
+            <strong class="agenda-country__name">Agenda Brasil</strong>
+            <span class="agenda-country__count">8 eventos · 2026</span>
+          </div>
+          <span class="agenda-country__arrow" aria-hidden="true">↓</span>
+        </button>
+        <button class="agenda-country" data-target="agenda-portugal" type="button">
+          <span class="agenda-country__flag">🇵🇹</span>
+          <div class="agenda-country__text">
+            <strong class="agenda-country__name">Agenda Portugal</strong>
+            <span class="agenda-country__count">15 eventos · 2026</span>
+          </div>
+          <span class="agenda-country__arrow" aria-hidden="true">↓</span>
+        </button>
+      </div>
+
+      <!-- Painel Brasil -->
+      <div class="agenda-panel" id="agenda-brasil">
+
+        <!-- Maio -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Maio · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">13–17</span>
+            <span class="agenda-event__month-short">Mai</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Feira do Livro da Unesp</h3>
+            <p class="agenda-event__location">Memorial da América Latina · Av. Mário de Andrade, 664 · Barra Funda · São Paulo</p>
+            <p class="agenda-event__desc">A tradicional Feira do Livro da Unesp abre o calendário literário de 2026 reunindo centenas de editoras universitárias e comerciais, com descontos atrativos e programação voltada para leitores de todas as idades. Além da comercialização de livros, a feira promove palestras, mesas-redondas, debates, lançamentos e encontros com escritores, pesquisadores e profissionais do mercado editorial.</p>
+          </div>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">16–17</span>
+            <span class="agenda-event__month-short">Mai</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">18ª Festa Literária de Santa Teresa — FLIST</h3>
+            <p class="agenda-event__location">Centro Cultural Parque Glória Maria · Rua Murtinho Nobre, 169 · Santa Teresa · Rio de Janeiro</p>
+            <p class="agenda-event__desc">A FLIST transforma o tradicional bairro de Santa Teresa em um grande polo dedicado à literatura, à cultura e às artes. Em sua 18ª edição, o evento reuniu escritores, artistas, leitores e educadores numa programação que integra literatura, música, artes visuais e debates sobre temas contemporâneos. Homenageados de 2026: João Bosco, Marcelo Rubens Paiva e Roseana Murray.</p>
+          </div>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">21–31</span>
+            <span class="agenda-event__month-short">Mai</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Festival Literário Catarinense</h3>
+            <p class="agenda-event__location">Centreventos Cau Hansen · Av. José Vieira, 315 · América · Joinville · SC</p>
+            <p class="agenda-event__desc">O Festival Literário Catarinense destaca-se por sua programação ampla e descentralizada, promovendo encontros literários em diversas cidades de Santa Catarina. Seu principal objetivo é incentivar a formação de novos leitores e ampliar o acesso à cultura por meio de oficinas, rodas de leitura, palestras, apresentações culturais e atividades educativas.</p>
+          </div>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">30</span>
+            <span class="agenda-event__month-short">Mai – 7 Jun</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">A Feira do Livro</h3>
+            <p class="agenda-event__location">Estádio do Pacaembu · Praça Charles Miller · São Paulo</p>
+            <p class="agenda-event__desc">Realizada em espaço público e com acesso gratuito, A Feira do Livro consolidou-se como um dos eventos literários mais democráticos do país. A programação reúne editoras independentes, livrarias, escritores e milhares de leitores em mesas literárias, sessões de autógrafos, debates e atividades para crianças, jovens e adultos.</p>
+          </div>
+        </div>
+
+        <!-- Junho -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Junho · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">11–14</span>
+            <span class="agenda-event__month-short">Jun</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Feira do Livro de Resende — FLIR</h3>
+            <p class="agenda-event__location">Parque de Exposições de Resende · Estrada Resende Riachuelo, s/n · Morada da Colina · Resende · RJ</p>
+            <p class="agenda-event__desc">A FLIR é um dos principais eventos culturais do sul do estado do Rio de Janeiro, reunindo literatura, educação e atividades artísticas em uma programação voltada para toda a família. O evento costuma reunir escritores, professores, estudantes, artistas e editoras, com forte integração com as escolas da região.</p>
+          </div>
+        </div>
+
+        <!-- Julho -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Julho · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">22–26</span>
+            <span class="agenda-event__month-short">Jul</span>
+            <span class="agenda-event__status agenda-event__status--next">Próximo</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">24ª FLIP — Festa Literária Internacional de Paraty</h3>
+            <p class="agenda-event__location">Paraty · Rio de Janeiro</p>
+            <p class="agenda-event__desc">A Flip é considerada um dos festivais literários mais importantes da América Latina. Durante cinco dias, a cidade histórica de Paraty recebe escritores nacionais e internacionais, editores, jornalistas e milhares de leitores para uma intensa programação de debates sobre literatura, política, artes, cultura e sociedade. A edição de 2026 homenageia a poeta Orides Fontela.</p>
+          </div>
+        </div>
+
+        <!-- Agosto -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Agosto · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">5–9</span>
+            <span class="agenda-event__month-short">Ago</span>
+            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Flipelô — Festa Literária Internacional do Pelourinho</h3>
+            <p class="agenda-event__location">Centro Histórico · Salvador · BA</p>
+            <p class="agenda-event__desc">A Flipelô transforma o Pelourinho em um grande circuito literário a céu aberto, reunindo literatura, patrimônio histórico e a riqueza cultural da Bahia. Durante o evento, casarões históricos recebem mesas literárias, lançamentos de livros, oficinas e diversas apresentações artísticas com programação gratuita e diversificada.</p>
+          </div>
+        </div>
+
+        <!-- Setembro -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Setembro · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event" style="border-bottom: none; padding-bottom: 0;">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">4–13</span>
+            <span class="agenda-event__month-short">Set</span>
+            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">28ª Bienal Internacional do Livro de São Paulo</h3>
+            <p class="agenda-event__location">Expo Pavilhões · Distrito Anhembi · São Paulo</p>
+            <p class="agenda-event__desc">A Bienal Internacional do Livro de São Paulo é o maior evento do mercado editorial brasileiro e um dos mais importantes da América Latina. A feira reúne grandes editoras, escritores nacionais e internacionais, influenciadores literários e centenas de milhares de visitantes, sendo uma das principais vitrines para autores, editoras e novos lançamentos no Brasil.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Painel Portugal -->
+      <div class="agenda-panel agenda-panel--hidden" id="agenda-portugal">
+
+        <!-- Fevereiro -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Fevereiro · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">13–16</span>
+            <span class="agenda-event__month-short">Fev</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Festival Latitudes — Literatura e Viajantes</h3>
+            <p class="agenda-event__location">Óbidos</p>
+            <p class="agenda-event__desc">O Festival Latitudes regressa a Óbidos como um dos principais encontros dedicados à literatura de viagens. Com curadoria do escritor José Luís Peixoto, o evento reúne escritores, ilustradores, viajantes e leitores para debater a relação entre literatura, culturas e experiências pelo mundo. A programação inclui lançamentos, exposições, oficinas, workshops, música e conversas literárias.</p>
+          </div>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">17–22</span>
+            <span class="agenda-event__month-short">Fev</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Festival Literário de Penacova</h3>
+            <p class="agenda-event__location">Penacova</p>
+            <p class="agenda-event__desc">O Festival Literário de Penacova celebra a literatura através de palestras, apresentações de livros, sessões de autógrafos, espetáculos de teatro, música, dança, exposições, feira do livro e diversas atividades culturais, promovendo o encontro entre autores e leitores.</p>
+          </div>
+        </div>
+
+        <!-- Março -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Março · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">—</span>
+            <span class="agenda-event__month-short">Mar</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">FLIM — Festival Literário da Mealhada</h3>
+            <p class="agenda-event__location">Mealhada</p>
+            <p class="agenda-event__desc">O FLIM promove conferências, feiras do livro, apresentações literárias, debates, oficinas, cinema, música e espetáculos, reforçando o papel da literatura como instrumento de formação, cidadania e liberdade.</p>
+          </div>
+        </div>
+
+        <!-- Abril -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Abril · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">—</span>
+            <span class="agenda-event__month-short">Abr</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">ELOS — Festival Literário de Nelas</h3>
+            <p class="agenda-event__location">Nelas</p>
+            <p class="agenda-event__desc">O Festival Literário de Nelas presta homenagem a grandes nomes da literatura portuguesa e promove encontros entre escritores, leitores e investigadores, através de palestras, apresentações e atividades culturais.</p>
+          </div>
+        </div>
+
+        <!-- Maio / Junho -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Maio · Junho · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">27</span>
+            <span class="agenda-event__month-short">Mai – 14 Jun</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Feira do Livro de Lisboa</h3>
+            <p class="agenda-event__location">Parque Eduardo VII · Lisboa</p>
+            <p class="agenda-event__desc">A Feira do Livro de Lisboa é o maior evento literário de Portugal e um dos mais importantes da Europa. Reúne centenas de editoras, milhares de títulos e uma programação diversificada, com apresentações de livros, sessões de autógrafos, debates, encontros com autores e atividades para todas as idades.</p>
+          </div>
+        </div>
+
+        <!-- Junho -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Junho · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">—</span>
+            <span class="agenda-event__month-short">Jun</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">VERSÁTIL — Festa Literária de Leiria</h3>
+            <p class="agenda-event__location">Centro histórico · Leiria</p>
+            <p class="agenda-event__desc">A VERSÁTIL propõe um diálogo entre a literatura e outras manifestações artísticas — música, cinema, teatro, exposições e performances. O festival reúne escritores, artistas e leitores numa programação distribuída por vários espaços culturais do centro histórico de Leiria.</p>
+          </div>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">—</span>
+            <span class="agenda-event__month-short">Jun</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">FALA — Festival Literário de Alcanena</h3>
+            <p class="agenda-event__location">Alcanena</p>
+            <p class="agenda-event__desc">O FALA é um festival dedicado à valorização do livro, da literatura e das artes, reunindo escritores, músicos, artistas e leitores em palestras, apresentações, concertos e sessões de autógrafos.</p>
+          </div>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">—</span>
+            <span class="agenda-event__month-short">Jun</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">FLII — Festival Literário Internacional do Interior</h3>
+            <p class="agenda-event__location">Concelhos de Coimbra e Leiria</p>
+            <p class="agenda-event__desc">O Festival Literário Internacional do Interior promove literatura, cultura e memória, reunindo escritores portugueses e estrangeiros numa programação dedicada ao património cultural, às artes e ao desenvolvimento das regiões do interior do país.</p>
+          </div>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">—</span>
+            <span class="agenda-event__month-short">Jun</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">MISCELLANEA — Festival Literário de Pedrógão Grande</h3>
+            <p class="agenda-event__location">Pedrógão Grande</p>
+            <p class="agenda-event__desc">O MISCELLANEA reúne dezenas de escritores e convidados numa programação intensa composta por debates, apresentações literárias, oficinas, concertos e atividades culturais, transformando Pedrógão Grande num importante centro literário durante vários dias.</p>
+          </div>
+        </div>
+
+        <!-- Julho -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Julho · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">4–13</span>
+            <span class="agenda-event__month-short">Jul</span>
+            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Feira do Livro da Maia</h3>
+            <p class="agenda-event__location">Praça do Fórum · Maia</p>
+            <p class="agenda-event__desc">A Feira do Livro da Maia reúne editoras, escritores e leitores numa programação dedicada à promoção da leitura, com lançamentos de livros, sessões de autógrafos, apresentações culturais e atividades para toda a família.</p>
+          </div>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">—</span>
+            <span class="agenda-event__month-short">Jul</span>
+            <span class="agenda-event__status agenda-event__status--next">Próximo</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Maratona de Leitura da Sertã</h3>
+            <p class="agenda-event__location">Sertã</p>
+            <p class="agenda-event__desc">A Maratona de Leitura da Sertã é um dos eventos mais originais do país, celebrando a leitura em voz alta, a oralidade e a partilha de histórias, envolvendo leitores de todas as idades numa experiência cultural única.</p>
+          </div>
+        </div>
+
+        <!-- Agosto -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Agosto · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">21</span>
+            <span class="agenda-event__month-short">Ago – 6 Set</span>
+            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Feira do Livro do Porto</h3>
+            <p class="agenda-event__location">Jardins do Palácio de Cristal · Porto</p>
+            <p class="agenda-event__desc">A Feira do Livro do Porto destaca-se pelo ambiente cultural e pela programação que reúne literatura, música, teatro, poesia e encontros com escritores nacionais e internacionais, proporcionando uma experiência única aos visitantes.</p>
+          </div>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">28</span>
+            <span class="agenda-event__month-short">Ago – 13 Set</span>
+            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">Feira do Livro de Aveiro</h3>
+            <p class="agenda-event__location">Praça do Rossio · Aveiro</p>
+            <p class="agenda-event__desc">A Feira do Livro de Aveiro promove o encontro entre autores, editoras e leitores, oferecendo uma programação diversificada com apresentações literárias, atividades culturais, oficinas e momentos dedicados ao incentivo à leitura.</p>
+          </div>
+        </div>
+
+        <!-- Setembro -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Setembro · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">—</span>
+            <span class="agenda-event__month-short">Set</span>
+            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">FLO — Festival Literário de Ovar</h3>
+            <p class="agenda-event__location">Ovar</p>
+            <p class="agenda-event__desc">O Festival Literário de Ovar promove um encontro de proximidade entre escritores, leitores e editoras, oferecendo uma programação diversificada para públicos de todas as idades, com especial atenção à formação de novos leitores.</p>
+          </div>
+        </div>
+
+        <!-- Outubro -->
+        <div class="agenda-month">
+          <span class="agenda-month__label">Outubro · 2026</span>
+          <span class="agenda-month__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="agenda-event" style="border-bottom: none; padding-bottom: 0;">
+          <div class="agenda-event__date-col">
+            <span class="agenda-event__days">—</span>
+            <span class="agenda-event__month-short">Out</span>
+            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
+          </div>
+          <div class="agenda-event__body">
+            <h3 class="agenda-event__title">"Em Nome da Terra" — Festival Literário de Gouveia</h3>
+            <p class="agenda-event__location">Aldeia de Melo · Serra da Estrela · Gouveia</p>
+            <p class="agenda-event__desc">Realizado na aldeia de Melo, na Serra da Estrela, o festival homenageia o legado de Vergílio Ferreira, promovendo literatura, património, memória e cultura através de conferências, debates, lançamentos de livros e diversas atividades artísticas.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <img class="site-footer__logo" src="./logo-gold-horizontal.png" alt="Editora Aslan" width="182" height="52">
+      </div>
+      <div class="site-footer__addresses">
+        <address class="site-footer__address">
+          <strong class="site-footer__address-title">Editora Aslan, Lda 🇵🇹</strong>
+          <span>Rua Almirante Cândido dos Reis, nº25, B</span>
+          <span>Glória e Vera Cruz · Aveiro – Portugal</span>
+          <a class="site-footer__link site-footer__phone" href="https://wa.me/351935402570">+351 935 402 570</a>
+          <a class="site-footer__link" href="mailto:ericpereira@editoraaslan.com">ericpereira@editoraaslan.com</a>
+        </address>
+        <address class="site-footer__address">
+          <strong class="site-footer__address-title">Editora Aslan Ltda 🇧🇷</strong>
+          <span>Alameda Rio Negro, 503 · Sala 2020</span>
+          <span>Alphaville Centro Industrial e Empresarial</span>
+          <span>Barueri · São Paulo · Brasil</span>
+          <a class="site-footer__link site-footer__phone" href="https://wa.me/5511984663444">(11) 98466-3444</a>
+          <a class="site-footer__link" href="mailto:ericpereira@editoraaslan.com">ericpereira@editoraaslan.com</a>
+        </address>
+      </div>
+      <div class="site-footer__social-col">
+        <a class="site-footer__link site-footer__social" href="https://www.instagram.com/editoraaslan/" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @editoraaslan
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/site.js"></script>
+  <script>
+    document.querySelectorAll('.agenda-country').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.agenda-country').forEach(b => b.classList.remove('agenda-country--active'));
+        btn.classList.add('agenda-country--active');
+        const target = btn.dataset.target;
+        document.querySelectorAll('.agenda-panel').forEach(p => p.classList.add('agenda-panel--hidden'));
+        document.getElementById(target).classList.remove('agenda-panel--hidden');
+      });
+    });
+  </script>
+</body>
+</html>
+
+

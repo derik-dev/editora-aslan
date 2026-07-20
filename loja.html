@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loja Virtual — Editora Aslan</title>
+  <meta name="description" content="A loja virtual da Editora Aslan estará disponível em breve com catálogo de livros, sinopses e formas de pagamento.">
+  <link rel="canonical" href="https://www.editoraaslan.com/loja">
+  <link rel="icon" href="./uploads/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./assets/pages.css">
+  <style>
+    :root {
+      --lj2-forest: #192B1C;
+      --lj2-gold: #B5893A;
+      --lj2-gold-2: #D9A96E;
+      --lj2-cream: #F3EBDA;
+      --lj2-line: rgba(245,239,222,.18);
+      --lj2-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    body.page.lj2 { background: var(--lj2-forest); }
+
+    .lj2-coming {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(80px, 10vw, 140px) clamp(24px, 5vw, 72px);
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(60% 60% at 20% 10%, rgba(181,137,58,.12), transparent 55%),
+        radial-gradient(40% 50% at 80% 90%, rgba(181,137,58,.07), transparent 55%),
+        var(--lj2-forest);
+    }
+
+    .lj2-coming::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        90deg,
+        rgba(245,239,222,.018) 0px,
+        rgba(245,239,222,.018) 1px,
+        transparent 1px,
+        transparent clamp(40px, 5vw, 72px)
+      );
+      pointer-events: none;
+    }
+
+    .lj2-coming__tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 20px;
+      border: 1px solid var(--lj2-gold);
+      font-family: var(--lj2-mono); font-size: 11px; letter-spacing: .24em;
+      text-transform: uppercase; color: var(--lj2-gold);
+      border-radius: 999px; margin-bottom: 32px;
+      position: relative; z-index: 1;
+    }
+
+    .lj2-coming__title {
+      font-family: var(--font-display); font-weight: 300;
+      font-size: clamp(38px, 6vw, 74px); line-height: 1.02;
+      letter-spacing: -.03em; color: var(--lj2-cream);
+      margin: 0 0 20px; max-width: 18ch;
+      position: relative; z-index: 1;
+    }
+
+    .lj2-coming__title em {
+      font-style: italic; color: var(--lj2-gold-2);
+    }
+
+    .lj2-coming__sub {
+      font-size: clamp(15px, 1.2vw, 17px); line-height: 1.7;
+      color: rgba(243,235,218,.72); max-width: 48ch;
+      margin: 0 auto 44px;
+      position: relative; z-index: 1;
+    }
+
+    .lj2-coming__btns {
+      display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+
+    .lj2-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 28px; border-radius: 999px;
+      font-family: var(--lj2-mono); font-size: 12px; letter-spacing: .2em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background .3s, transform .3s, color .3s, border-color .3s;
+    }
+    .lj2-btn--gold { background: var(--lj2-gold); color: #fff; }
+    .lj2-btn--gold:hover { background: var(--lj2-gold-2); transform: translateY(-2px); }
+    .lj2-btn--ghost {
+      border: 1px solid var(--lj2-line); color: var(--lj2-cream);
+    }
+    .lj2-btn--ghost:hover { border-color: var(--lj2-gold); color: var(--lj2-gold); transform: translateY(-2px); }
+
+    .lj2-coming__ornament {
+      position: absolute; bottom: clamp(32px, 5vw, 60px);
+      font-family: var(--lj2-mono); font-size: 11px; letter-spacing: .22em;
+      text-transform: uppercase; color: rgba(243,235,218,.28);
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="page lj2">
+
+  <header class="site-header site-header--scrolled">
+    <div class="site-header__inner">
+      <a class="brand" href="./index.html">
+        <img class="brand__logo" src="./logo-gold-horizontal.png" alt="Editora Aslan" width="204" height="58">
+      </a>
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <a class="nav__item" href="./index.html">Editora Aslan</a>
+        <a class="nav__item" href="./publique-o-seu-livro.html">Publique o seu livro</a>
+        <a class="nav__item" href="./mentorias.html">Mentorias</a>
+        <a class="nav__item" href="./coautoria.html">Coautoria</a>
+        <a class="nav__item nav__item--active" href="./loja.html" aria-current="page">Loja Virtual</a>
+        <a class="nav__item" href="./cursos.html">Cursos Online</a>
+        <a class="nav__item" href="./blog.html">Blog</a>
+        <a class="nav__cta" href="./contato.html">Contato</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="lj2-coming">
+      <span class="lj2-coming__tag">✦ Brevemente</span>
+      <h1 class="lj2-coming__title">A nossa loja <em>está a caminho.</em></h1>
+      <p class="lj2-coming__sub">Em breve teremos aqui o catálogo completo de livros com fotos, sinopses e formas de pagamento. Enquanto isso, entre em contacto connosco pelo WhatsApp.</p>
+      <div class="lj2-coming__btns">
+        <a class="lj2-btn lj2-btn--gold" href="https://wa.me/351935402570">WhatsApp · Portugal</a>
+        <a class="lj2-btn lj2-btn--ghost" href="https://wa.me/5511984663444">WhatsApp · Brasil</a>
+      </div>
+      <p class="lj2-coming__ornament">Editora Aslan · Loja Virtual</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <img class="site-footer__logo" src="./logo-gold-horizontal.png" alt="Editora Aslan" width="182" height="52">
+      </div>
+      <div class="site-footer__addresses">
+        <address class="site-footer__address">
+          <strong class="site-footer__address-title">Editora Aslan, Lda 🇵🇹</strong>
+          <span>Rua Almirante Cândido dos Reis, nº25, B</span>
+          <span>Glória e Vera Cruz · Aveiro – Portugal</span>
+          <a class="site-footer__link site-footer__phone" href="https://wa.me/351935402570">+351 935 402 570</a>
+          <a class="site-footer__link" href="mailto:ericpereira@editoraaslan.com">ericpereira@editoraaslan.com</a>
+        </address>
+        <address class="site-footer__address">
+          <strong class="site-footer__address-title">Editora Aslan Ltda 🇧🇷</strong>
+          <span>Alameda Rio Negro, 503 · Sala 2020</span>
+          <span>Alphaville Centro Industrial e Empresarial</span>
+          <span>Barueri · São Paulo · Brasil</span>
+          <a class="site-footer__link site-footer__phone" href="https://wa.me/5511984663444">(11) 98466-3444</a>
+          <a class="site-footer__link" href="mailto:ericpereira@editoraaslan.com">ericpereira@editoraaslan.com</a>
+        </address>
+      </div>
+      <div class="site-footer__social-col">
+        <a class="site-footer__link site-footer__social" href="https://www.instagram.com/editoraaslan/" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @editoraaslan
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/site.js"></script>
+</body>
+</html>
