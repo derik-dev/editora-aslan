@@ -13,18 +13,40 @@
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./assets/pages.css">
   <style>
-    /* Header flutuante sobre hero (como na home) */
-    body.page.pub2 .site-header {
+    /* Header padrão do site (bege translúcido, full-width, sem margens) */
+    body.page.pub2 .site-header,
+    body.page.pub2 .site-header--scrolled {
       position: absolute !important;
-      top: clamp(8px, 1vw, 14px) !important;
-      right: clamp(8px, 1.8vw, 32px) !important;
-      left: clamp(8px, 1.8vw, 32px) !important;
-      background: transparent !important;
-      border: 1px solid transparent !important;
-      border-radius: 8px !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
+      top: 0 !important;
+      right: 0 !important;
+      left: 0 !important;
+      background: rgba(244, 234, 219, 0.88) !important;
+      border: 0 !important;
+      border-bottom: 1px solid rgba(112, 64, 16, 0.18) !important;
+      border-radius: 0 !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
       box-shadow: none !important;
+    }
+
+    /* Links do nav em marrom no hero claro */
+    body.page.pub2 .site-header .nav__item {
+      color: var(--pub2-ink-soft) !important;
+    }
+    body.page.pub2 .site-header .nav__item:hover,
+    body.page.pub2 .site-header .nav__item--active {
+      color: var(--pub2-gold) !important;
+    }
+    body.page.pub2 .site-header .nav__item::after {
+      background: var(--pub2-gold) !important;
+    }
+    body.page.pub2 .site-header .nav__cta {
+      background: var(--pub2-gold) !important;
+      color: var(--pub2-ink) !important;
+      border-color: transparent !important;
+    }
+    body.page.pub2 .site-header .nav__cta:hover {
+      background: var(--pub2-gold-2) !important;
     }
 
     /* =============================================================
@@ -64,8 +86,10 @@
       padding: clamp(70px, 7vw, 90px) clamp(22px, 5vw, 72px) clamp(60px, 7vw, 100px);
       overflow: hidden;
       background:
-        radial-gradient(120% 80% at 100% 0%, rgba(176,122,61,.10), transparent 55%),
-        radial-gradient(60% 60% at 0% 100%, rgba(176,122,61,.08), transparent 60%),
+        linear-gradient(90deg, rgba(244,234,219,.9) 0%, rgba(244,234,219,.74) 42%, rgba(244,234,219,.25) 68%, rgba(244,234,219,.04) 100%),
+        linear-gradient(180deg, rgba(244,234,219,.62) 0%, rgba(244,234,219,.12) 38%, rgba(244,234,219,.28) 100%),
+        radial-gradient(80% 80% at 0% 78%, rgba(244,234,219,.66), transparent 64%),
+        url("./assets/hero-guia-autor-bg.png") center right / cover no-repeat,
         var(--pub2-paper);
       border-bottom: 1px solid var(--pub2-line);
     }
@@ -81,8 +105,8 @@
     .pub2-mast__grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, .58fr);
-      gap: clamp(24px, 4vw, 60px);
-      align-items: end;
+      gap: clamp(20px, 3vw, 44px);
+      align-items: center;
       flex: 1;
     }
     @media (max-width: 900px) { .pub2-mast__grid { grid-template-columns: 1fr; } }
@@ -126,14 +150,16 @@
     }
 
     .pub2-mast__aside {
-      border-left: 1px solid var(--pub2-line);
-      padding-left: clamp(20px, 3vw, 40px);
+      margin-top: clamp(28px, 3vw, 40px);
+      padding-top: clamp(24px, 3vw, 32px);
+      border-top: 1px solid var(--pub2-line);
+      max-width: 56ch;
     }
     .pub2-mast__ital {
       font-family: var(--font-display); font-style: italic; font-weight: 300;
-      font-size: clamp(15px, 1.2vw, 18px); line-height: 1.5;
+      font-size: clamp(15px, 1.2vw, 18px); line-height: 1.6;
       color: var(--pub2-ink-soft);
-      max-width: 32ch;
+      margin: 0;
     }
     .pub2-mast__ital::first-letter {
       font-size: 2.2em; float: left;
@@ -145,6 +171,7 @@
     .pub2-mast__cta {
       display: flex; gap: 14px; flex-wrap: wrap;
       margin-top: clamp(28px, 3vw, 40px);
+      margin-left: clamp(12px, 1.5vw, 24px);
       align-items: center;
     }
     .pub2-btn {
@@ -208,7 +235,7 @@
     /* ============ FORMATOS — CATÁLOGO ============ */
     .pub2-formats {
       position: relative;
-      padding: clamp(80px, 10vw, 140px) clamp(22px, 5vw, 72px);
+      padding: clamp(44px, 5vw, 72px) clamp(22px, 5vw, 72px) clamp(64px, 7vw, 96px);
       background: var(--pub2-paper);
     }
     .pub2-h-eyebrow {
@@ -221,10 +248,10 @@
     }
     .pub2-section-head {
       display: grid; grid-template-columns: 1.1fr .9fr;
-      gap: clamp(24px, 4vw, 60px);
+      gap: clamp(20px, 3vw, 44px);
       align-items: end;
-      margin-bottom: clamp(40px, 5vw, 64px);
-      padding-bottom: 28px;
+      margin-bottom: clamp(28px, 4vw, 44px);
+      padding-bottom: 22px;
       border-bottom: 1px solid var(--pub2-line);
     }
     @media (max-width: 820px) { .pub2-section-head { grid-template-columns: 1fr; } }
@@ -240,71 +267,101 @@
       line-height: 1.55; max-width: 40ch;
     }
 
-    .pub2-grid {
+    /* ============ FORMATOS — grid compacto, denso e profissional ============ */
+    .pub2-fmt-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 22px;
-    }
-    .pub2-card {
-      position: relative;
-      grid-column: span 4;
-      padding: 34px 28px 28px;
-      background: #FBF3E6;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--pub2-line);
       border: 1px solid var(--pub2-line);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out);
     }
-    .pub2-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 30px 60px -30px rgba(27,16,7,.35);
-    }
-    .pub2-card::after {
-      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--pub2-gold), transparent);
-    }
-    .pub2-card__stamp {
-      position: absolute; top: 18px; right: 18px;
-      width: 56px; height: 56px; border-radius: 50%;
-      border: 1px dashed var(--pub2-gold); color: var(--pub2-gold);
-      display: grid; place-items: center;
-      font-family: var(--font-display); font-style: italic; font-size: 22px;
-    }
-    .pub2-card__cat {
-      font-family: var(--pub2-mono); font-size: 10.5px; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--pub2-ink-soft);
-    }
-    .pub2-card__title {
-      font-family: var(--font-display); font-weight: 400;
-      font-size: clamp(26px, 2.4vw, 34px); line-height: 1.05;
-      letter-spacing: -.01em; margin: 12px 0 14px; color: var(--pub2-ink);
-    }
-    .pub2-card__title em { font-style: italic; color: var(--pub2-gold); font-weight: 300; }
-    .pub2-card__text {
-      color: var(--pub2-ink-soft); font-size: 14.5px; line-height: 1.65;
-      margin: 0 0 20px;
-    }
-    .pub2-card hr {
-      border: none; border-top: 1px solid var(--pub2-line);
-      margin: 16px 0;
-    }
-    .pub2-card__meta {
-      display: flex; justify-content: space-between; gap: 16px;
-      font-family: var(--pub2-mono); font-size: 11px; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--pub2-ink-soft);
-    }
-    .pub2-card__meta b { color: var(--pub2-ink); font-weight: 600; }
+    @media (max-width: 1100px) { .pub2-fmt-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px)  { .pub2-fmt-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 440px)  { .pub2-fmt-grid { grid-template-columns: 1fr; } }
 
-    .pub2-card--wide { grid-column: span 6; }
-    .pub2-card--tall { grid-column: span 6; }
-    @media (max-width: 900px) {
-      .pub2-card, .pub2-card--wide, .pub2-card--tall { grid-column: 1 / -1; }
+    .pub2-fmt {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 22px 22px 20px;
+      background: #FBF3E6;
+      transition: background 0.28s var(--ease-out);
+      min-height: 260px;
+    }
+    .pub2-fmt:hover { background: #F7ECD6; }
+    .pub2-fmt:hover .pub2-fmt__num { color: var(--pub2-gold); }
+
+    .pub2-fmt__top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--pub2-line);
+    }
+    .pub2-fmt__num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 26px;
+      line-height: 1;
+      color: var(--pub2-ink);
+      letter-spacing: -0.01em;
+      transition: color 0.28s var(--ease-out);
+    }
+    .pub2-fmt__cat {
+      font-family: var(--pub2-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pub2-gold);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .pub2-fmt__title {
+      font-family: var(--font-display);
+      font-weight: 460;
+      font-size: 18px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin: 0 0 10px;
+      color: var(--pub2-ink);
+    }
+    .pub2-fmt__title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--pub2-gold);
+    }
+    .pub2-fmt__text {
+      color: var(--pub2-ink-soft);
+      font-size: 13.5px;
+      line-height: 1.55;
+      margin: 0 0 16px;
+    }
+
+    .pub2-fmt__meta {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .pub2-fmt__meta-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 10px;
+      font-family: var(--pub2-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .pub2-fmt__meta-label { color: var(--pub2-ink-soft); }
+    .pub2-fmt__meta-value {
+      color: var(--pub2-ink);
+      font-weight: 700;
     }
 
     /* ============ PROCESSO — MANUSCRITO ============ */
     .pub2-process {
       position: relative;
-      padding: clamp(80px, 10vw, 140px) clamp(22px, 5vw, 72px);
+      padding: clamp(44px, 5vw, 72px) clamp(22px, 5vw, 72px) clamp(64px, 7vw, 96px);
       background: var(--pub2-paper-2);
       overflow: hidden;
     }
@@ -322,9 +379,9 @@
     .pub2-step {
       display: grid;
       grid-template-columns: 120px 1fr auto;
-      gap: clamp(20px, 3vw, 40px);
+      gap: clamp(18px, 3vw, 34px);
       align-items: start;
-      padding: clamp(32px, 4vw, 48px) 0;
+      padding: clamp(24px, 3vw, 36px) 0;
       border-top: 1px solid var(--pub2-line);
       transition: background .3s var(--ease-out);
     }
@@ -361,7 +418,7 @@
     .pub2-stats {
       background: var(--pub2-ink);
       color: var(--pub2-paper);
-      padding: clamp(60px, 8vw, 96px) clamp(22px, 5vw, 72px);
+      padding: clamp(44px, 5vw, 70px) clamp(22px, 5vw, 72px);
       position: relative;
       overflow: hidden;
     }
@@ -389,34 +446,158 @@
       opacity: .82;
     }
 
-    /* ============ PULL QUOTE ============ */
+    /* ============ PULL QUOTE — premium com backdrop editorial ============ */
     .pub2-quote {
-      padding: clamp(90px, 12vw, 160px) clamp(22px, 5vw, 72px);
-      background: var(--pub2-paper);
+      padding: clamp(80px, 10vw, 140px) clamp(22px, 5vw, 72px);
+      background:
+        radial-gradient(60% 55% at 50% 45%, rgba(176, 122, 61, 0.10), transparent 65%),
+        radial-gradient(35% 30% at 15% 85%, rgba(112, 64, 16, 0.06), transparent 70%),
+        radial-gradient(30% 30% at 85% 15%, rgba(217, 169, 110, 0.10), transparent 70%),
+        linear-gradient(180deg, var(--pub2-paper) 0%, var(--pub2-paper-2) 100%);
       text-align: center;
       position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--pub2-line);
+      border-bottom: 1px solid var(--pub2-line);
     }
+
+    /* Textura de grão sutil */
+    .pub2-quote::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(rgba(27, 16, 7, 0.055) 1px, transparent 1px),
+        radial-gradient(rgba(27, 16, 7, 0.035) 1px, transparent 1px);
+      background-size: 3px 3px, 7px 7px;
+      background-position: 0 0, 1px 2px;
+      opacity: 0.55;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    /* Linhas guias horizontais (feel de página de livro) */
+    .pub2-quote::after {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 44px,
+        rgba(112, 64, 16, 0.045) 44px,
+        rgba(112, 64, 16, 0.045) 45px
+      );
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .pub2-quote__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Ornamentos decorativos (aspas grandes flanqueando) */
+    .pub2-quote__flourish {
+      position: absolute;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(160px, 22vw, 320px);
+      line-height: 0.6;
+      color: var(--pub2-gold);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .pub2-quote__flourish--tl { top: 8%; left: 4%; }
+    .pub2-quote__flourish--br { bottom: 8%; right: 4%; transform: rotate(180deg); }
+    @media (max-width: 720px) { .pub2-quote__flourish { display: none; } }
+
     .pub2-quote__mark {
-      font-family: var(--font-display); font-style: italic;
-      font-size: clamp(140px, 20vw, 260px); line-height: .5;
-      color: var(--pub2-gold); opacity: .35;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(80px, 9vw, 120px);
+      line-height: 0.6;
+      color: var(--pub2-gold);
+      display: inline-block;
+      transform: translateY(-8px);
     }
+
     .pub2-quote__text {
-      font-family: var(--font-display); font-weight: 300;
-      font-size: clamp(28px, 3.8vw, 52px); line-height: 1.2;
-      letter-spacing: -.015em; max-width: 22ch;
-      margin: 20px auto 30px; color: var(--pub2-ink);
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(30px, 4vw, 56px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      max-width: 24ch;
+      margin: 24px auto 36px;
+      color: var(--pub2-ink);
     }
-    .pub2-quote__text em { font-style: italic; color: var(--pub2-gold); }
+    .pub2-quote__text em {
+      font-style: italic;
+      color: var(--pub2-gold);
+      position: relative;
+      display: inline-block;
+    }
+    .pub2-quote__text em::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      bottom: -0.08em;
+      height: 1px;
+      background: var(--pub2-gold);
+      opacity: 0.4;
+    }
+
+    /* Attribution refinada com ornamentos */
     .pub2-quote__by {
-      font-family: var(--pub2-mono); font-size: 11px; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--pub2-ink-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--pub2-mono);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--pub2-ink-soft);
+    }
+    .pub2-quote__by::before,
+    .pub2-quote__by::after {
+      content: "";
+      width: 30px; height: 1px;
+      background: var(--pub2-gold);
+      opacity: 0.5;
+    }
+
+    .pub2-quote__by-name {
+      color: var(--pub2-ink);
+      font-weight: 700;
+    }
+    .pub2-quote__by-role {
+      color: var(--pub2-ink-soft);
+      font-weight: 400;
     }
 
     /* ============ FAQ ============ */
     .pub2-faq {
-      padding: clamp(80px, 10vw, 140px) clamp(22px, 5vw, 72px);
+      padding: clamp(44px, 5vw, 72px) clamp(22px, 5vw, 72px) clamp(64px, 7vw, 96px);
       background: var(--pub2-paper-2);
+    }
+    .pub2-faq .pub2-section-head {
+      display: block;
+      text-align: center;
+    }
+    .pub2-faq .pub2-h-eyebrow {
+      justify-content: center;
+    }
+    .pub2-faq .pub2-h-sub {
+      max-width: none;
+      margin: 18px auto 0;
+      white-space: nowrap;
+    }
+    @media (max-width: 720px) {
+      .pub2-faq .pub2-h-sub { white-space: normal; }
     }
     .pub2-faq__list { max-width: 960px; margin: 0 auto; }
     .pub2-faq__item {
@@ -428,7 +609,7 @@
       cursor: pointer;
       display: grid; grid-template-columns: 60px 1fr auto;
       gap: 20px; align-items: center;
-      padding: 28px 4px;
+      padding: 22px 4px;
       list-style: none;
       font-family: var(--font-display); font-weight: 400;
       font-size: clamp(20px, 2.1vw, 28px); line-height: 1.25;
@@ -463,7 +644,7 @@
 
     /* ============ FORM — SUBMISSION SLIP ============ */
     .pub2-form-sec {
-      padding: clamp(80px, 10vw, 140px) clamp(22px, 5vw, 72px);
+      padding: clamp(44px, 5vw, 72px) clamp(22px, 5vw, 72px) clamp(64px, 7vw, 96px);
       background: var(--pub2-paper);
       position: relative;
     }
@@ -566,7 +747,7 @@
 
     /* ============ CLOSING STRIP ============ */
     .pub2-close {
-      padding: clamp(70px, 9vw, 120px) clamp(22px, 5vw, 72px);
+      padding: clamp(52px, 6vw, 84px) clamp(22px, 5vw, 72px);
       background: var(--pub2-ink);
       color: var(--pub2-paper);
       text-align: center;
@@ -661,13 +842,13 @@
             </a>
             <a class="pub2-btn pub2-btn--ghost" href="#formatos">Ver formatos</a>
           </div>
-        </div>
 
-        <aside class="pub2-mast__aside">
-          <p class="pub2-mast__ital">
-            Publicar um livro não é imprimir páginas — é decidir, junto com quem escreve, a exata voz que o mundo vai escutar. Aqui, cada obra tem direção editorial, projeto gráfico e rota até o leitor.
-          </p>
-        </aside>
+          <aside class="pub2-mast__aside">
+            <p class="pub2-mast__ital">
+              Publicar um livro não é imprimir páginas — é decidir, junto com quem escreve, a exata voz que o mundo vai escutar. Aqui, cada obra tem direção editorial, projeto gráfico e rota até o leitor.
+            </p>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -689,66 +870,103 @@
         <p class="pub2-h-sub">Cada obra tem uma vocação — de coleção, de mercado, de memória. Escolhemos o formato, o papel e a rota junto com o autor.</p>
       </div>
 
-      <div class="pub2-grid">
-        <article class="pub2-card pub2-card--wide">
-          <span class="pub2-card__stamp">i</span>
-          <span class="pub2-card__cat">Cap. I · Livro Físico</span>
-          <h3 class="pub2-card__title">Papel, tinta e <em>gramatura.</em></h3>
-          <p class="pub2-card__text">Capa dura, brochura, offset ou pólen. Impressão sob demanda ou tiragem calibrada para o mercado — do exemplar de coleção à venda em livraria.</p>
-          <hr>
-          <div class="pub2-card__meta">
-            <span>Papéis · <b>7 opções</b></span>
-            <span>Acabamento · <b>4 tipos</b></span>
+      <div class="pub2-fmt-grid">
+
+        <article class="pub2-fmt">
+          <div class="pub2-fmt__top">
+            <span class="pub2-fmt__num">I</span>
+            <span class="pub2-fmt__cat">Físico</span>
+          </div>
+          <h3 class="pub2-fmt__title">Papel, tinta &amp; <em>gramatura.</em></h3>
+          <p class="pub2-fmt__text">Capa dura, brochura, offset ou pólen. Do exemplar de coleção à venda em livraria.</p>
+          <div class="pub2-fmt__meta">
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Papéis</span>
+              <span class="pub2-fmt__meta-value">7 opções</span>
+            </div>
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Acabamento</span>
+              <span class="pub2-fmt__meta-value">4 tipos</span>
+            </div>
           </div>
         </article>
 
-        <article class="pub2-card pub2-card--tall">
-          <span class="pub2-card__stamp">ii</span>
-          <span class="pub2-card__cat">Cap. II · Digital</span>
-          <h3 class="pub2-card__title">eBook, Kindle & <em>ePub.</em></h3>
-          <p class="pub2-card__text">Sua obra em todos os dispositivos, com formatação nativa para leitura fluida. Publicação nas maiores plataformas — Amazon, Apple Books, Google Play, Kobo.</p>
-          <hr>
-          <div class="pub2-card__meta">
-            <span>Plataformas · <b>5+</b></span>
-            <span>Idiomas · <b>Múltiplos</b></span>
+        <article class="pub2-fmt">
+          <div class="pub2-fmt__top">
+            <span class="pub2-fmt__num">II</span>
+            <span class="pub2-fmt__cat">Digital</span>
+          </div>
+          <h3 class="pub2-fmt__title">eBook, Kindle &amp; <em>ePub.</em></h3>
+          <p class="pub2-fmt__text">Sua obra em todos os dispositivos, com formatação nativa para leitura fluida.</p>
+          <div class="pub2-fmt__meta">
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Plataformas</span>
+              <span class="pub2-fmt__meta-value">5+</span>
+            </div>
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Idiomas</span>
+              <span class="pub2-fmt__meta-value">Múltiplos</span>
+            </div>
           </div>
         </article>
 
-        <article class="pub2-card">
-          <span class="pub2-card__stamp">iii</span>
-          <span class="pub2-card__cat">Cap. III · Exemplar único</span>
-          <h3 class="pub2-card__title">O livro-<em>presente.</em></h3>
-          <p class="pub2-card__text">Projetos personalizados para memórias familiares, presentes e ativos de branding — a partir de um único exemplar.</p>
-          <hr>
-          <div class="pub2-card__meta">
-            <span>Tiragem · <b>a partir de 1</b></span>
-            <span>Prazo · <b>30d</b></span>
+        <article class="pub2-fmt">
+          <div class="pub2-fmt__top">
+            <span class="pub2-fmt__num">III</span>
+            <span class="pub2-fmt__cat">Único</span>
+          </div>
+          <h3 class="pub2-fmt__title">O livro-<em>presente.</em></h3>
+          <p class="pub2-fmt__text">Memórias familiares, presentes e ativos de branding — a partir de um único exemplar.</p>
+          <div class="pub2-fmt__meta">
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Tiragem</span>
+              <span class="pub2-fmt__meta-value">De 1</span>
+            </div>
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Prazo</span>
+              <span class="pub2-fmt__meta-value">30 dias</span>
+            </div>
           </div>
         </article>
 
-        <article class="pub2-card">
-          <span class="pub2-card__stamp">iv</span>
-          <span class="pub2-card__cat">Cap. IV · Tiragem comercial</span>
-          <h3 class="pub2-card__title">Escala com <em>método.</em></h3>
-          <p class="pub2-card__text">De 1 a 10.000 exemplares com distribuição em Brasil, Portugal e Europa. Precificação, logística e lançamento planejados.</p>
-          <hr>
-          <div class="pub2-card__meta">
-            <span>Tiragem · <b>1–10k</b></span>
-            <span>Distribuição · <b>BR/PT/EU</b></span>
+        <article class="pub2-fmt">
+          <div class="pub2-fmt__top">
+            <span class="pub2-fmt__num">IV</span>
+            <span class="pub2-fmt__cat">Comercial</span>
+          </div>
+          <h3 class="pub2-fmt__title">Escala com <em>método.</em></h3>
+          <p class="pub2-fmt__text">De 1 a 10.000 exemplares com distribuição em Brasil, Portugal e Europa.</p>
+          <div class="pub2-fmt__meta">
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Tiragem</span>
+              <span class="pub2-fmt__meta-value">1 – 10k</span>
+            </div>
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Distribuição</span>
+              <span class="pub2-fmt__meta-value">BR·PT·EU</span>
+            </div>
           </div>
         </article>
 
-        <article class="pub2-card">
-          <span class="pub2-card__stamp">v</span>
-          <span class="pub2-card__cat">Cap. V · Sob medida</span>
-          <h3 class="pub2-card__title">Cada obra, uma <em>linha.</em></h3>
-          <p class="pub2-card__text">Direção editorial, tratamento gráfico e estratégia de leitor — cada livro recebe sua própria linha editorial, do brief à impressão.</p>
-          <hr>
-          <div class="pub2-card__meta">
-            <span>Direção · <b>Completa</b></span>
-            <span>Projeto · <b>Exclusivo</b></span>
+        <article class="pub2-fmt">
+          <div class="pub2-fmt__top">
+            <span class="pub2-fmt__num">V</span>
+            <span class="pub2-fmt__cat">Sob medida</span>
+          </div>
+          <h3 class="pub2-fmt__title">Cada obra, uma <em>linha.</em></h3>
+          <p class="pub2-fmt__text">Direção editorial, tratamento gráfico e estratégia — do brief à impressão.</p>
+          <div class="pub2-fmt__meta">
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Direção</span>
+              <span class="pub2-fmt__meta-value">Completa</span>
+            </div>
+            <div class="pub2-fmt__meta-item">
+              <span class="pub2-fmt__meta-label">Projeto</span>
+              <span class="pub2-fmt__meta-value">Exclusivo</span>
+            </div>
           </div>
         </article>
+
       </div>
     </section>
 
@@ -827,11 +1045,18 @@
 
     <!-- PULL QUOTE -->
     <section class="pub2-quote">
-      <div class="pub2-quote__mark" aria-hidden="true">“</div>
-      <blockquote class="pub2-quote__text">
-        Um bom livro nasce da <em>direção editorial</em> — antes da tinta.
-      </blockquote>
-      <div class="pub2-quote__by">Eric Pereira · Editor-chefe Aslan</div>
+      <span class="pub2-quote__flourish pub2-quote__flourish--tl" aria-hidden="true">“</span>
+      <span class="pub2-quote__flourish pub2-quote__flourish--br" aria-hidden="true">“</span>
+      <div class="pub2-quote__inner">
+        <div class="pub2-quote__mark" aria-hidden="true">“</div>
+        <blockquote class="pub2-quote__text">
+          Um bom livro nasce da <em>direção editorial</em> — antes da tinta.
+        </blockquote>
+        <div class="pub2-quote__by">
+          <span class="pub2-quote__by-name">Eric Pereira</span>
+          <span class="pub2-quote__by-role">Editor-chefe Aslan</span>
+        </div>
+      </div>
     </section>
 
     <!-- FAQ -->

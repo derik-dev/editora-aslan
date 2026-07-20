@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
@@ -9,209 +9,804 @@
   <link rel="icon" href="./uploads/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./assets/pages.css">
   <style>
-    /* ── AGENDA LITERÁRIA ── */
-    .agenda-countries {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 44px;
+    /* =============================================================
+       BLOG EDITORIAL — Redesign premium (prefixo .bg-)
+       ============================================================= */
+    :root {
+      --bg-paper: #F4EADB;
+      --bg-paper-2: #EFE3CE;
+      --bg-paper-3: #E6D8BE;
+      --bg-ink: #2A1B0D;
+      --bg-ink-soft: #5B4732;
+      --bg-brown: #704010;
+      --bg-brown-2: #985821;
+      --bg-gold: #B08040;
+      --bg-gold-2: #D9A96E;
+      --bg-cream: #FFF6EC;
+      --bg-espresso: #1B1007;
+      --bg-line: rgba(112, 64, 16, 0.22);
+      --bg-line-soft: rgba(112, 64, 16, 0.10);
+      --bg-mono: "JetBrains Mono", ui-monospace, monospace;
     }
-    @media (max-width: 560px) { .agenda-countries { grid-template-columns: 1fr; } }
 
-    .agenda-country {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 24px 28px;
-      border: 1px solid var(--line);
-      background: transparent;
-      cursor: pointer;
-      text-align: left;
-      transition: border-color .22s, background .22s;
-      font-family: inherit;
-      border-radius: 2px;
-    }
-    .agenda-country:hover { border-color: var(--bronze); }
-    .agenda-country--active { border-color: var(--bronze); background: var(--paper-warm); }
+    body.page.bg { background: var(--bg-paper); color: var(--bg-ink); }
 
-    .agenda-country__flag { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
-    .agenda-country__text { flex: 1; min-width: 0; }
-    .agenda-country__name {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 460;
-      color: var(--ink);
+    /* Header override */
+    body.page.bg .site-header,
+    body.page.bg .site-header--scrolled {
+      position: absolute !important;
+      top: 0 !important;
+      right: 0 !important;
+      left: 0 !important;
+      background: rgba(244, 234, 219, 0.88) !important;
+      border: 0 !important;
+      border-bottom: 1px solid var(--bg-line) !important;
+      border-radius: 0 !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      box-shadow: none !important;
     }
-    .agenda-country__count {
-      display: block;
-      font-size: 0.75rem;
-      color: var(--ink-muted);
-      margin-top: 3px;
-      letter-spacing: 0.04em;
+    body.page.bg .site-header .nav__item { color: var(--bg-ink-soft) !important; }
+    body.page.bg .site-header .nav__item:hover,
+    body.page.bg .site-header .nav__item--active { color: var(--bg-brown) !important; }
+    body.page.bg .site-header .nav__item::after { background: var(--bg-brown) !important; }
+    body.page.bg .site-header .nav__cta {
+      background: var(--bg-brown) !important;
+      color: var(--bg-cream) !important;
+      border-color: transparent !important;
     }
-    .agenda-country__arrow {
-      font-size: 1.1rem;
-      color: var(--bronze);
-      flex-shrink: 0;
-      opacity: 0;
-      transition: opacity .2s;
-    }
-    .agenda-country--active .agenda-country__arrow { opacity: 1; }
+    body.page.bg .site-header .nav__cta:hover { background: var(--bg-brown-2) !important; }
 
-    .agenda-panel--hidden { display: none; }
-
-    .agenda-month {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin: 40px 0 0;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--line);
+    /* ============ HERO / MASTHEAD ============ */
+    .bg-hero {
+      position: relative;
+      padding: clamp(110px, 12vw, 160px) clamp(22px, 5vw, 72px) clamp(50px, 6vw, 80px);
+      overflow: hidden;
+      background:
+        radial-gradient(50% 45% at 50% 20%, rgba(176, 128, 64, 0.14), transparent 60%),
+        radial-gradient(35% 40% at 15% 85%, rgba(112, 64, 16, 0.06), transparent 70%),
+        radial-gradient(30% 35% at 85% 15%, rgba(217, 169, 110, 0.10), transparent 70%),
+        linear-gradient(180deg, var(--bg-paper-2) 0%, var(--bg-paper) 100%);
+      border-bottom: 1px solid var(--bg-line);
     }
-    .agenda-month:first-child { margin-top: 0; }
-    .agenda-month__label {
-      font-size: 0.68rem;
+    .bg-hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(rgba(27, 16, 7, 0.05) 1px, transparent 1px),
+        radial-gradient(rgba(27, 16, 7, 0.035) 1px, transparent 1px);
+      background-size: 3px 3px, 7px 7px;
+      background-position: 0 0, 1px 2px;
+      opacity: 0.5;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+    .bg-hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        180deg,
+        transparent 0px, transparent 44px,
+        rgba(27, 16, 7, 0.035) 44px, rgba(27, 16, 7, 0.035) 45px
+      );
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .bg-hero__inner { position: relative; z-index: 1; max-width: 1320px; margin: 0 auto; }
+
+    /* Masthead top strip */
+    .bg-mast {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--bg-line);
+      font-family: var(--bg-mono);
+      font-size: 11px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--bronze);
-      font-weight: 700;
-      white-space: nowrap;
+      color: var(--bg-ink-soft);
+      margin-bottom: clamp(40px, 5vw, 60px);
     }
-    .agenda-month__line { flex: 1; height: 1px; background: var(--line); }
+    .bg-mast b { color: var(--bg-ink); font-weight: 600; }
+    .bg-mast__dot { color: var(--bg-brown); }
+    .bg-mast__group { display: flex; align-items: center; gap: 12px; }
 
-    .agenda-event {
+    /* Hero title grid */
+    .bg-hero__grid {
       display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 0 28px;
-      padding: 26px 0;
-      border-bottom: 1px solid var(--line);
-      align-items: start;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(32px, 5vw, 80px);
+      align-items: end;
     }
-    @media (max-width: 560px) { .agenda-event { grid-template-columns: 1fr; gap: 12px 0; } }
+    @media (max-width: 900px) { .bg-hero__grid { grid-template-columns: 1fr; } }
 
-    .agenda-event__date-col {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 6px;
-      padding-top: 3px;
+    .bg-hero__label {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--bg-mono);
+      font-size: 11px; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--bg-brown);
+      margin-bottom: 24px;
     }
-    .agenda-event__days {
+    .bg-hero__label::before {
+      content: ""; width: 30px; height: 1px; background: var(--bg-brown);
+    }
+
+    .bg-hero__title {
       font-family: var(--font-display);
-      font-size: 1.9rem;
+      font-size: clamp(44px, 6.5vw, 92px);
       font-weight: 300;
-      font-style: italic;
-      color: var(--bronze);
-      line-height: 1;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: var(--bg-ink);
+      margin: 0 0 28px;
     }
-    .agenda-event__month-short {
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-top: -2px;
-    }
-    .agenda-event__status {
-      display: inline-block;
-      padding: 3px 9px;
-      font-size: 0.6rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      border-radius: 999px;
-      font-weight: 700;
-    }
-    .agenda-event__status--done  { background: rgba(0,0,0,.07); color: var(--ink-muted); }
-    .agenda-event__status--next  { background: rgba(181,137,58,.18); color: var(--bronze); }
-    .agenda-event__status--soon  { background: rgba(181,137,58,.09); color: var(--bronze); }
+    .bg-hero__title em { font-style: italic; color: var(--bg-brown); }
 
-    .agenda-event__body { min-width: 0; }
-    .agenda-event__title {
+    .bg-hero__lead {
       font-family: var(--font-display);
-      font-size: clamp(1rem, 1.4vw, 1.2rem);
-      font-weight: 460;
-      color: var(--ink);
-      margin: 0 0 6px;
-      line-height: 1.25;
-    }
-    .agenda-event__location {
-      font-size: 0.78rem;
-      color: var(--bronze);
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-    .agenda-event__desc {
-      font-size: 0.88rem;
-      line-height: 1.72;
-      color: var(--ink-muted);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(16px, 1.4vw, 20px);
+      line-height: 1.55;
+      color: var(--bg-ink-soft);
+      max-width: 46ch;
       margin: 0;
     }
 
-    .agenda-pt-soon {
-      padding: 56px 40px;
-      text-align: center;
-      background: var(--paper-warm);
-      border: 1px solid var(--line);
+    /* Featured issue card (side) */
+    .bg-issue {
+      display: block;
+      text-decoration: none;
+      padding: 28px;
+      background: var(--bg-cream);
+      border: 1px solid var(--bg-line);
+      position: relative;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
     }
-    .agenda-pt-soon__label {
-      color: var(--bronze);
-      font-size: 0.68rem;
-      font-weight: 700;
+    .bg-issue:hover { transform: translateY(-4px); border-color: var(--bg-brown); }
+    .bg-issue::before {
+      content: attr(data-num);
+      position: absolute;
+      bottom: -0.15em; right: -0.02em;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(120px, 14vw, 180px);
+      line-height: 1;
+      color: rgba(112, 64, 16, 0.08);
+      pointer-events: none;
+      user-select: none;
+    }
+    .bg-issue__kicker {
+      font-family: var(--bg-mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bg-brown);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .bg-issue__kicker::before {
+      content: ""; width: 24px; height: 1px; background: var(--bg-brown);
+    }
+    .bg-issue__title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(22px, 2.6vw, 32px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--bg-ink);
+      margin: 0 0 20px;
+      position: relative; z-index: 1;
+    }
+    .bg-issue__title em { font-style: italic; color: var(--bg-brown); }
+    .bg-issue__foot {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid var(--bg-line);
+      font-family: var(--bg-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bg-ink-soft);
+      position: relative; z-index: 1;
+    }
+    .bg-issue__cta { color: var(--bg-brown); font-weight: 700; }
+
+    /* ============ CATEGORIAS (índice) ============ */
+    .bg-cats {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: clamp(50px, 6vw, 80px) clamp(22px, 5vw, 72px);
+    }
+    .bg-cats__head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      flex-wrap: wrap; gap: 20px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--bg-line);
+      margin-bottom: 32px;
+    }
+    .bg-cats__title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--bg-ink);
+      margin: 0;
+    }
+    .bg-cats__title em { font-style: italic; color: var(--bg-brown); }
+    .bg-cats__meta {
+      font-family: var(--bg-mono);
+      font-size: 10.5px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      margin: 0 0 14px;
-    }
-    .agenda-pt-soon__title {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 460;
-      margin: 0 0 12px;
-      color: var(--ink);
-    }
-    .agenda-pt-soon__body {
-      color: var(--ink-muted);
-      font-size: 0.9rem;
-      max-width: 48ch;
-      margin: 0 auto;
-      line-height: 1.65;
+      color: var(--bg-ink-soft);
     }
 
-    /* ── BLOG DTC CTA ── */
-    .blog-dtc-cta {
+    .bg-cats__list {
       display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .bg-cat {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: clamp(20px, 3vw, 40px);
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-top: 48px;
-      padding: 36px 40px;
-      background: var(--ink);
+      padding: 26px 24px;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--bg-line);
+      box-shadow: none;
+      transition: background 0.28s, border-color 0.28s;
+      text-decoration: none;
     }
-    .blog-dtc-cta__label {
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--bronze);
-      font-weight: 700;
-      margin: 0 0 8px;
+    .bg-cat:first-child { border-top: 1px solid var(--bg-line); }
+    .bg-cat:hover:not(.bg-cat--soon) {
+      background: transparent;
     }
-    .blog-dtc-cta__title {
+    .bg-cat--soon { cursor: default; }
+    .bg-cat--soon .bg-cat__num { color: rgba(112, 64, 16, 0.35); }
+    .bg-cat--soon .bg-cat__name { color: var(--bg-ink-soft); }
+    .bg-cat--soon .bg-cat__desc { color: rgba(91, 71, 50, 0.7); }
+    .bg-cat__num {
       font-family: var(--font-display);
-      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-style: italic;
       font-weight: 300;
-      margin: 0 0 4px;
-      color: #F3EBDA;
-      letter-spacing: -.02em;
+      font-size: clamp(36px, 4.5vw, 56px);
+      line-height: 0.9;
+      color: var(--bg-brown);
+      text-align: center;
     }
-    .blog-dtc-cta__title em { font-style: italic; color: var(--bronze); }
-    .blog-dtc-cta__sub { font-size: 0.88rem; color: rgba(243,235,218,.6); margin: 0; }
+    .bg-cat__body {}
+    .bg-cat__name {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 460;
+      color: var(--bg-ink);
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+    }
+    .bg-cat__desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--bg-ink-soft);
+      margin: 0;
+      max-width: 60ch;
+    }
+    .bg-cat__arrow {
+      font-family: var(--bg-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bg-brown);
+      font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: gap 0.3s;
+    }
+    .bg-cat:hover .bg-cat__arrow { gap: 14px; }
+    .bg-cat__soon-badge {
+      font-family: var(--bg-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bg-ink-soft);
+      padding: 5px 12px;
+      border: 1px dashed var(--bg-line);
+      border-radius: 999px;
+    }
+    @media (max-width: 720px) {
+      .bg-cat { grid-template-columns: 52px 1fr; gap: 16px; }
+      .bg-cat__arrow, .bg-cat__soon-badge { grid-column: 2; margin-top: 8px; }
+    }
+
+    /* ============ DEIXA TE CONTAR — ARTIGOS ============ */
+    .bg-articles {
+      background: var(--bg-paper-2);
+      padding: clamp(60px, 7vw, 90px) clamp(22px, 5vw, 72px);
+      border-top: 1px solid var(--bg-line);
+      border-bottom: 1px solid var(--bg-line);
+    }
+    .bg-articles__inner { max-width: 1320px; margin: 0 auto; }
+    .bg-articles__head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--bg-line);
+      margin-bottom: clamp(36px, 5vw, 56px);
+    }
+    @media (max-width: 640px) { .bg-articles__head { grid-template-columns: 1fr; } }
+    .bg-articles__eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--bg-mono);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bg-brown);
+      margin-bottom: 14px;
+    }
+    .bg-articles__eyebrow::before {
+      content: ""; width: 28px; height: 1px; background: var(--bg-brown);
+    }
+    .bg-articles__title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--bg-ink);
+      margin: 0;
+    }
+    .bg-articles__title em { font-style: italic; color: var(--bg-brown); }
+    .bg-articles__count {
+      font-family: var(--bg-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bg-ink-soft);
+    }
+
+    /* Featured article (first, larger) */
+    .bg-featured-art {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(30px, 5vw, 70px);
+      align-items: center;
+      padding: clamp(30px, 4vw, 50px);
+      background: var(--bg-cream);
+      border: 1px solid var(--bg-line);
+      margin-bottom: 30px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+    }
+    .bg-featured-art:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 60px -30px rgba(42, 27, 13, 0.28);
+    }
+    @media (max-width: 780px) { .bg-featured-art { grid-template-columns: 1fr; } }
+
+    .bg-featured-art__visual {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background:
+        radial-gradient(60% 60% at 30% 30%, rgba(176, 128, 64, 0.24), transparent 65%),
+        linear-gradient(135deg, #3a1e12 0%, #1b1007 55%, #0f0904 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 26px;
+      color: var(--bg-cream);
+    }
+    .bg-featured-art__visual-num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(80px, 10vw, 140px);
+      line-height: 0.9;
+      color: rgba(217, 169, 110, 0.20);
+      align-self: flex-end;
+    }
+    .bg-featured-art__visual-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.5;
+      color: rgba(255, 246, 236, 0.85);
+      max-width: 32ch;
+    }
+    .bg-featured-art__body {}
+    .bg-featured-art__tag {
+      font-family: var(--bg-mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bg-brown);
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .bg-featured-art__tag::before {
+      content: ""; width: 6px; height: 6px; background: var(--bg-brown); border-radius: 50%;
+    }
+    .bg-featured-art__title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--bg-ink);
+      margin: 0 0 18px;
+    }
+    .bg-featured-art__title em { font-style: italic; color: var(--bg-brown); }
+    .bg-featured-art__excerpt {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--bg-ink-soft);
+      margin: 0 0 22px;
+    }
+    .bg-featured-art__meta {
+      display: flex; align-items: center; gap: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--bg-line);
+      font-family: var(--bg-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bg-ink-soft);
+      flex-wrap: wrap;
+    }
+    .bg-featured-art__more {
+      color: var(--bg-brown); font-weight: 700;
+      margin-left: auto;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: gap 0.3s;
+    }
+    .bg-featured-art:hover .bg-featured-art__more { gap: 14px; color: var(--bg-brown-2); }
+
+    /* Secondary articles grid */
+    .bg-art-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 780px) { .bg-art-grid { grid-template-columns: 1fr; } }
+
+    .bg-art {
+      display: block;
+      padding: clamp(24px, 3vw, 34px);
+      background: var(--bg-cream);
+      border: 1px solid var(--bg-line);
+      text-decoration: none;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .bg-art:hover { transform: translateY(-4px); border-color: var(--bg-brown); }
+    .bg-art__num {
+      position: absolute;
+      top: -0.1em; right: 0.1em;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(70px, 10vw, 110px);
+      line-height: 1;
+      color: rgba(112, 64, 16, 0.08);
+      pointer-events: none;
+    }
+    .bg-art__tag {
+      font-family: var(--bg-mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bg-brown);
+      font-weight: 700;
+      margin-bottom: 14px;
+      position: relative; z-index: 1;
+    }
+    .bg-art__title {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 460;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--bg-ink);
+      margin: 0 0 12px;
+      position: relative; z-index: 1;
+    }
+    .bg-art__title em { font-style: italic; color: var(--bg-brown); }
+    .bg-art__excerpt {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--bg-ink-soft);
+      margin: 0 0 20px;
+      position: relative; z-index: 1;
+    }
+    .bg-art__foot {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--bg-line);
+      font-family: var(--bg-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bg-ink-soft);
+      position: relative; z-index: 1;
+    }
+    .bg-art__more {
+      color: var(--bg-brown); font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: gap 0.3s;
+    }
+    .bg-art:hover .bg-art__more { gap: 14px; color: var(--bg-brown-2); }
+
+    /* CTA no fim da seção de artigos */
+    .bg-cta-strip {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      margin-top: clamp(40px, 5vw, 60px);
+      padding: clamp(28px, 4vw, 40px);
+      background: var(--bg-espresso);
+      color: var(--bg-cream);
+    }
+    @media (max-width: 640px) { .bg-cta-strip { grid-template-columns: 1fr; } }
+    .bg-cta-strip__label {
+      font-family: var(--bg-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bg-gold-2);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .bg-cta-strip__title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--bg-cream);
+      margin: 0 0 4px;
+    }
+    .bg-cta-strip__title em { font-style: italic; color: var(--bg-gold-2); }
+    .bg-cta-strip__sub {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: rgba(255, 246, 236, 0.55);
+      font-size: 14px;
+      margin: 0;
+    }
+    .bg-cta-strip__btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 26px;
+      background: var(--bg-gold);
+      color: var(--bg-espresso);
+      font-family: var(--bg-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .bg-cta-strip__btn:hover { background: var(--bg-gold-2); transform: translateY(-2px); }
+
+    /* ============ AGENDA LITERÁRIA ============ */
+    .bg-agenda {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: clamp(60px, 7vw, 90px) clamp(22px, 5vw, 72px);
+    }
+    .bg-agenda__head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--bg-line);
+      margin-bottom: 40px;
+    }
+    @media (max-width: 640px) { .bg-agenda__head { grid-template-columns: 1fr; } }
+    .bg-agenda__eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--bg-mono);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bg-brown);
+      margin-bottom: 14px;
+    }
+    .bg-agenda__eyebrow::before {
+      content: ""; width: 28px; height: 1px; background: var(--bg-brown);
+    }
+    .bg-agenda__title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--bg-ink);
+      margin: 0;
+    }
+    .bg-agenda__title em { font-style: italic; color: var(--bg-brown); }
+    .bg-agenda__year {
+      font-family: var(--bg-mono);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bg-ink-soft);
+    }
+
+    /* Country tabs — como duas edições de um jornal */
+    .bg-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 560px) { .bg-tabs { grid-template-columns: 1fr; } }
+    .bg-tab {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+      padding: 20px 26px;
+      background: rgba(253, 250, 244, 0.68);
+      border: 1px solid var(--bg-line);
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.25s;
+      font-family: inherit;
+      color: var(--bg-ink);
+      position: relative;
+    }
+    @media (max-width: 560px) {
+      .bg-tab { border-right: 1px solid var(--bg-line); border-bottom: 1px solid var(--bg-line); }
+      .bg-tab:last-child { border-bottom: 1px solid var(--bg-line); }
+    }
+    .bg-tab:last-child { border-right: 1px solid var(--bg-line); }
+    .bg-tab:hover { background: rgba(176, 128, 64, 0.06); }
+    .bg-tab--active { background: var(--bg-cream); box-shadow: 0 18px 40px rgba(48, 35, 22, 0.08); }
+    .bg-tab--active::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--bg-brown);
+    }
+    .bg-tab__flag { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
+    .bg-tab__body { flex: 1; min-width: 0; }
+    .bg-tab__name {
+      font-family: var(--font-display);
+      font-size: clamp(17px, 1.6vw, 20px);
+      font-weight: 460;
+      color: var(--bg-ink);
+      margin: 0 0 4px;
+      display: block;
+    }
+    .bg-tab__meta {
+      font-family: var(--bg-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bg-ink-soft);
+    }
+    .bg-tab__arrow {
+      color: var(--bg-brown);
+      font-family: var(--bg-mono);
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .bg-tab--active .bg-tab__arrow { opacity: 1; }
+
+    .bg-agenda__panel--hidden { display: none; }
+
+    /* Month divider */
+    .bg-month {
+      display: flex; align-items: center; gap: 14px;
+      margin: 44px 0 0;
+      padding-bottom: 10px;
+    }
+    .bg-agenda__panel .bg-month:first-child { margin-top: 0; }
+    .bg-month__label {
+      font-family: var(--bg-mono);
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bg-brown);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .bg-month__rule { flex: 1; height: 1px; background: var(--bg-line); }
+
+    /* Event card */
+    .bg-event {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 0 32px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--bg-line);
+      align-items: start;
+    }
+    @media (max-width: 640px) { .bg-event { grid-template-columns: 1fr; gap: 12px 0; } }
+
+    .bg-event__date {
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: 6px;
+      padding-top: 4px;
+    }
+    .bg-event__days {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 36px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--bg-brown);
+      line-height: 1;
+    }
+    .bg-event__month {
+      font-family: var(--bg-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bg-ink-soft);
+    }
+    .bg-event__status {
+      display: inline-block;
+      padding: 4px 10px;
+      font-family: var(--bg-mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .bg-event__status--done { background: rgba(112, 64, 16, 0.08); color: var(--bg-ink-soft); }
+    .bg-event__status--next { background: var(--bg-brown); color: var(--bg-cream); }
+    .bg-event__status--soon { background: rgba(176, 128, 64, 0.16); color: var(--bg-brown); }
+
+    .bg-event__body { min-width: 0; }
+    .bg-event__title {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 1.8vw, 22px);
+      font-weight: 460;
+      color: var(--bg-ink);
+      margin: 0 0 8px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .bg-event__location {
+      font-family: var(--bg-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bg-brown);
+      margin-bottom: 12px;
+    }
+    .bg-event__desc {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--bg-ink-soft);
+      margin: 0;
+    }
+
+    .bg-event:last-child { border-bottom: none; padding-bottom: 0; }
   </style>
 </head>
-<body class="page">
+<body class="page bg">
 
   <header class="site-header site-header--scrolled">
     <div class="site-header__inner">
@@ -238,579 +833,438 @@
 
   <main>
 
-    <!-- HERO — Editorial premium dark -->
-    <section class="hero-blog">
-      <div class="hero-blog__bg" aria-hidden="true">
-        <span class="hero-blog__grain"></span>
-        <span class="hero-blog__glow hero-blog__glow--tl"></span>
-        <span class="hero-blog__glow hero-blog__glow--br"></span>
-      </div>
+    <!-- ============ HERO ============ -->
+    <section class="bg-hero">
+      <div class="bg-hero__inner">
 
-      <!-- Masthead strip -->
-      <div class="hero-blog__masthead">
-        <span class="hero-blog__masthead-name">Editorial Aslan</span>
-        <span class="hero-blog__masthead-rule" aria-hidden="true"></span>
-        <span class="hero-blog__masthead-tag">Revista mensal · Blog</span>
-        <span class="hero-blog__masthead-issue">Nº 07 · Jul · MMXXVI</span>
-      </div>
-
-      <!-- Grade principal -->
-      <div class="hero-blog__inner">
-
-        <!-- Coluna esquerda -->
-        <div class="hero-blog__side reveal">
-          <h1 class="hero-blog__title">
-            Leituras, ideias e
-            <em>agenda literária.</em>
-          </h1>
-          <p class="hero-blog__lead">Um blog editorial dividido em três eixos: leituras críticas, reflexões autorais e o calendário literário no Brasil e em Portugal.</p>
-
-          <nav class="hero-blog__cats" aria-label="Seções do blog">
-            <span class="hero-blog__cat" style="opacity:.35; cursor:default;" aria-hidden="true">
-              <span class="hero-blog__cat-num">I</span>
-              <span class="hero-blog__cat-name">Livro do Mês</span>
-            </span>
-            <a class="hero-blog__cat" href="#deixa-te-contar">
-              <span class="hero-blog__cat-num">II</span>
-              <span class="hero-blog__cat-name">Deixa te contar</span>
-              <span class="hero-blog__cat-arrow" aria-hidden="true">→</span>
-            </a>
-            <a class="hero-blog__cat" href="#agenda">
-              <span class="hero-blog__cat-num">III</span>
-              <span class="hero-blog__cat-name">Agenda literária</span>
-              <span class="hero-blog__cat-arrow" aria-hidden="true">→</span>
-            </a>
-          </nav>
+        <div class="bg-mast">
+          <div class="bg-mast__group">
+            <b>Editorial Aslan</b>
+            <span class="bg-mast__dot">·</span>
+            <span>Revista Mensal</span>
+          </div>
+          <div class="bg-mast__group">
+            <span>Nº 07</span>
+            <span class="bg-mast__dot">·</span>
+            <span>Jul · MMXXVI</span>
+          </div>
+          <div class="bg-mast__group">
+            <span>Brasil</span>
+            <span class="bg-mast__dot">·</span>
+            <span>Portugal</span>
+            <span class="bg-mast__dot">·</span>
+            <span>Europa</span>
+          </div>
         </div>
 
-        <!-- Coluna direita: destaque da edição -->
-        <a class="hero-blog__issue reveal reveal--late" href="./artigo-como-comecar-meu-livro.html" style="text-decoration:none; display:block;">
-          <span class="hero-blog__issue-watermark" aria-hidden="true">01</span>
-          <div class="hero-blog__issue-body">
-            <p class="hero-blog__issue-kicker">Destaque desta edição</p>
-            <h2 class="hero-blog__issue-title">
-              Tenho uma boa ideia, mas não sei como
-              <em>começar meu livro.</em>
-            </h2>
+        <div class="bg-hero__grid">
+          <div>
+            <div class="bg-hero__label">Blog · Editorial</div>
+            <h1 class="bg-hero__title">Leituras, ideias &amp; <em>agenda literária.</em></h1>
+            <p class="bg-hero__lead">Um blog editorial em três eixos — leituras críticas, reflexões autorais e o calendário literário no Brasil e em Portugal.</p>
           </div>
-          <div class="hero-blog__issue-foot">
-            <span>Deixa te contar</span>
-            <span>Jul · 2026</span>
+
+          <a class="bg-issue" href="./artigo-como-comecar-meu-livro.html" data-num="07">
+            <div class="bg-issue__kicker">Destaque desta edição</div>
+            <h2 class="bg-issue__title">Tenho uma boa ideia, mas não sei como <em>começar meu livro.</em></h2>
+            <div class="bg-issue__foot">
+              <span>Deixa te contar</span>
+              <span class="bg-issue__cta">Ler artigo →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATEGORIAS (ÍNDICE) ============ -->
+    <section class="bg-cats">
+      <div class="bg-cats__head">
+        <h2 class="bg-cats__title">Três eixos <em>editoriais.</em></h2>
+        <span class="bg-cats__meta">Nº 07 · Jul · MMXXVI · Índice</span>
+      </div>
+
+      <div class="bg-cats__list">
+        <div class="bg-cat bg-cat--soon">
+          <div class="bg-cat__num">I</div>
+          <div class="bg-cat__body">
+            <h3 class="bg-cat__name">Livro do Mês</h3>
+            <p class="bg-cat__desc">Uma recomendação editorial por mês, com análise e leitura crítica. Em preparação — voltamos em breve com novas escolhas.</p>
+          </div>
+          <span class="bg-cat__soon-badge">Em breve</span>
+        </div>
+
+        <a class="bg-cat" href="#deixa-te-contar">
+          <div class="bg-cat__num">II</div>
+          <div class="bg-cat__body">
+            <h3 class="bg-cat__name">Deixa te contar</h3>
+            <p class="bg-cat__desc">Ideias, textos, soluções, reflexões e técnicas de escrita. O espaço mais autoral do blog — pensamento editorial em forma de crônica curta.</p>
+          </div>
+          <span class="bg-cat__arrow">Ler artigos →</span>
+        </a>
+
+        <a class="bg-cat" href="#agenda">
+          <div class="bg-cat__num">III</div>
+          <div class="bg-cat__body">
+            <h3 class="bg-cat__name">Agenda literária</h3>
+            <p class="bg-cat__desc">Divulgação de lançamentos, feiras, eventos literários e atividades em Portugal e no Brasil. Um calendário editorial vivo.</p>
+          </div>
+          <span class="bg-cat__arrow">Ver eventos →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ DEIXA TE CONTAR ============ -->
+    <section class="bg-articles" id="deixa-te-contar">
+      <div class="bg-articles__inner">
+
+        <div class="bg-articles__head">
+          <div>
+            <div class="bg-articles__eyebrow">Categoria II</div>
+            <h2 class="bg-articles__title">Deixa te <em>contar.</em></h2>
+          </div>
+          <span class="bg-articles__count">2 artigos publicados</span>
+        </div>
+
+        <!-- Featured article (large) -->
+        <a class="bg-featured-art" href="./artigo-como-comecar-meu-livro.html">
+          <div class="bg-featured-art__visual">
+            <span class="bg-featured-art__visual-quote">"Um livro não começa quando todas as respostas aparecem. Um livro começa quando o autor decide transformar sua ideia em palavras."</span>
+            <span class="bg-featured-art__visual-num">01</span>
+          </div>
+          <div class="bg-featured-art__body">
+            <div class="bg-featured-art__tag">Guia editorial · Destaque</div>
+            <h3 class="bg-featured-art__title">Tenho uma boa ideia, mas não sei como <em>começar meu livro.</em></h3>
+            <p class="bg-featured-art__excerpt">O bloqueio inicial quase nunca acontece por falta de capacidade. Este guia mostra como transformar uma ideia em um projeto concreto — com 10 passos práticos e um desafio de sete dias para quem quer realmente começar.</p>
+            <div class="bg-featured-art__meta">
+              <span>15 min de leitura</span>
+              <span>Jul · 2026</span>
+              <span class="bg-featured-art__more">Ler artigo completo →</span>
+            </div>
           </div>
         </a>
 
-      </div>
-    </section>
+        <!-- Grid de artigos secundários -->
+        <div class="bg-art-grid">
+          <a class="bg-art" href="./artigo-grandes-escritores.html">
+            <span class="bg-art__num">02</span>
+            <div class="bg-art__tag">Percursos editoriais</div>
+            <h3 class="bg-art__title">O que os grandes escritores podem nos ensinar com <em>seu percurso.</em></h3>
+            <p class="bg-art__excerpt">Antes do sucesso, existe uma história que quase ninguém vê. As trajetórias de 10 autores que mudaram o mercado editorial — e o que elas revelam sobre persistência, posicionamento e a força de um catálogo.</p>
+            <div class="bg-art__foot">
+              <span>35 min · Jul 2026</span>
+              <span class="bg-art__more">Ler →</span>
+            </div>
+          </a>
 
-    <!-- 3 CATEGORIAS -->
-    <section class="page-block">
-      <div class="reveal" style="max-width: 780px; margin: 0 auto 20px; text-align: center;">
-        <p class="page-block__eyebrow" style="justify-content: center;">
-          <span class="page-block__eyebrow-line" aria-hidden="true"></span>
-          <span>Categorias</span>
-        </p>
-        <h2 class="page-block__title">Três eixos <em>editoriais.</em></h2>
-      </div>
+          <div class="bg-art" style="opacity: 0.55; cursor: default;">
+            <span class="bg-art__num">03</span>
+            <div class="bg-art__tag" style="color: var(--bg-ink-soft);">Em preparação</div>
+            <h3 class="bg-art__title">Novo artigo em breve.</h3>
+            <p class="bg-art__excerpt">Estamos preparando o próximo texto da série — sobre mercado editorial, escrita e o processo de publicação. Volte em algumas semanas para acompanhar.</p>
+            <div class="bg-art__foot">
+              <span>Em breve</span>
+              <span style="color: var(--bg-ink-soft);">Aguarde</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="blog-cats">
-        <article class="blog-cat reveal" data-num="I" style="opacity:.5;">
-          <span class="blog-cat__num">I</span>
-          <h3 class="blog-cat__title">Livro do Mês</h3>
-          <p class="blog-cat__desc">Uma recomendação editorial por mês, com análise e leitura crítica. Em preparação — voltamos em breve com novas escolhas.</p>
-          <span class="blog-cat__link" style="cursor:default; color:var(--ink-muted);">Em breve</span>
-        </article>
-        <article class="blog-cat reveal" data-num="II">
-          <span class="blog-cat__num">II</span>
-          <h3 class="blog-cat__title">Deixa Te Contar</h3>
-          <p class="blog-cat__desc">Ideias, textos, soluções, reflexões e técnicas de escrita. O espaço mais autoral do blog — pensamento editorial em forma de crônica curta.</p>
-          <a class="blog-cat__link" href="#deixa-te-contar">Ver categoria →</a>
-        </article>
-        <article class="blog-cat reveal" data-num="III">
-          <span class="blog-cat__num">III</span>
-          <h3 class="blog-cat__title">Agenda</h3>
-          <p class="blog-cat__desc">Divulgação de lançamentos, feiras, eventos literários e atividades em Portugal e no Brasil. Um calendário editorial vivo.</p>
-          <a class="blog-cat__link" href="#agenda">Ver categoria →</a>
-        </article>
-      </div>
-    </section>
-
-
-    <!-- DEIXA TE CONTAR -->
-    <section class="page-block" id="deixa-te-contar" style="background: var(--paper-warm); max-width: none;">
-      <div style="max-width: 1320px; margin: 0 auto;">
-        <div class="reveal" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+        <!-- CTA strip -->
+        <div class="bg-cta-strip">
           <div>
-            <p class="page-block__eyebrow">
-              <span class="page-block__eyebrow-line" aria-hidden="true"></span>
-              <span>Categoria II</span>
-            </p>
-            <h2 class="page-block__title">Deixa te <em>contar.</em></h2>
+            <p class="bg-cta-strip__label">Editora Aslan</p>
+            <h3 class="bg-cta-strip__title">Ajudamos você a escrever <em>o seu livro.</em></h3>
+            <p class="bg-cta-strip__sub">Do zero ao lançamento.</p>
           </div>
-          <a class="button button--outline" href="#">Ver todos</a>
-        </div>
-
-        <div class="blog-posts">
-          <article class="blog-post reveal">
-            <div class="blog-post__img"></div>
-            <div>
-              <div class="blog-post__meta">
-                <span>Guia editorial</span>
-                <em>15 min de leitura</em>
-              </div>
-              <h3 class="blog-post__title">Tenho uma boa ideia, mas não sei como começar meu livro</h3>
-              <p class="blog-post__excerpt">O problema aparece quando você se senta diante de uma página em branco. Este guia mostra como transformar uma ideia em um projeto concreto — com 10 passos práticos e um desafio de sete dias para quem quer realmente começar.</p>
-              <a class="blog-post__more" href="./artigo-como-comecar-meu-livro.html">Ler artigo →</a>
-            </div>
-          </article>
-          <article class="blog-post reveal">
-            <div class="blog-post__img"></div>
-            <div>
-              <div class="blog-post__meta">
-                <span>Percursos editoriais</span>
-                <em>35 min de leitura</em>
-              </div>
-              <h3 class="blog-post__title">O que os grandes escritores podem nos ensinar com seu percurso</h3>
-              <p class="blog-post__excerpt">Antes do sucesso, existe uma história que quase ninguém vê. As trajetórias de 10 autores que mudaram o mercado editorial — e o que elas revelam sobre persistência, posicionamento e a força de um catálogo.</p>
-              <a class="blog-post__more" href="./artigo-grandes-escritores.html">Ler artigo →</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="blog-dtc-cta reveal">
-          <div class="blog-dtc-cta__content">
-            <p class="blog-dtc-cta__label">Editora Aslan</p>
-            <h3 class="blog-dtc-cta__title">Ajudamos você a escrever <em>o seu livro.</em></h3>
-            <p class="blog-dtc-cta__sub">Do Zero ao Lançamento.</p>
-          </div>
-          <a class="button button--bronze" href="./publique-o-seu-livro.html">Publicar meu livro →</a>
+          <a class="bg-cta-strip__btn" href="./publique-o-seu-livro.html">Publicar meu livro →</a>
         </div>
 
       </div>
     </section>
 
-    <!-- AGENDA -->
-    <section class="page-block" id="agenda">
-      <div class="reveal" style="margin-bottom: 40px;">
-        <p class="page-block__eyebrow">
-          <span class="page-block__eyebrow-line" aria-hidden="true"></span>
-          <span>Categoria III</span>
-        </p>
-        <h2 class="page-block__title">Agenda <em>literária.</em></h2>
+    <!-- ============ AGENDA ============ -->
+    <section class="bg-agenda" id="agenda">
+      <div class="bg-agenda__head">
+        <div>
+          <div class="bg-agenda__eyebrow">Categoria III</div>
+          <h2 class="bg-agenda__title">Agenda <em>literária.</em></h2>
+        </div>
+        <span class="bg-agenda__year">Calendário 2026</span>
       </div>
 
-      <!-- Seletores de país -->
-      <div class="agenda-countries reveal">
-        <button class="agenda-country agenda-country--active" data-target="agenda-brasil" type="button">
-          <span class="agenda-country__flag">🇧🇷</span>
-          <div class="agenda-country__text">
-            <strong class="agenda-country__name">Agenda Brasil</strong>
-            <span class="agenda-country__count">8 eventos · 2026</span>
+      <!-- Tabs -->
+      <div class="bg-tabs" role="tablist">
+        <button class="bg-tab bg-tab--active" data-target="agenda-brasil" type="button" role="tab">
+          <span class="bg-tab__flag">🇧🇷</span>
+          <div class="bg-tab__body">
+            <span class="bg-tab__name">Agenda Brasil</span>
+            <span class="bg-tab__meta">8 eventos · 2026</span>
           </div>
-          <span class="agenda-country__arrow" aria-hidden="true">↓</span>
+          <span class="bg-tab__arrow">→</span>
         </button>
-        <button class="agenda-country" data-target="agenda-portugal" type="button">
-          <span class="agenda-country__flag">🇵🇹</span>
-          <div class="agenda-country__text">
-            <strong class="agenda-country__name">Agenda Portugal</strong>
-            <span class="agenda-country__count">15 eventos · 2026</span>
+        <button class="bg-tab" data-target="agenda-portugal" type="button" role="tab">
+          <span class="bg-tab__flag">🇵🇹</span>
+          <div class="bg-tab__body">
+            <span class="bg-tab__name">Agenda Portugal</span>
+            <span class="bg-tab__meta">7 eventos · 2026</span>
           </div>
-          <span class="agenda-country__arrow" aria-hidden="true">↓</span>
+          <span class="bg-tab__arrow">→</span>
         </button>
       </div>
 
       <!-- Painel Brasil -->
-      <div class="agenda-panel" id="agenda-brasil">
+      <div class="bg-agenda__panel" id="agenda-brasil">
 
-        <!-- Maio -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Maio · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
+        <div class="bg-month">
+          <span class="bg-month__label">Maio · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
         </div>
 
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">13–17</span>
-            <span class="agenda-event__month-short">Mai</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">13–17</span>
+            <span class="bg-event__month">Mai</span>
+            <span class="bg-event__status bg-event__status--done">Realizado</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Feira do Livro da Unesp</h3>
-            <p class="agenda-event__location">Memorial da América Latina · Av. Mário de Andrade, 664 · Barra Funda · São Paulo</p>
-            <p class="agenda-event__desc">A tradicional Feira do Livro da Unesp abre o calendário literário de 2026 reunindo centenas de editoras universitárias e comerciais, com descontos atrativos e programação voltada para leitores de todas as idades. Além da comercialização de livros, a feira promove palestras, mesas-redondas, debates, lançamentos e encontros com escritores, pesquisadores e profissionais do mercado editorial.</p>
-          </div>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">16–17</span>
-            <span class="agenda-event__month-short">Mai</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">18ª Festa Literária de Santa Teresa — FLIST</h3>
-            <p class="agenda-event__location">Centro Cultural Parque Glória Maria · Rua Murtinho Nobre, 169 · Santa Teresa · Rio de Janeiro</p>
-            <p class="agenda-event__desc">A FLIST transforma o tradicional bairro de Santa Teresa em um grande polo dedicado à literatura, à cultura e às artes. Em sua 18ª edição, o evento reuniu escritores, artistas, leitores e educadores numa programação que integra literatura, música, artes visuais e debates sobre temas contemporâneos. Homenageados de 2026: João Bosco, Marcelo Rubens Paiva e Roseana Murray.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">Feira do Livro da Unesp</h3>
+            <p class="bg-event__location">Memorial da América Latina · Barra Funda · São Paulo</p>
+            <p class="bg-event__desc">A tradicional Feira do Livro da Unesp abre o calendário literário de 2026 reunindo centenas de editoras universitárias e comerciais. Programação com palestras, mesas-redondas, debates, lançamentos e encontros com escritores, pesquisadores e profissionais do mercado editorial.</p>
           </div>
         </div>
 
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">21–31</span>
-            <span class="agenda-event__month-short">Mai</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">16–17</span>
+            <span class="bg-event__month">Mai</span>
+            <span class="bg-event__status bg-event__status--done">Realizado</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Festival Literário Catarinense</h3>
-            <p class="agenda-event__location">Centreventos Cau Hansen · Av. José Vieira, 315 · América · Joinville · SC</p>
-            <p class="agenda-event__desc">O Festival Literário Catarinense destaca-se por sua programação ampla e descentralizada, promovendo encontros literários em diversas cidades de Santa Catarina. Seu principal objetivo é incentivar a formação de novos leitores e ampliar o acesso à cultura por meio de oficinas, rodas de leitura, palestras, apresentações culturais e atividades educativas.</p>
-          </div>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">30</span>
-            <span class="agenda-event__month-short">Mai – 7 Jun</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">A Feira do Livro</h3>
-            <p class="agenda-event__location">Estádio do Pacaembu · Praça Charles Miller · São Paulo</p>
-            <p class="agenda-event__desc">Realizada em espaço público e com acesso gratuito, A Feira do Livro consolidou-se como um dos eventos literários mais democráticos do país. A programação reúne editoras independentes, livrarias, escritores e milhares de leitores em mesas literárias, sessões de autógrafos, debates e atividades para crianças, jovens e adultos.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">18ª Festa Literária de Santa Teresa — FLIST</h3>
+            <p class="bg-event__location">Centro Cultural Parque Glória Maria · Santa Teresa · Rio de Janeiro</p>
+            <p class="bg-event__desc">A FLIST transforma o bairro de Santa Teresa em um polo dedicado à literatura, cultura e artes. Em 2026, homenageia João Bosco, Marcelo Rubens Paiva e Roseana Murray com programação que integra literatura, música, artes visuais e debates.</p>
           </div>
         </div>
 
-        <!-- Junho -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Junho · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">11–14</span>
-            <span class="agenda-event__month-short">Jun</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">21–31</span>
+            <span class="bg-event__month">Mai</span>
+            <span class="bg-event__status bg-event__status--done">Realizado</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Feira do Livro de Resende — FLIR</h3>
-            <p class="agenda-event__location">Parque de Exposições de Resende · Estrada Resende Riachuelo, s/n · Morada da Colina · Resende · RJ</p>
-            <p class="agenda-event__desc">A FLIR é um dos principais eventos culturais do sul do estado do Rio de Janeiro, reunindo literatura, educação e atividades artísticas em uma programação voltada para toda a família. O evento costuma reunir escritores, professores, estudantes, artistas e editoras, com forte integração com as escolas da região.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">Festival Literário Catarinense</h3>
+            <p class="bg-event__location">Centreventos Cau Hansen · Joinville · Santa Catarina</p>
+            <p class="bg-event__desc">Programação ampla e descentralizada em diversas cidades de SC. Incentivo à formação de novos leitores por meio de oficinas, rodas de leitura, palestras, apresentações culturais e atividades educativas.</p>
           </div>
         </div>
 
-        <!-- Julho -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Julho · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">22–26</span>
-            <span class="agenda-event__month-short">Jul</span>
-            <span class="agenda-event__status agenda-event__status--next">Próximo</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">30 Mai</span>
+            <span class="bg-event__month">– 7 Jun</span>
+            <span class="bg-event__status bg-event__status--done">Realizado</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">24ª FLIP — Festa Literária Internacional de Paraty</h3>
-            <p class="agenda-event__location">Paraty · Rio de Janeiro</p>
-            <p class="agenda-event__desc">A Flip é considerada um dos festivais literários mais importantes da América Latina. Durante cinco dias, a cidade histórica de Paraty recebe escritores nacionais e internacionais, editores, jornalistas e milhares de leitores para uma intensa programação de debates sobre literatura, política, artes, cultura e sociedade. A edição de 2026 homenageia a poeta Orides Fontela.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">A Feira do Livro</h3>
+            <p class="bg-event__location">Praça Charles Miller · Pacaembu · São Paulo</p>
+            <p class="bg-event__desc">Realizada em espaço público e com acesso gratuito, consolidou-se como um dos eventos literários mais democráticos do país. Reúne editoras independentes, livrarias, escritores e milhares de leitores em mesas literárias, sessões de autógrafos e debates.</p>
           </div>
         </div>
 
-        <!-- Agosto -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Agosto · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
+        <div class="bg-month">
+          <span class="bg-month__label">Junho · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
         </div>
 
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">5–9</span>
-            <span class="agenda-event__month-short">Ago</span>
-            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">11–14</span>
+            <span class="bg-event__month">Jun</span>
+            <span class="bg-event__status bg-event__status--done">Realizado</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Flipelô — Festa Literária Internacional do Pelourinho</h3>
-            <p class="agenda-event__location">Centro Histórico · Salvador · BA</p>
-            <p class="agenda-event__desc">A Flipelô transforma o Pelourinho em um grande circuito literário a céu aberto, reunindo literatura, patrimônio histórico e a riqueza cultural da Bahia. Durante o evento, casarões históricos recebem mesas literárias, lançamentos de livros, oficinas e diversas apresentações artísticas com programação gratuita e diversificada.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">Feira do Livro de Resende — FLIR</h3>
+            <p class="bg-event__location">Parque de Exposições · Morada da Colina · Resende · RJ</p>
+            <p class="bg-event__desc">Um dos principais eventos culturais do sul fluminense, reunindo literatura, educação e atividades artísticas em uma programação voltada para toda a família com forte integração escolar.</p>
           </div>
         </div>
 
-        <!-- Setembro -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Setembro · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
+        <div class="bg-month">
+          <span class="bg-month__label">Julho · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
         </div>
 
-        <div class="agenda-event" style="border-bottom: none; padding-bottom: 0;">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">4–13</span>
-            <span class="agenda-event__month-short">Set</span>
-            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">22–26</span>
+            <span class="bg-event__month">Jul</span>
+            <span class="bg-event__status bg-event__status--next">Próximo</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">28ª Bienal Internacional do Livro de São Paulo</h3>
-            <p class="agenda-event__location">Expo Pavilhões · Distrito Anhembi · São Paulo</p>
-            <p class="agenda-event__desc">A Bienal Internacional do Livro de São Paulo é o maior evento do mercado editorial brasileiro e um dos mais importantes da América Latina. A feira reúne grandes editoras, escritores nacionais e internacionais, influenciadores literários e centenas de milhares de visitantes, sendo uma das principais vitrines para autores, editoras e novos lançamentos no Brasil.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">24ª FLIP — Festa Literária Internacional de Paraty</h3>
+            <p class="bg-event__location">Paraty · Rio de Janeiro</p>
+            <p class="bg-event__desc">Um dos festivais literários mais importantes da América Latina. Durante cinco dias, Paraty recebe escritores nacionais e internacionais, editores e milhares de leitores para debates sobre literatura, política, artes, cultura e sociedade. A edição de 2026 homenageia a poeta Orides Fontela.</p>
+          </div>
+        </div>
+
+        <div class="bg-month">
+          <span class="bg-month__label">Agosto · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">5–9</span>
+            <span class="bg-event__month">Ago</span>
+            <span class="bg-event__status bg-event__status--soon">Em breve</span>
+          </div>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">Flipelô — Festa Literária Internacional do Pelourinho</h3>
+            <p class="bg-event__location">Centro Histórico · Salvador · Bahia</p>
+            <p class="bg-event__desc">Transforma o Pelourinho em um circuito literário a céu aberto, ocupando espaços culturais do Centro Histórico com programação gratuita. Em 2026, a 10ª edição homenageia Myriam Fraga e Calasans Neto.</p>
+          </div>
+        </div>
+
+        <div class="bg-month">
+          <span class="bg-month__label">Setembro · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">4–13</span>
+            <span class="bg-event__month">Set</span>
+            <span class="bg-event__status bg-event__status--soon">Em breve</span>
+          </div>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">28ª Bienal Internacional do Livro de São Paulo</h3>
+            <p class="bg-event__location">Distrito Anhembi · São Paulo</p>
+            <p class="bg-event__desc">O maior evento do mercado editorial brasileiro e um dos mais importantes da América Latina. Reúne grandes editoras, escritores nacionais e internacionais, influenciadores literários e centenas de milhares de visitantes.</p>
           </div>
         </div>
 
       </div>
 
       <!-- Painel Portugal -->
-      <div class="agenda-panel agenda-panel--hidden" id="agenda-portugal">
+      <div class="bg-agenda__panel bg-agenda__panel--hidden" id="agenda-portugal">
 
-        <!-- Fevereiro -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Fevereiro · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
+        <div class="bg-month">
+          <span class="bg-month__label">Fevereiro · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
         </div>
 
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">13–16</span>
-            <span class="agenda-event__month-short">Fev</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">21–28</span>
+            <span class="bg-event__month">Fev</span>
+            <span class="bg-event__status bg-event__status--done">Realizado</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Festival Latitudes — Literatura e Viajantes</h3>
-            <p class="agenda-event__location">Óbidos</p>
-            <p class="agenda-event__desc">O Festival Latitudes regressa a Óbidos como um dos principais encontros dedicados à literatura de viagens. Com curadoria do escritor José Luís Peixoto, o evento reúne escritores, ilustradores, viajantes e leitores para debater a relação entre literatura, culturas e experiências pelo mundo. A programação inclui lançamentos, exposições, oficinas, workshops, música e conversas literárias.</p>
-          </div>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">17–22</span>
-            <span class="agenda-event__month-short">Fev</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Festival Literário de Penacova</h3>
-            <p class="agenda-event__location">Penacova</p>
-            <p class="agenda-event__desc">O Festival Literário de Penacova celebra a literatura através de palestras, apresentações de livros, sessões de autógrafos, espetáculos de teatro, música, dança, exposições, feira do livro e diversas atividades culturais, promovendo o encontro entre autores e leitores.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">Correntes d'Escritas</h3>
+            <p class="bg-event__location">Póvoa de Varzim · Portugal</p>
+            <p class="bg-event__desc">A 27ª edição do festival reuniu mais de uma centena de autores, com homenagem a Álvaro Laborinho Lúcio e programação dedicada ao encontro entre escritores, leitores, escolas e comunidade.</p>
           </div>
         </div>
 
-        <!-- Março -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Março · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
+        <div class="bg-month">
+          <span class="bg-month__label">Abril · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
         </div>
 
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">—</span>
-            <span class="agenda-event__month-short">Mar</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">21–26</span>
+            <span class="bg-event__month">Abr</span>
+            <span class="bg-event__status bg-event__status--done">Realizado</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">FLIM — Festival Literário da Mealhada</h3>
-            <p class="agenda-event__location">Mealhada</p>
-            <p class="agenda-event__desc">O FLIM promove conferências, feiras do livro, apresentações literárias, debates, oficinas, cinema, música e espetáculos, reforçando o papel da literatura como instrumento de formação, cidadania e liberdade.</p>
-          </div>
-        </div>
-
-        <!-- Abril -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Abril · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">—</span>
-            <span class="agenda-event__month-short">Abr</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">ELOS — Festival Literário de Nelas</h3>
-            <p class="agenda-event__location">Nelas</p>
-            <p class="agenda-event__desc">O Festival Literário de Nelas presta homenagem a grandes nomes da literatura portuguesa e promove encontros entre escritores, leitores e investigadores, através de palestras, apresentações e atividades culturais.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">Feira do Livro da Universidade de Lisboa</h3>
+            <p class="bg-event__location">Pavilhão de Portugal · Lisboa</p>
+            <p class="bg-event__desc">Encontro universitário dedicado ao livro académico e cultural, com editoras da Universidade de Lisboa, descontos especiais, lançamentos e programação aberta ao público.</p>
           </div>
         </div>
 
-        <!-- Maio / Junho -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Maio · Junho · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
+        <div class="bg-month">
+          <span class="bg-month__label">Maio · Junho · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
         </div>
 
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">27</span>
-            <span class="agenda-event__month-short">Mai – 14 Jun</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">27 Mai</span>
+            <span class="bg-event__month">– 14 Jun</span>
+            <span class="bg-event__status bg-event__status--done">Realizado</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Feira do Livro de Lisboa</h3>
-            <p class="agenda-event__location">Parque Eduardo VII · Lisboa</p>
-            <p class="agenda-event__desc">A Feira do Livro de Lisboa é o maior evento literário de Portugal e um dos mais importantes da Europa. Reúne centenas de editoras, milhares de títulos e uma programação diversificada, com apresentações de livros, sessões de autógrafos, debates, encontros com autores e atividades para todas as idades.</p>
-          </div>
-        </div>
-
-        <!-- Junho -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Junho · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">—</span>
-            <span class="agenda-event__month-short">Jun</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">VERSÁTIL — Festa Literária de Leiria</h3>
-            <p class="agenda-event__location">Centro histórico · Leiria</p>
-            <p class="agenda-event__desc">A VERSÁTIL propõe um diálogo entre a literatura e outras manifestações artísticas — música, cinema, teatro, exposições e performances. O festival reúne escritores, artistas e leitores numa programação distribuída por vários espaços culturais do centro histórico de Leiria.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">96ª Feira do Livro de Lisboa</h3>
+            <p class="bg-event__location">Parque Eduardo VII · Lisboa</p>
+            <p class="bg-event__desc">A maior celebração do livro em Portugal reuniu centenas de pavilhões, marcas editoriais e uma programação extensa com sessões de autógrafos, apresentações, debates, conversas com escritores e atividades para todos os públicos.</p>
           </div>
         </div>
 
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">—</span>
-            <span class="agenda-event__month-short">Jun</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+        <div class="bg-month">
+          <span class="bg-month__label">Agosto · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">1–11</span>
+            <span class="bg-event__month">Ago</span>
+            <span class="bg-event__status bg-event__status--next">Próximo</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">FALA — Festival Literário de Alcanena</h3>
-            <p class="agenda-event__location">Alcanena</p>
-            <p class="agenda-event__desc">O FALA é um festival dedicado à valorização do livro, da literatura e das artes, reunindo escritores, músicos, artistas e leitores em palestras, apresentações, concertos e sessões de autógrafos.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">Feira do Livro de Lagos</h3>
+            <p class="bg-event__location">Praça do Infante e Armazém Regimental · Lagos</p>
+            <p class="bg-event__desc">A feira reúne livreiros, autores, artesãos e parceiros locais em noites de apresentações de livros, horas do conto, microfone aberto, música, jogos, xadrez e atividades de incentivo à leitura.</p>
           </div>
         </div>
 
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">—</span>
-            <span class="agenda-event__month-short">Jun</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">21 Ago</span>
+            <span class="bg-event__month">– 6 Set</span>
+            <span class="bg-event__status bg-event__status--soon">Em breve</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">FLII — Festival Literário Internacional do Interior</h3>
-            <p class="agenda-event__location">Concelhos de Coimbra e Leiria</p>
-            <p class="agenda-event__desc">O Festival Literário Internacional do Interior promove literatura, cultura e memória, reunindo escritores portugueses e estrangeiros numa programação dedicada ao património cultural, às artes e ao desenvolvimento das regiões do interior do país.</p>
-          </div>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">—</span>
-            <span class="agenda-event__month-short">Jun</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">MISCELLANEA — Festival Literário de Pedrógão Grande</h3>
-            <p class="agenda-event__location">Pedrógão Grande</p>
-            <p class="agenda-event__desc">O MISCELLANEA reúne dezenas de escritores e convidados numa programação intensa composta por debates, apresentações literárias, oficinas, concertos e atividades culturais, transformando Pedrógão Grande num importante centro literário durante vários dias.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">Feira do Livro do Porto</h3>
+            <p class="bg-event__location">Jardins do Palácio de Cristal · Porto</p>
+            <p class="bg-event__desc">A 13ª edição ocupa os Jardins do Palácio de Cristal com conversas, cinema, concertos, oficinas e venda de livros. Em 2026, a homenageada é a poeta Inês Lourenço.</p>
           </div>
         </div>
 
-        <!-- Julho -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Julho · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">4–13</span>
-            <span class="agenda-event__month-short">Jul</span>
-            <span class="agenda-event__status agenda-event__status--done">Realizado</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">28 Ago</span>
+            <span class="bg-event__month">– 13 Set</span>
+            <span class="bg-event__status bg-event__status--soon">Em breve</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Feira do Livro da Maia</h3>
-            <p class="agenda-event__location">Praça do Fórum · Maia</p>
-            <p class="agenda-event__desc">A Feira do Livro da Maia reúne editoras, escritores e leitores numa programação dedicada à promoção da leitura, com lançamentos de livros, sessões de autógrafos, apresentações culturais e atividades para toda a família.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">50ª Feira do Livro de Aveiro</h3>
+            <p class="bg-event__location">Rossio · Aveiro</p>
+            <p class="bg-event__desc">A edição comemorativa reforça a dimensão cultural da feira, com mais livreiros, programação diária, exposição sobre as 50 edições e atividades voltadas para leitores de diferentes idades.</p>
           </div>
         </div>
 
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">—</span>
-            <span class="agenda-event__month-short">Jul</span>
-            <span class="agenda-event__status agenda-event__status--next">Próximo</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Maratona de Leitura da Sertã</h3>
-            <p class="agenda-event__location">Sertã</p>
-            <p class="agenda-event__desc">A Maratona de Leitura da Sertã é um dos eventos mais originais do país, celebrando a leitura em voz alta, a oralidade e a partilha de histórias, envolvendo leitores de todas as idades numa experiência cultural única.</p>
-          </div>
+        <div class="bg-month">
+          <span class="bg-month__label">Outubro · 2026</span>
+          <span class="bg-month__rule" aria-hidden="true"></span>
         </div>
 
-        <!-- Agosto -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Agosto · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">21</span>
-            <span class="agenda-event__month-short">Ago – 6 Set</span>
-            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
+        <div class="bg-event">
+          <div class="bg-event__date">
+            <span class="bg-event__days">8–18</span>
+            <span class="bg-event__month">Out</span>
+            <span class="bg-event__status bg-event__status--soon">Em breve</span>
           </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Feira do Livro do Porto</h3>
-            <p class="agenda-event__location">Jardins do Palácio de Cristal · Porto</p>
-            <p class="agenda-event__desc">A Feira do Livro do Porto destaca-se pelo ambiente cultural e pela programação que reúne literatura, música, teatro, poesia e encontros com escritores nacionais e internacionais, proporcionando uma experiência única aos visitantes.</p>
-          </div>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">28</span>
-            <span class="agenda-event__month-short">Ago – 13 Set</span>
-            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">Feira do Livro de Aveiro</h3>
-            <p class="agenda-event__location">Praça do Rossio · Aveiro</p>
-            <p class="agenda-event__desc">A Feira do Livro de Aveiro promove o encontro entre autores, editoras e leitores, oferecendo uma programação diversificada com apresentações literárias, atividades culturais, oficinas e momentos dedicados ao incentivo à leitura.</p>
-          </div>
-        </div>
-
-        <!-- Setembro -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Setembro · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
-        </div>
-
-        <div class="agenda-event">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">—</span>
-            <span class="agenda-event__month-short">Set</span>
-            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">FLO — Festival Literário de Ovar</h3>
-            <p class="agenda-event__location">Ovar</p>
-            <p class="agenda-event__desc">O Festival Literário de Ovar promove um encontro de proximidade entre escritores, leitores e editoras, oferecendo uma programação diversificada para públicos de todas as idades, com especial atenção à formação de novos leitores.</p>
-          </div>
-        </div>
-
-        <!-- Outubro -->
-        <div class="agenda-month">
-          <span class="agenda-month__label">Outubro · 2026</span>
-          <span class="agenda-month__line" aria-hidden="true"></span>
-        </div>
-
-        <div class="agenda-event" style="border-bottom: none; padding-bottom: 0;">
-          <div class="agenda-event__date-col">
-            <span class="agenda-event__days">—</span>
-            <span class="agenda-event__month-short">Out</span>
-            <span class="agenda-event__status agenda-event__status--soon">Em breve</span>
-          </div>
-          <div class="agenda-event__body">
-            <h3 class="agenda-event__title">"Em Nome da Terra" — Festival Literário de Gouveia</h3>
-            <p class="agenda-event__location">Aldeia de Melo · Serra da Estrela · Gouveia</p>
-            <p class="agenda-event__desc">Realizado na aldeia de Melo, na Serra da Estrela, o festival homenageia o legado de Vergílio Ferreira, promovendo literatura, património, memória e cultura através de conferências, debates, lançamentos de livros e diversas atividades artísticas.</p>
+          <div class="bg-event__body">
+            <h3 class="bg-event__title">FÓLIO — Festival Literário Internacional de Óbidos</h3>
+            <p class="bg-event__location">Vila de Óbidos · Portugal</p>
+            <p class="bg-event__desc">A 11ª edição acontece sob o tema “Para Além da Pele”, reunindo literatura, pensamento, educação e tecnologia. Entre os destaques anunciados está o Nobel da Literatura Jon Fosse.</p>
           </div>
         </div>
 
       </div>
-
     </section>
 
   </main>
@@ -848,17 +1302,16 @@
 
   <script src="./assets/site.js"></script>
   <script>
-    document.querySelectorAll('.agenda-country').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.agenda-country').forEach(b => b.classList.remove('agenda-country--active'));
-        btn.classList.add('agenda-country--active');
-        const target = btn.dataset.target;
-        document.querySelectorAll('.agenda-panel').forEach(p => p.classList.add('agenda-panel--hidden'));
-        document.getElementById(target).classList.remove('agenda-panel--hidden');
+    // Country tabs switcher
+    document.querySelectorAll('.bg-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.bg-tab').forEach(t => t.classList.remove('bg-tab--active'));
+        tab.classList.add('bg-tab--active');
+        const target = tab.dataset.target;
+        document.querySelectorAll('.bg-agenda__panel').forEach(p => p.classList.add('bg-agenda__panel--hidden'));
+        document.getElementById(target).classList.remove('bg-agenda__panel--hidden');
       });
     });
   </script>
 </body>
 </html>
-
-

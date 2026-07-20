@@ -229,17 +229,17 @@ h1, h2, h3 {
 }
 
 .brand__logo {
-  width: clamp(180px, 16vw, 240px);
+  width: clamp(220px, 20vw, 300px);
   height: auto;
-  max-height: 68px;
+  max-height: 86px;
   object-fit: contain;
   filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.32));
 }
 
 .site-header--scrolled .brand__logo,
 .nav-open .brand__logo {
-  width: clamp(160px, 14vw, 210px);
-  max-height: 58px;
+  width: clamp(190px, 17vw, 260px);
+  max-height: 72px;
 }
 
 .brand__name {
@@ -6209,8 +6209,8 @@ body * {
   .brand__logo,
   .site-header--scrolled .brand__logo,
   .nav-open .brand__logo {
-    width: clamp(130px, 38vw, 170px);
-    max-height: 44px;
+    width: clamp(155px, 44vw, 200px);
+    max-height: 56px;
   }
 
   .nav {
@@ -6317,7 +6317,7 @@ body * {
   }
 
   .brand__logo {
-    width: clamp(152px, 60vw, 186px);
+    width: clamp(175px, 65vw, 215px);
   }
 
   .service {

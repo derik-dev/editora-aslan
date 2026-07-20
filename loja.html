@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Loja Virtual — Editora Aslan</title>
-  <meta name="description" content="A loja virtual da Editora Aslan estará disponível em breve com catálogo de livros, sinopses e formas de pagamento.">
+  <meta name="description" content="Catálogo editorial da Editora Aslan. Livros publicados no Brasil, em Portugal e na Europa.">
   <link rel="canonical" href="https://www.editoraaslan.com/loja">
   <link rel="icon" href="./uploads/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,102 +14,455 @@
   <link rel="stylesheet" href="./assets/pages.css">
   <style>
     :root {
-      --lj2-forest: #192B1C;
-      --lj2-gold: #B5893A;
-      --lj2-gold-2: #D9A96E;
-      --lj2-cream: #F3EBDA;
-      --lj2-line: rgba(245,239,222,.18);
-      --lj2-mono: "JetBrains Mono", ui-monospace, monospace;
+      --lj3-paper: #F4EADB;
+      --lj3-paper-2: #EFE3CE;
+      --lj3-paper-3: #E6D8BE;
+      --lj3-ink: #2A1B0D;
+      --lj3-ink-soft: #5B4732;
+      --lj3-brown: #704010;
+      --lj3-brown-2: #985821;
+      --lj3-gold: #B08040;
+      --lj3-gold-2: #D9A96E;
+      --lj3-cream: #FFF6EC;
+      --lj3-line: rgba(112, 64, 16, 0.20);
+      --lj3-line-soft: rgba(112, 64, 16, 0.10);
+      --lj3-mono: "JetBrains Mono", ui-monospace, monospace;
     }
 
-    body.page.lj2 { background: var(--lj2-forest); }
+    body.page.lj3 { background: var(--lj3-paper); color: var(--lj3-ink); }
 
-    .lj2-coming {
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: clamp(80px, 10vw, 140px) clamp(24px, 5vw, 72px);
+    /* Header override */
+    body.page.lj3 .site-header,
+    body.page.lj3 .site-header--scrolled {
+      position: absolute !important;
+      top: 0 !important; right: 0 !important; left: 0 !important;
+      background: rgba(244, 234, 219, 0.88) !important;
+      border: 0 !important;
+      border-bottom: 1px solid var(--lj3-line) !important;
+      border-radius: 0 !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      box-shadow: none !important;
+    }
+    body.page.lj3 .site-header .nav__item { color: var(--lj3-ink-soft) !important; }
+    body.page.lj3 .site-header .nav__item:hover,
+    body.page.lj3 .site-header .nav__item--active { color: var(--lj3-brown) !important; }
+    body.page.lj3 .site-header .nav__item::after { background: var(--lj3-brown) !important; }
+    body.page.lj3 .site-header .nav__cta {
+      background: var(--lj3-brown) !important;
+      color: var(--lj3-cream) !important;
+      border-color: transparent !important;
+    }
+    body.page.lj3 .site-header .nav__cta:hover { background: var(--lj3-brown-2) !important; }
+
+    /* =========== HERO / MASTHEAD =========== */
+    .lj3-hero {
       position: relative;
+      padding: clamp(120px, 12vw, 180px) clamp(24px, 5vw, 72px) clamp(60px, 7vw, 100px);
       overflow: hidden;
       background:
-        radial-gradient(60% 60% at 20% 10%, rgba(181,137,58,.12), transparent 55%),
-        radial-gradient(40% 50% at 80% 90%, rgba(181,137,58,.07), transparent 55%),
-        var(--lj2-forest);
+        radial-gradient(60% 60% at 25% 20%, rgba(176, 128, 64, 0.12), transparent 55%),
+        radial-gradient(50% 60% at 80% 90%, rgba(112, 64, 16, 0.08), transparent 55%),
+        linear-gradient(180deg, var(--lj3-paper-2) 0%, var(--lj3-paper) 100%);
     }
-
-    .lj2-coming::before {
+    .lj3-hero::before {
       content: "";
       position: absolute; inset: 0;
       background-image: repeating-linear-gradient(
         90deg,
-        rgba(245,239,222,.018) 0px,
-        rgba(245,239,222,.018) 1px,
-        transparent 1px,
-        transparent clamp(40px, 5vw, 72px)
+        rgba(112, 64, 16, 0.03) 0px, rgba(112, 64, 16, 0.03) 1px,
+        transparent 1px, transparent clamp(40px, 5vw, 72px)
       );
       pointer-events: none;
     }
+    .lj3-hero__inner { position: relative; z-index: 1; max-width: 1320px; margin: 0 auto; }
 
-    .lj2-coming__tag {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 8px 20px;
-      border: 1px solid var(--lj2-gold);
-      font-family: var(--lj2-mono); font-size: 11px; letter-spacing: .24em;
-      text-transform: uppercase; color: var(--lj2-gold);
-      border-radius: 999px; margin-bottom: 32px;
+    .lj3-mast {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--lj3-line);
+      font-family: var(--lj3-mono);
+      font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--lj3-ink-soft);
+      margin-bottom: clamp(48px, 6vw, 80px);
+    }
+    .lj3-mast__left, .lj3-mast__center, .lj3-mast__right { display: flex; align-items: center; gap: 14px; }
+    .lj3-mast__dot { color: var(--lj3-brown); }
+
+    .lj3-hero__grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(40px, 6vw, 90px);
+      align-items: end;
+    }
+    @media (max-width: 900px) { .lj3-hero__grid { grid-template-columns: 1fr; } }
+
+    .lj3-hero__label {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--lj3-mono);
+      font-size: 11px; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--lj3-brown);
+      margin-bottom: 28px;
+    }
+    .lj3-hero__label-line { width: 32px; height: 1px; background: var(--lj3-brown); }
+
+    .lj3-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 300;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: var(--lj3-ink);
+      margin: 0 0 30px;
+    }
+    .lj3-hero__title em { font-style: italic; color: var(--lj3-brown); }
+
+    .lj3-hero__lead {
+      font-size: clamp(15px, 1.2vw, 17px);
+      line-height: 1.72;
+      color: var(--lj3-ink-soft);
+      max-width: 52ch;
+      margin: 0;
+    }
+
+    .lj3-hero__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      padding-top: 30px;
+      border-top: 1px solid var(--lj3-line);
+    }
+    .lj3-hero__stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.4vw, 42px);
+      font-style: italic; font-weight: 300;
+      color: var(--lj3-brown);
+      line-height: 1; margin-bottom: 8px;
+    }
+    .lj3-hero__stat-label {
+      font-family: var(--lj3-mono);
+      font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--lj3-ink-soft);
+    }
+
+    /* =========== TOOLBAR / FILTROS =========== */
+    .lj3-tools {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(244, 234, 219, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--lj3-line);
+      border-bottom: 1px solid var(--lj3-line);
+      padding: 18px clamp(24px, 5vw, 72px);
+    }
+    .lj3-tools__inner {
+      max-width: 1320px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 18px;
+    }
+    .lj3-filters { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .lj3-chip {
+      display: inline-flex; align-items: center;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--lj3-line);
+      background: transparent;
+      color: var(--lj3-ink-soft);
+      font-family: var(--lj3-mono);
+      font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-weight: 500;
+    }
+    .lj3-chip:hover { color: var(--lj3-brown); border-color: var(--lj3-brown); }
+    .lj3-chip--active {
+      background: var(--lj3-brown);
+      border-color: var(--lj3-brown);
+      color: var(--lj3-cream);
+      font-weight: 700;
+    }
+    .lj3-tools__right {
+      display: flex; align-items: center; gap: 16px;
+      font-family: var(--lj3-mono);
+      font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--lj3-ink-soft);
+    }
+    .lj3-sort {
+      background: transparent; border: none;
+      color: var(--lj3-ink);
+      font-family: var(--lj3-mono);
+      font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 8px 14px;
+      border: 1px solid var(--lj3-line);
+      border-radius: 4px;
+    }
+    .lj3-sort:hover { border-color: var(--lj3-brown); }
+
+    /* =========== DESTAQUE =========== */
+    .lj3-featured {
+      padding: clamp(40px, 5vw, 64px) clamp(24px, 5vw, 72px);
+      background: var(--lj3-paper-2);
+      border-bottom: 1px solid var(--lj3-line);
+      position: relative;
+      overflow: hidden;
+    }
+    .lj3-featured::before {
+      content: "";
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60vw; height: 60vw;
+      max-width: 900px; max-height: 900px;
+      background: radial-gradient(circle, rgba(176, 128, 64, 0.14), transparent 65%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .lj3-featured__inner {
+      max-width: 1320px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.85fr 1fr;
+      gap: clamp(48px, 7vw, 100px);
+      align-items: center;
       position: relative; z-index: 1;
     }
+    @media (max-width: 900px) { .lj3-featured__inner { grid-template-columns: 1fr; } }
 
-    .lj2-coming__title {
-      font-family: var(--font-display); font-weight: 300;
-      font-size: clamp(38px, 6vw, 74px); line-height: 1.02;
-      letter-spacing: -.03em; color: var(--lj2-cream);
-      margin: 0 0 20px; max-width: 18ch;
-      position: relative; z-index: 1;
+    .lj3-featured__book {
+      position: relative;
+      aspect-ratio: 2 / 3;
+      max-width: 440px;
+      width: 100%;
+      margin: 0 auto;
+      background: #f0e5d1;
+      overflow: hidden;
+    }
+    .lj3-featured__book img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    .lj3-featured__book-crown {
+      position: absolute;
+      top: 18px; right: 18px;
+      padding: 6px 12px;
+      background: var(--lj3-brown);
+      color: var(--lj3-cream);
+      font-family: var(--lj3-mono);
+      font-size: 9px; letter-spacing: 0.24em;
+      text-transform: uppercase;
+      z-index: 2;
+      border-radius: 999px;
+      font-weight: 700;
     }
 
-    .lj2-coming__title em {
-      font-style: italic; color: var(--lj2-gold-2);
+    .lj3-featured__eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--lj3-mono);
+      font-size: 11px; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--lj3-brown);
+      margin-bottom: 22px;
+    }
+    .lj3-featured__eyebrow-line { width: 32px; height: 1px; background: var(--lj3-brown); }
+
+    .lj3-featured__title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 300; line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--lj3-ink);
+      margin: 0 0 20px;
+    }
+    .lj3-featured__title em { font-style: italic; color: var(--lj3-brown); }
+
+    .lj3-featured__author {
+      font-family: var(--lj3-mono);
+      font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lj3-ink-soft);
+      margin-bottom: 26px;
     }
 
-    .lj2-coming__sub {
-      font-size: clamp(15px, 1.2vw, 17px); line-height: 1.7;
-      color: rgba(243,235,218,.72); max-width: 48ch;
-      margin: 0 auto 44px;
-      position: relative; z-index: 1;
+    .lj3-featured__meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 18px 0;
+      border-top: 1px solid var(--lj3-line);
+      border-bottom: 1px solid var(--lj3-line);
+      margin-bottom: 26px;
+    }
+    @media (max-width: 560px) { .lj3-featured__meta { grid-template-columns: 1fr 1fr; } }
+    .lj3-featured__meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .lj3-featured__meta-label {
+      font-family: var(--lj3-mono);
+      font-size: 9.5px; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--lj3-ink-soft);
+    }
+    .lj3-featured__meta-value {
+      font-family: var(--font-display);
+      font-size: 20px; font-style: italic; font-weight: 300;
+      color: var(--lj3-brown);
+      line-height: 1;
     }
 
-    .lj2-coming__btns {
-      display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
-      position: relative; z-index: 1;
+    .lj3-featured__desc {
+      font-size: 15.5px;
+      line-height: 1.72;
+      color: var(--lj3-ink-soft);
+      margin: 0 0 22px;
+      max-width: 56ch;
+    }
+    .lj3-featured__quote {
+      font-family: var(--font-display);
+      font-style: italic; font-weight: 300;
+      font-size: 17px; line-height: 1.55;
+      color: var(--lj3-ink);
+      padding-left: 18px;
+      border-left: 2px solid var(--lj3-brown);
+      margin: 0 0 24px;
+      max-width: 52ch;
+    }
+    .lj3-featured__tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 26px;
+    }
+    .lj3-featured__tag {
+      display: inline-block;
+      padding: 5px 12px;
+      border: 1px solid var(--lj3-line);
+      border-radius: 999px;
+      font-family: var(--lj3-mono);
+      font-size: 9.5px; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--lj3-brown);
+      background: rgba(255, 246, 236, 0.4);
+    }
+    .lj3-featured__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* =========== CATÁLOGO GRID =========== */
+    .lj3-catalog {
+      padding: clamp(40px, 5vw, 64px) clamp(24px, 5vw, 72px);
+    }
+    .lj3-catalog__inner { max-width: 1320px; margin: 0 auto; }
+    .lj3-catalog__head {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--lj3-line);
+      margin-bottom: clamp(40px, 5vw, 60px);
+    }
+    .lj3-catalog__title {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 300; letter-spacing: -0.02em;
+      color: var(--lj3-ink);
+      margin: 0;
+    }
+    .lj3-catalog__title em { font-style: italic; color: var(--lj3-brown); }
+    .lj3-catalog__meta {
+      font-family: var(--lj3-mono);
+      font-size: 11px; letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--lj3-ink-soft);
     }
 
-    .lj2-btn {
+    .lj3-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: clamp(28px, 3vw, 44px) clamp(20px, 2.2vw, 32px);
+    }
+    @media (max-width: 1240px) { .lj3-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 1000px) { .lj3-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 720px)  { .lj3-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px)  { .lj3-grid { grid-template-columns: 1fr; } }
+
+    .lj3-book {
+      display: flex; flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lj3-book:hover { transform: translateY(-6px); }
+    .lj3-book__link {
+      text-decoration: none; color: inherit;
+      display: contents;
+    }
+    .lj3-book__link:hover .lj3-book__title { color: var(--lj3-brown); }
+
+    .lj3-book__cover {
+      position: relative;
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+      background: #f0e5d1;
+      transition: transform 0.4s ease;
+      margin-bottom: 20px;
+    }
+    .lj3-book__cover img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+
+    .lj3-book__genre {
+      font-family: var(--lj3-mono);
+      font-size: 9.5px; letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--lj3-brown);
+      margin-bottom: 8px;
+    }
+    .lj3-book__title {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 1.4vw, 19px);
+      font-weight: 460; line-height: 1.2;
+      color: var(--lj3-ink);
+      margin: 0 0 6px;
+    }
+    .lj3-book__author {
+      font-size: 13px;
+      color: var(--lj3-ink-soft);
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    .lj3-book__footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--lj3-line);
+    }
+    .lj3-book__buy {
+      font-family: var(--lj3-mono);
+      font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lj3-brown);
+      font-weight: 700;
+      transition: gap 0.3s;
+      display: inline-flex; align-items: center; gap: 6px;
+      text-decoration: none;
+    }
+    .lj3-book:hover .lj3-book__buy { gap: 12px; color: var(--lj3-brown-2); }
+
+    /* =========== BUTTONS =========== */
+    .lj3-btn {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 15px 28px; border-radius: 999px;
-      font-family: var(--lj2-mono); font-size: 12px; letter-spacing: .2em;
+      font-family: var(--lj3-mono); font-size: 11.5px; letter-spacing: 0.2em;
       text-transform: uppercase; text-decoration: none;
-      transition: background .3s, transform .3s, color .3s, border-color .3s;
+      transition: background 0.3s, transform 0.3s, color 0.3s, border-color 0.3s;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
     }
-    .lj2-btn--gold { background: var(--lj2-gold); color: #fff; }
-    .lj2-btn--gold:hover { background: var(--lj2-gold-2); transform: translateY(-2px); }
-    .lj2-btn--ghost {
-      border: 1px solid var(--lj2-line); color: var(--lj2-cream);
-    }
-    .lj2-btn--ghost:hover { border-color: var(--lj2-gold); color: var(--lj2-gold); transform: translateY(-2px); }
-
-    .lj2-coming__ornament {
-      position: absolute; bottom: clamp(32px, 5vw, 60px);
-      font-family: var(--lj2-mono); font-size: 11px; letter-spacing: .22em;
-      text-transform: uppercase; color: rgba(243,235,218,.28);
-      z-index: 1;
-    }
+    .lj3-btn--gold { background: var(--lj3-brown); color: var(--lj3-cream); }
+    .lj3-btn--gold:hover { background: var(--lj3-brown-2); transform: translateY(-2px); }
+    .lj3-btn--ghost { border-color: var(--lj3-brown); color: var(--lj3-brown); background: transparent; }
+    .lj3-btn--ghost:hover { background: var(--lj3-brown); color: var(--lj3-cream); transform: translateY(-2px); }
   </style>
 </head>
-<body class="page lj2">
+<body class="page lj3">
 
   <header class="site-header site-header--scrolled">
     <div class="site-header__inner">
@@ -135,16 +488,225 @@
   </header>
 
   <main>
-    <section class="lj2-coming">
-      <span class="lj2-coming__tag">✦ Brevemente</span>
-      <h1 class="lj2-coming__title">A nossa loja <em>está a caminho.</em></h1>
-      <p class="lj2-coming__sub">Em breve teremos aqui o catálogo completo de livros com fotos, sinopses e formas de pagamento. Enquanto isso, entre em contacto connosco pelo WhatsApp.</p>
-      <div class="lj2-coming__btns">
-        <a class="lj2-btn lj2-btn--gold" href="https://wa.me/351935402570">WhatsApp · Portugal</a>
-        <a class="lj2-btn lj2-btn--ghost" href="https://wa.me/5511984663444">WhatsApp · Brasil</a>
+
+    <!-- ============ HERO ============ -->
+    <section class="lj3-hero">
+      <div class="lj3-hero__inner">
+        <div class="lj3-mast">
+          <div class="lj3-mast__left">
+            <span>Editora Aslan</span>
+            <span class="lj3-mast__dot">·</span>
+            <span>Catálogo Editorial</span>
+          </div>
+          <div class="lj3-mast__center">
+            <span>Vol. I</span>
+            <span class="lj3-mast__dot">·</span>
+            <span>MMXXVI</span>
+          </div>
+          <div class="lj3-mast__right">
+            <span>Brasil</span>
+            <span class="lj3-mast__dot">·</span>
+            <span>Portugal</span>
+            <span class="lj3-mast__dot">·</span>
+            <span>Europa</span>
+          </div>
+        </div>
+
+        <div class="lj3-hero__grid">
+          <div>
+            <div class="lj3-hero__label">
+              <span class="lj3-hero__label-line" aria-hidden="true"></span>
+              <span>Loja Virtual</span>
+            </div>
+            <h1 class="lj3-hero__title">Livros que <em>merecem</em><br>ser lidos.</h1>
+            <p class="lj3-hero__lead">Cada obra do nosso catálogo é fruto de um processo editorial cuidadoso — da concepção ao lançamento.</p>
+          </div>
+
+          <div class="lj3-hero__stats">
+            <div>
+              <div class="lj3-hero__stat-num">5</div>
+              <div class="lj3-hero__stat-label">Títulos publicados</div>
+            </div>
+            <div>
+              <div class="lj3-hero__stat-num">2</div>
+              <div class="lj3-hero__stat-label">Autores</div>
+            </div>
+            <div>
+              <div class="lj3-hero__stat-num">3</div>
+              <div class="lj3-hero__stat-label">Formatos</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="lj2-coming__ornament">Editora Aslan · Loja Virtual</p>
     </section>
+
+    <!-- ============ TOOLBAR / FILTROS ============ -->
+    <section class="lj3-tools">
+      <div class="lj3-tools__inner">
+        <div class="lj3-filters">
+          <button class="lj3-chip lj3-chip--active" type="button">Todos</button>
+          <button class="lj3-chip" type="button">Bem-estar</button>
+          <button class="lj3-chip" type="button">Autoajuda</button>
+          <button class="lj3-chip" type="button">Terapia</button>
+          <button class="lj3-chip" type="button">Relacionamentos</button>
+        </div>
+        <div class="lj3-tools__right">
+          <span>Ordenar por</span>
+          <select class="lj3-sort" aria-label="Ordenar por">
+            <option>Novidades</option>
+            <option>Mais vendidos</option>
+            <option>Título A–Z</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DESTAQUE ============ -->
+    <section class="lj3-featured">
+      <div class="lj3-featured__inner">
+
+        <div class="lj3-featured__book">
+          <span class="lj3-featured__book-crown">Best-seller</span>
+          <img src="./uploads/livros/livro-3.jpeg" alt="100 Dicas Terapêuticas para Transformar Sua Vida — Volume I · 3ª Edição, de Éric Pereira">
+        </div>
+
+        <div class="lj3-featured__body">
+          <div class="lj3-featured__eyebrow">
+            <span class="lj3-featured__eyebrow-line" aria-hidden="true"></span>
+            <span>Livro em destaque · Volume I</span>
+          </div>
+          <h2 class="lj3-featured__title">100 Dicas Terapêuticas para <em>transformar a sua vida.</em></h2>
+          <p class="lj3-featured__author">Éric Pereira · Volume I · 3ª Edição</p>
+
+          <div class="lj3-featured__meta">
+            <div class="lj3-featured__meta-item">
+              <span class="lj3-featured__meta-label">Lançamento original</span>
+              <span class="lj3-featured__meta-value">2017</span>
+            </div>
+            <div class="lj3-featured__meta-item">
+              <span class="lj3-featured__meta-label">Edição digital Aslan</span>
+              <span class="lj3-featured__meta-value">2021</span>
+            </div>
+            <div class="lj3-featured__meta-item">
+              <span class="lj3-featured__meta-label">Reflexões</span>
+              <span class="lj3-featured__meta-value">100</span>
+            </div>
+          </div>
+
+          <p class="lj3-featured__desc">O primeiro volume da série apresenta 100 reflexões terapêuticas criadas para ajudar o leitor a compreender melhor suas emoções, seus comportamentos e o momento que está vivendo. Inspiradas na experiência de Éric Pereira com a Hipnoterapia, a Programação Neurolinguística, o Coaching e o desenvolvimento pessoal.</p>
+
+          <p class="lj3-featured__quote">"O livro pode ser lido do início ao fim ou aberto em qualquer página — uma dica de cada vez pode ser o início de uma grande mudança."</p>
+
+          <div class="lj3-featured__tags">
+            <span class="lj3-featured__tag">Hipnoterapia</span>
+            <span class="lj3-featured__tag">PNL</span>
+            <span class="lj3-featured__tag">Coaching</span>
+            <span class="lj3-featured__tag">Autoestima</span>
+            <span class="lj3-featured__tag">Relacionamentos</span>
+          </div>
+
+          <div class="lj3-featured__ctas">
+            <a class="lj3-btn lj3-btn--gold" href="./livro-100-dicas-volume-1.html">Ver detalhes do livro →</a>
+            <a class="lj3-btn lj3-btn--ghost" href="https://wa.me/351935402570?text=Ol%C3%A1%21%20Quero%20comprar%20o%20livro%20100%20Dicas%20Terap%C3%AAuticas%20-%20Volume%20I%20-%203%C2%AA%20Edi%C3%A7%C3%A3o" target="_blank" rel="noopener">Comprar via WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATÁLOGO ============ -->
+    <section class="lj3-catalog" id="catalogo">
+      <div class="lj3-catalog__inner">
+
+        <div class="lj3-catalog__head">
+          <h2 class="lj3-catalog__title">Catálogo <em>completo.</em></h2>
+          <span class="lj3-catalog__meta">5 títulos disponíveis · jul. 2026</span>
+        </div>
+
+        <div class="lj3-grid">
+
+          <!-- Livro 01 · Menos Ansiedade +Felicidade -->
+          <article class="lj3-book">
+            <a class="lj3-book__link" href="./livro-menos-ansiedade.html">
+              <div class="lj3-book__cover">
+                <img src="./uploads/livros/livro-1.png" alt="Menos Ansiedade +Felicidade — Éric Pereira" loading="lazy">
+              </div>
+              <p class="lj3-book__genre">Bem-estar · Autoajuda</p>
+              <h3 class="lj3-book__title">Menos Ansiedade +Felicidade</h3>
+              <p class="lj3-book__author">Éric Pereira</p>
+            </a>
+            <div class="lj3-book__footer">
+              <a class="lj3-book__buy" href="./livro-menos-ansiedade.html">Ver livro →</a>
+            </div>
+          </article>
+
+          <!-- Livro 02 · 100 Dicas Terapêuticas Edição Especial -->
+          <article class="lj3-book">
+            <a class="lj3-book__link" href="./livro-100-dicas-especial.html">
+              <div class="lj3-book__cover">
+                <img src="./uploads/livros/livro-2.png" alt="100 Dicas Terapêuticas para Transformar Sua Vida — Éric Pereira" loading="lazy">
+              </div>
+              <p class="lj3-book__genre">Terapia · Autoajuda</p>
+              <h3 class="lj3-book__title">100 Dicas Terapêuticas para Transformar Sua Vida</h3>
+              <p class="lj3-book__author">Éric Pereira · Edição especial</p>
+            </a>
+            <div class="lj3-book__footer">
+              <a class="lj3-book__buy" href="./livro-100-dicas-especial.html">Ver livro →</a>
+            </div>
+          </article>
+
+          <!-- Livro 03 · Volume I · 3ª Edição -->
+          <article class="lj3-book">
+            <a class="lj3-book__link" href="./livro-100-dicas-volume-1.html">
+              <div class="lj3-book__cover">
+                <img src="./uploads/livros/livro-3.jpeg" alt="100 Dicas Terapêuticas — Volume I · 3ª Edição — Éric Pereira" loading="lazy">
+              </div>
+              <p class="lj3-book__genre">Terapia · Best-seller</p>
+              <h3 class="lj3-book__title">100 Dicas Terapêuticas · Volume I</h3>
+              <p class="lj3-book__author">Éric Pereira · 3ª Edição</p>
+            </a>
+            <div class="lj3-book__footer">
+              <a class="lj3-book__buy" href="./livro-100-dicas-volume-1.html">Ver livro →</a>
+            </div>
+          </article>
+
+          <!-- Livro 04 · Nova Edição -->
+          <article class="lj3-book">
+            <a class="lj3-book__link" href="./livro-100-dicas-nova-edicao.html">
+              <div class="lj3-book__cover">
+                <img src="./uploads/livros/livro-4.png" alt="100 Dicas Terapêuticas para Transformar Sua Vida — Éric Pereira" loading="lazy">
+              </div>
+              <p class="lj3-book__genre">Terapia · Autoajuda</p>
+              <h3 class="lj3-book__title">100 Dicas Terapêuticas para Transformar Sua Vida</h3>
+              <p class="lj3-book__author">Éric Pereira · Nova edição</p>
+            </a>
+            <div class="lj3-book__footer">
+              <a class="lj3-book__buy" href="./livro-100-dicas-nova-edicao.html">Ver livro →</a>
+            </div>
+          </article>
+
+          <!-- Livro 05 · Palavras que Curam -->
+          <article class="lj3-book">
+            <a class="lj3-book__link" href="./livro-palavras-que-curam.html">
+              <div class="lj3-book__cover">
+                <img src="./uploads/livros/livro-5.png" alt="Palavras que Curam — Éric Pereira e Sheila Pereira" loading="lazy">
+              </div>
+              <p class="lj3-book__genre">Relacionamentos · Coleção Geração Empreendedora</p>
+              <h3 class="lj3-book__title">Palavras que Curam</h3>
+              <p class="lj3-book__author">Éric Pereira &amp; Sheila Pereira</p>
+            </a>
+            <div class="lj3-book__footer">
+              <a class="lj3-book__buy" href="./livro-palavras-que-curam.html">Ver livro →</a>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="text-align: center; margin-top: clamp(48px, 6vw, 72px);">
+          <a class="lj3-btn lj3-btn--ghost" href="https://wa.me/351935402570?text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20livros%20da%20Editora%20Aslan">Falar com a editora sobre os livros →</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
@@ -179,5 +741,13 @@
   </footer>
 
   <script src="./assets/site.js"></script>
+  <script>
+    document.querySelectorAll('.lj3-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.lj3-chip').forEach(c => c.classList.remove('lj3-chip--active'));
+        chip.classList.add('lj3-chip--active');
+      });
+    });
+  </script>
 </body>
 </html>

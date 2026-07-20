@@ -26,7 +26,7 @@ body.page .site-header__inner {
 }
 
 body.page .brand__logo {
-  width: clamp(196px, 15vw, 240px);
+  width: clamp(230px, 18vw, 290px);
 }
 
 /* ============================================================
@@ -2952,6 +2952,7 @@ body.page .brand__logo {
   background: var(--espresso);
   color: var(--cream);
   overflow: hidden;
+  clip-path: inset(0);
 }
 
 .hero-blog__bg {
@@ -4253,6 +4254,13 @@ body.page .brand__logo {
 body.page .hero-mentor {
   padding-top: clamp(116px, 10vw, 152px);
 }
+/* Blog hero overlap fix */
+body.page .hero-blog + .page-block {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+}
+
 /* Quick mentorias overlap fix */
 body.page .hero-mentor + .page-block {
   position: relative;
