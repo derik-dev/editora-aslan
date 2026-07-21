@@ -58,7 +58,7 @@
     body.page.mn .mn-hero + .mn-programs {
       position: relative;
       z-index: 1;
-      background: var(--mn-paper);
+      background: #ffffff;
     }
 
     /* ============ HERO EDITORIAL ============ */
@@ -233,7 +233,7 @@
     /* ============ VITRINE DE PROGRAMAS (visão geral) ============ */
     .mn-programs {
       padding: clamp(34px, 4vw, 56px) clamp(24px, 5vw, 72px);
-      background: var(--mn-paper);
+      background: #ffffff;
     }
     .mn-programs + .mn-detail {
       padding-top: clamp(34px, 4vw, 56px);
@@ -272,13 +272,13 @@
     @media (max-width: 900px) { .mn-programs__grid { grid-template-columns: 1fr; } }
     .mn-program-card {
       padding: clamp(36px, 4.5vw, 56px);
-      background: var(--mn-paper);
+      background: #FDFAF3;
       display: flex; flex-direction: column;
       position: relative;
       overflow: hidden;
       transition: background 0.4s ease;
     }
-    .mn-program-card:hover { background: var(--mn-paper-2); }
+    .mn-program-card:hover { background: #F9F3E6; }
     .mn-program-card__num {
       font-family: var(--font-display);
       font-size: clamp(80px, 12vw, 140px);
@@ -369,29 +369,23 @@
       padding: clamp(70px, 8vw, 110px) clamp(24px, 5vw, 72px);
       position: relative;
       overflow: hidden;
+      background: #FDFAF3;
     }
-    .mn-detail--alt { background: var(--mn-paper-2); }
+    .mn-detail--alt { background: #ffffff; }
     .mn-detail__inner { max-width: 1320px; margin: 0 auto; }
 
     .mn-detail__head {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: clamp(30px, 5vw, 70px);
-      align-items: end;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      gap: clamp(20px, 3vw, 36px);
       padding-bottom: clamp(36px, 4vw, 56px);
       border-bottom: 1px solid var(--mn-line);
       margin-bottom: clamp(48px, 6vw, 72px);
     }
-    @media (max-width: 780px) { .mn-detail__head { grid-template-columns: 1fr; align-items: start; } }
-    .mn-detail__roman {
-      font-family: var(--font-display);
-      font-size: clamp(80px, 12vw, 180px);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--mn-brown);
-      line-height: 0.8;
-      letter-spacing: -0.04em;
-    }
+    .mn-detail__head-body { max-width: 68ch; }
+    .mn-detail__roman { display: none; }
     .mn-detail__head-body {}
     .mn-detail__eyebrow {
       display: inline-flex; align-items: center; gap: 12px;
@@ -432,9 +426,9 @@
     @media (max-width: 780px) { .mn-blocks { grid-template-columns: 1fr; } }
     .mn-block {
       padding: clamp(28px, 3.5vw, 44px);
-      background: var(--mn-paper);
+      background: #FDFAF3;
     }
-    .mn-detail--alt .mn-block { background: var(--mn-paper-2); }
+    .mn-detail--alt .mn-block { background: #ffffff; }
     .mn-block__label {
       font-family: var(--mn-mono);
       font-size: 10px; letter-spacing: 0.22em;
@@ -605,12 +599,15 @@
     /* ============ METODOLOGIA / DIFERENCIAIS ============ */
     .mn-method {
       padding: clamp(70px, 8vw, 110px) clamp(24px, 5vw, 72px);
+      background: #FDFAF3;
     }
     .mn-method__inner { max-width: 1320px; margin: 0 auto; }
     .mn-method__head {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(30px, 5vw, 80px);
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      gap: clamp(20px, 3vw, 40px);
       align-items: end;
       padding-bottom: clamp(36px, 4vw, 56px);
       border-bottom: 1px solid var(--mn-line);
@@ -632,6 +629,7 @@
       line-height: 1.75;
       color: var(--mn-ink-soft);
       margin: 0;
+      max-width: 60ch;
     }
     .mn-method__grid {
       display: grid;
@@ -673,7 +671,7 @@
     /* ============ COMPARATIVO ============ */
     .mn-compare {
       padding: clamp(34px, 4vw, 56px) clamp(24px, 5vw, 72px) clamp(70px, 8vw, 110px);
-      background: var(--mn-paper-2);
+      background: #ffffff;
       border-top: 1px solid var(--mn-line);
       border-bottom: 1px solid var(--mn-line);
     }
@@ -953,24 +951,6 @@
     <!-- ============ HERO ============ -->
     <section class="mn-hero">
       <div class="mn-hero__inner">
-
-        <div class="mn-mast">
-          <div class="mn-mast__left">
-            <span><b>Editora Aslan</b></span>
-            <span class="mn-mast__dot">·</span>
-            <span>Atelier de escrita</span>
-          </div>
-          <div class="mn-mast__mid">
-            <span>Programas</span>
-            <span class="mn-mast__dot">·</span>
-            <b>02</b>
-          </div>
-          <div class="mn-mast__right">
-            <span>Sessões online</span>
-            <span class="mn-mast__dot">·</span>
-            <span>Individuais</span>
-          </div>
-        </div>
 
         <div class="mn-hero__grid">
           <div>
