@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O que os grandes escritores podem nos ensinar com seu percurso — Editora Aslan</title>
+  <meta name="description" content="Antes do sucesso, existe uma história que quase ninguém vê. As trajetórias de 10 autores que mudaram o mercado editorial — e o que elas revelam sobre persistência, posicionamento e a força de um catálogo.">
+  <link rel="canonical" href="https://www.editoraaslan.com/artigo-grandes-escritores">
+  <link rel="icon" href="./uploads/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./assets/pages.css">
+  <style>
+    /* Header transparente */
+    body.page .site-header,
+    body.page .site-header--scrolled {
+      background: transparent !important;
+      border-bottom: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: none !important;
+    }
+
+    body.page { background: #FFFFFF !important; }
+    .art-body { background: #FFFFFF !important; }
+
+    /* Elimina QUALQUER sombra em elementos da página do artigo */
+    body.page,
+    body.page .site-header,
+    body.page .site-header--scrolled,
+    body.page .site-header__inner,
+    body.page .art-hero,
+    body.page .art-body,
+    body.page .art-pull,
+    body.page .art-author,
+    body.page .art-quote,
+    body.page .art-footer-banner,
+    body.page .brand__logo,
+    body.page .brand {
+      box-shadow: none !important;
+      filter: none !important;
+    }
+
+    /* ── ARTICLE HERO ── */
+    .art-hero {
+      position: relative;
+      background:
+        radial-gradient(70% 60% at 20% 30%, rgba(192,138,82,.18), transparent 60%),
+        linear-gradient(160deg, #2a1608 0%, #1b1007 55%, #0f0904 100%);
+      padding: clamp(100px,12vw,160px) var(--pad-x) clamp(56px,6vw,80px);
+      overflow: hidden;
+    }
+    .art-hero__grain {
+      position: absolute;
+      inset: 0;
+      opacity: .12;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.85  0 0 0 0 0.65  0 0 0 0 0.35  0 0 0 0.45 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .art-hero__inner {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .art-hero__kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .art-hero__kicker-line {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .7;
+    }
+    .art-hero__kicker-text {
+      font-size: .68rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .art-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 300;
+      color: #F3EBDA;
+      line-height: 1.13;
+      letter-spacing: -.02em;
+      margin-bottom: 24px;
+    }
+    .art-hero__title em { font-style: italic; color: var(--gold-bright); }
+    .art-hero__meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: .8rem;
+      color: rgba(243,235,218,.5);
+      border-top: 1px solid rgba(192,138,82,.2);
+      padding-top: 20px;
+    }
+    .art-hero__meta-sep { opacity: .35; }
+
+    /* ── ARTICLE BODY ── */
+    .art-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(56px,8vw,96px) var(--pad-x);
+    }
+    .art-lead {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.65;
+      border-left: 3px solid var(--gold);
+      padding-left: 24px;
+      margin-bottom: 52px;
+    }
+    .art-body p {
+      font-size: clamp(.95rem, 1.2vw, 1.05rem);
+      line-height: 1.82;
+      color: var(--ink-body);
+      margin-bottom: 24px;
+    }
+
+    /* ── AUTHOR BLOCK ── */
+    .art-author {
+      border-top: 1px solid var(--line);
+      padding-top: 48px;
+      margin-top: 60px;
+    }
+    .art-author__num {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--bronze);
+      opacity: .3;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .art-author__name {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 460;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+    .art-author__meta {
+      font-size: .75rem;
+      color: var(--ink-muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .art-author__meta-sep { opacity: .4; }
+
+    .art-author__section {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin: 28px 0 10px;
+    }
+
+    .art-pull {
+      margin: 44px 0;
+      padding: 36px 40px;
+      background: var(--paper-warm);
+      border-left: 4px solid var(--bronze);
+    }
+    .art-pull p {
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .art-quote {
+      margin: 36px 0;
+      padding: 32px 40px;
+      background: var(--ink);
+      text-align: center;
+    }
+    .art-quote p {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      font-style: italic;
+      font-weight: 300;
+      color: #F3EBDA;
+      line-height: 1.65;
+      margin: 0;
+    }
+    .art-quote p em { color: var(--gold-bright); font-style: normal; }
+
+    /* ── PATTERNS ── */
+    .art-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 460;
+      color: var(--ink);
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      margin: 56px 0 20px;
+      padding-top: 40px;
+      border-top: 1px solid var(--line);
+    }
+    .art-h2 em { font-style: italic; color: var(--bronze); }
+
+    .art-pattern-list {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .art-pattern-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 0 16px;
+      align-items: start;
+    }
+    .art-pattern-item__num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--bronze);
+      padding-top: 2px;
+    }
+    .art-pattern-item__body {}
+    .art-pattern-item__title {
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .art-pattern-item__text {
+      font-size: .96rem;
+      line-height: 1.72;
+      color: var(--ink-body);
+      margin: 0;
+    }
+
+    /* ── NAV ── */
+    .art-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 40px;
+      margin-top: 56px;
+    }
+    .art-nav__back {
+      font-size: .82rem;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+    .art-nav__back:hover { color: var(--bronze); }
+    .art-nav__prev {
+      font-size: .82rem;
+      color: var(--bronze);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    .art-nav__prev:hover { text-decoration: underline; }
+
+    /* ── FOOTER BANNER ── */
+    .art-footer-banner {
+      background: var(--espresso);
+      padding: clamp(48px,7vw,80px) var(--pad-x);
+      text-align: center;
+    }
+    .art-footer-banner__label {
+      font-size: .68rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .art-footer-banner__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 300;
+      color: #F3EBDA;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .art-footer-banner__title em { font-style: italic; color: var(--gold-bright); }
+    .art-footer-banner__sub {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(243,235,218,.5);
+      margin-bottom: 32px;
+    }
+  </style>
+</head>
+<body class="page">
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="./uploads/logos/ASLAN_Logo_V2_W.png" alt="Editora Aslan" width="220" height="55">
+      </a>
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <a class="nav__item" href="/">Editora Aslan</a>
+        <a class="nav__item" href="/publique-o-seu-livro">Publique o seu livro</a>
+        <a class="nav__item" href="/mentorias">Mentorias</a>
+        <a class="nav__item" href="/coautoria">Coautoria</a>
+        <a class="nav__item" href="/loja">Loja Virtual</a>
+        <a class="nav__item" href="/cursos">Cursos Online</a>
+        <a class="nav__item nav__item--active" href="/blog">Blog</a>
+        <a class="nav__cta" href="/contato">Contato</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="art-hero">
+      <span class="art-hero__grain" aria-hidden="true"></span>
+      <div class="art-hero__inner reveal">
+        <div class="art-hero__kicker">
+          <span class="art-hero__kicker-line" aria-hidden="true"></span>
+          <span class="art-hero__kicker-text">Deixa te contar · Percursos editoriais</span>
+        </div>
+        <h1 class="art-hero__title">
+          O que os grandes escritores podem nos ensinar
+          <em>com seu percurso</em>
+        </h1>
+        <div class="art-hero__meta">
+          <span>Editora Aslan</span>
+          <span class="art-hero__meta-sep" aria-hidden="true">·</span>
+          <span>Julho de 2026</span>
+          <span class="art-hero__meta-sep" aria-hidden="true">·</span>
+          <span>35 min de leitura</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORPO -->
+    <article class="art-body">
+
+      <p class="art-lead">
+        "Antes do sucesso, existe uma história que quase ninguém vê." Quando entramos em uma livraria e encontramos uma mesa repleta de exemplares de um mesmo autor, é fácil imaginar que o sucesso sempre esteve à espera dele.
+      </p>
+
+      <p>Vemos as capas traduzidas para diferentes idiomas, as adaptações cinematográficas, as entrevistas, os prêmios, as filas para autógrafos e os impressionantes números de vendas.</p>
+
+      <p>O que raramente vemos são os manuscritos devolvidos, as cartas de rejeição, os lançamentos ignorados, as contas para pagar, os empregos mantidos durante a escrita, os livros que quase foram abandonados e os anos em que praticamente ninguém sabia quem aquele autor era.</p>
+
+      <p>O sucesso editorial costuma ser contado a partir do momento da vitória. Entretanto, a verdadeira história começa muito antes — quando alguém decide continuar escrevendo sem possuir nenhuma garantia de que será publicado.</p>
+
+      <div class="art-pull">
+        <p>O sucesso de um livro raramente depende de apenas um acontecimento. Ele é construído pela combinação entre escrita, persistência, posicionamento, profissionalização, oportunidade, leitores e decisões editoriais.</p>
+      </div>
+
+      <figure class="art-image-slot art-image-slot--photo">
+        <div class="art-image-slot__frame">
+          <img class="art-image-slot__image" src="./uploads/blog/artigo-escritores-linha-tempo.jpg" alt="Linha do tempo editorial com manuscritos, envelopes e livros sem título organizados sobre uma mesa." loading="lazy" decoding="async">
+        </div>
+        <figcaption>A trajetória de um autor combina manuscrito, recusa, edição, leitores e tempo.</figcaption>
+      </figure>
+
+      <aside class="art-keynote">
+        <span class="art-keynote__label">Como ler este artigo</span>
+        <p>Não é sobre copiar a vida de autores famosos. É sobre observar padrões: insistência, posicionamento, catálogo, leitores e a coragem de continuar.</p>
+      </aside>
+
+      <!-- AGATHA CHRISTIE -->
+      <div class="art-author">
+        <p class="art-author__num">01</p>
+        <h2 class="art-author__name">Agatha Christie</h2>
+        <div class="art-author__meta">
+          <span>Inglaterra</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>And Then There Were None</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Collins Crime Club</span>
+        </div>
+
+        <p class="art-author__section">O chamado</p>
+        <p>A trajetória de Agatha Christie não começou com a certeza de que ela se tornaria a escritora de romances policiais mais vendida da história. Seu primeiro romance policial nasceu de um desafio feito por sua irmã, que duvidava que Agatha conseguisse escrever uma história de mistério na qual o leitor tivesse condições de descobrir o culpado.</p>
+        <p>Ela aceitou o desafio, concluiu o manuscrito e começou a enviá-lo às editoras. Seis editoras rejeitaram a obra. O livro somente foi aceito quatro anos depois de concluído.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p>Seu maior sucesso individual, <em>And Then There Were None</em>, publicado em 1939, é o romance policial mais vendido da história, com cerca de 100 milhões de exemplares. O conjunto da obra de Agatha Christie é estimado em aproximadamente dois bilhões de livros vendidos em mais de cem idiomas.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>A rejeição editorial não constitui uma sentença definitiva sobre uma obra. O domínio de um gênero pode ser mais poderoso do que a tentativa de escrever para todos. Agatha também demonstra a força de um catálogo: um autor não constrói sua carreira com um único lançamento.</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de Agatha Christie é esta:"</em> não basta esconder o culpado. É preciso conduzir o leitor por uma experiência que ele deseje viver novamente.</p>
+        </div>
+      </div>
+
+      <!-- J.K. ROWLING -->
+      <div class="art-author">
+        <p class="art-author__num">02</p>
+        <h2 class="art-author__name">J.K. Rowling</h2>
+        <div class="art-author__meta">
+          <span>Reino Unido</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Harry Potter and the Philosopher's Stone</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Bloomsbury</span>
+        </div>
+
+        <p class="art-author__section">O chamado</p>
+        <p>A ideia de Harry Potter surgiu enquanto J.K. Rowling viajava de trem. Entretanto, entre imaginar um menino que não sabia que era bruxo e transformar essa ideia em um fenômeno mundial existiu um percurso longo, inseguro e cheio de recusas. Depois de concluir o primeiro livro, várias casas editoriais recusaram o manuscrito antes que a Bloomsbury decidisse publicá-lo, em junho de 1997.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p>A série Harry Potter ultrapassou 600 milhões de exemplares vendidos e foi traduzida para dezenas de idiomas, transformando-se em um dos maiores fenômenos editoriais e culturais da história. Ao falar sobre a profissão, Rowling destaca que a vida de um escritor depende muito mais de trabalho do que de inspiração.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>Uma ideia poderosa precisa ser sustentada por construção de mundo, personagens, conflitos e continuidade. Persistir não é simplesmente reenviar o mesmo arquivo indefinidamente. É continuar escrevendo, melhorar a apresentação, buscar o agente ou a editora adequada.</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de J.K. Rowling é esta:"</em> uma porta fechada não determina o tamanho do mundo que existe atrás do seu manuscrito.</p>
+        </div>
+      </div>
+
+      <!-- STEPHEN KING -->
+      <div class="art-author">
+        <p class="art-author__num">03</p>
+        <h2 class="art-author__name">Stephen King</h2>
+        <div class="art-author__meta">
+          <span>Estados Unidos</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Carrie</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Doubleday</span>
+        </div>
+
+        <p class="art-author__section">O chamado</p>
+        <p>Antes de se tornar um dos escritores mais conhecidos do mundo, Stephen King trabalhava como professor e escrevia contos e romances enquanto enfrentava dificuldades financeiras. Ao iniciar <em>Carrie</em>, King não acreditou suficientemente na história. Depois de escrever as primeiras páginas, abandonou o projeto e jogou o material no lixo. Sua esposa, Tabitha King, encontrou as páginas, leu o texto e o incentivou a continuar.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p>Em 1973, a Doubleday aceitou <em>Carrie</em> para publicação. Pouco depois, os direitos da edição em brochura foram vendidos por um valor suficientemente alto para permitir que King deixasse o ensino e se dedicasse integralmente à escrita.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>O autor não é necessariamente a melhor pessoa para avaliar uma obra enquanto ainda está emocionalmente envolvido com ela. Um texto que parece insuficiente no primeiro rascunho pode conter a origem de algo importante. Sua trajetória também demonstra a importância de concluir — um manuscrito inacabado não pode ser analisado, editado, publicado ou recomendado.</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de Stephen King é esta:"</em> antes de jogar uma história fora, descubra se você está descartando um texto ruim ou apenas fugindo de um texto difícil.</p>
+        </div>
+      </div>
+
+      <figure class="art-image-slot art-image-slot--photo">
+        <div class="art-image-slot__frame">
+          <img class="art-image-slot__image" src="./uploads/blog/artigo-escritores-manuscritos.jpg" alt="Pilha de manuscritos, envelopes e marcas de revisão sobre uma mesa, sugerindo recusas e recomeços." loading="lazy" decoding="async">
+        </div>
+        <figcaption>Antes da vitrine da livraria, quase sempre existem rascunhos, recusas e recomeços.</figcaption>
+      </figure>
+
+      <!-- DANIELLE STEEL -->
+      <div class="art-author">
+        <p class="art-author__num">04</p>
+        <h2 class="art-author__name">Danielle Steel</h2>
+        <div class="art-author__meta">
+          <span>Estados Unidos</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>The Promise</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Dell</span>
+        </div>
+
+        <p class="art-author__section">A provação</p>
+        <p>Danielle Steel construiu sua carreira enquanto conciliava a escrita com a maternidade e outras responsabilidades. Segundo a própria autora, os cinco livros seguintes ao seu primeiro romance não tiveram bom desempenho comercial. Steel costuma dizer aos novos escritores que, caso tivesse desistido depois do terceiro livro, não teria construído a carreira que possui.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p><em>The Promise</em>, publicado em 1978, tornou-se seu primeiro grande sucesso. Décadas depois, sua produção ultrapassou duzentos livros e chegou à marca de um bilhão de exemplares vendidos mundialmente.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>Um livro com vendas discretas não precisa ser o encerramento de uma carreira. Às vezes, o primeiro livro apresenta o autor ao mercado. O segundo desenvolve sua voz. O terceiro ensina posicionamento. E somente depois surge a obra que reúne maturidade, oportunidade e público.</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de Danielle Steel é esta:"</em> uma carreira literária não é construída apenas pelo livro que vendeu, mas também pelos livros que ensinaram o autor a continuar.</p>
+        </div>
+      </div>
+
+      <!-- JAMES PATTERSON -->
+      <div class="art-author">
+        <p class="art-author__num">05</p>
+        <h2 class="art-author__name">James Patterson</h2>
+        <div class="art-author__meta">
+          <span>Estados Unidos</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Along Came a Spider</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Little, Brown and Company</span>
+        </div>
+
+        <p class="art-author__section">O chamado</p>
+        <p>Antes de viver exclusivamente dos livros, James Patterson desenvolveu uma carreira na publicidade. Seu primeiro romance foi recusado por 31 editoras antes de ser publicado. A obra venceu o Edgar Award de melhor primeiro romance, mas isso não transformou Patterson imediatamente em um grande vendedor.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p>Patterson levou para o mercado editorial conhecimentos adquiridos na publicidade. Ele compreendeu que escrever era apenas uma parte da construção de um sucesso comercial — a apresentação, o título, a capa, a campanha, o ritmo narrativo e o posicionamento também influenciavam a decisão de compra.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>Um escritor não precisa desprezar o aspecto comercial do livro para preservar sua criatividade. Conhecer o leitor não significa manipulá-lo. Significa entender: o que fará alguém pegar o livro? Por que essa pessoa continuará lendo?</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de James Patterson é esta:"</em> o autor escreve a obra, mas também precisa compreender como essa obra encontrará, conquistará e manterá seus leitores.</p>
+        </div>
+      </div>
+
+      <aside class="art-quick-list">
+        <span class="art-quick-list__label">Padrão que já apareceu</span>
+        <ul>
+          <li>O livro precisa ser escrito, mas também precisa ser reconhecível.</li>
+          <li>Recusas não encerram uma trajetória; às vezes refinam a direção.</li>
+          <li>Leitor, capa, título, ritmo e posicionamento também fazem parte da obra publicada.</li>
+        </ul>
+      </aside>
+
+      <!-- PAULO COELHO -->
+      <div class="art-author">
+        <p class="art-author__num">06</p>
+        <h2 class="art-author__name">Paulo Coelho</h2>
+        <div class="art-author__meta">
+          <span>Brasil</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>O Alquimista</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Editora Rocco · HarperCollins</span>
+        </div>
+
+        <p class="art-author__section">O chamado</p>
+        <p>Poucas trajetórias combinam tão intensamente a história do autor e a mensagem de sua obra quanto a de Paulo Coelho. <em>O Alquimista</em> conta a jornada de alguém que decide seguir um chamado, atravessa obstáculos e aprende a reconhecer os sinais do caminho. A própria publicação do livro enfrentou dificuldades, e a mudança de editora foi fundamental para que a obra encontrasse novos públicos.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p><em>O Alquimista</em> ultrapassou 120 milhões de exemplares vendidos e foi publicado em 89 idiomas, tornando-se um dos livros mais bem-sucedidos da literatura contemporânea.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>Uma obra não está necessariamente condenada porque sua primeira publicação teve alcance limitado. Em alguns casos, o livro precisa de outro posicionamento, uma nova edição, uma estratégia internacional ou tempo para que as recomendações se multipliquem.</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de Paulo Coelho é esta:"</em> algumas obras não fracassam por falta de valor. Elas ainda não encontraram a edição, o posicionamento e o público capazes de revelar esse valor.</p>
+        </div>
+      </div>
+
+      <!-- JOHN GRISHAM -->
+      <div class="art-author">
+        <p class="art-author__num">07</p>
+        <h2 class="art-author__name">John Grisham</h2>
+        <div class="art-author__meta">
+          <span>Estados Unidos</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>The Firm</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Doubleday</span>
+        </div>
+
+        <p class="art-author__section">O chamado</p>
+        <p>John Grisham era advogado quando começou a imaginar uma história jurídica inspirada no ambiente dos tribunais. Durante anos, escreveu nas primeiras horas do dia, antes de iniciar sua rotina profissional. O manuscrito de seu primeiro livro foi rejeitado por 28 editoras. Sem uma grande estrutura de divulgação, Grisham participou diretamente da venda e da apresentação do livro.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p>O manuscrito de <em>The Firm</em> despertou interesse em Hollywood antes mesmo da publicação. O romance permaneceu nas listas de mais vendidos por quase um ano e ultrapassou sete milhões de exemplares, transformando Grisham em um dos principais nomes do suspense jurídico. Depois da explosão de <em>The Firm</em>, os leitores voltaram para descobrir o primeiro livro.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>Continue escrevendo enquanto o primeiro livro procura seu caminho. Muitos autores interrompem toda a produção para observar as vendas de uma única obra. Quando o resultado demora, eles perdem ritmo, confiança e tempo.</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de John Grisham é esta:"</em> o livro que não mudou sua vida pode estar preparando você para escrever aquele que mudará.</p>
+        </div>
+      </div>
+
+      <!-- DAN BROWN -->
+      <div class="art-author">
+        <p class="art-author__num">08</p>
+        <h2 class="art-author__name">Dan Brown</h2>
+        <div class="art-author__meta">
+          <span>Estados Unidos</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>The Da Vinci Code</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Doubleday</span>
+        </div>
+
+        <p class="art-author__section">O chamado</p>
+        <p>Antes de <em>The Da Vinci Code</em>, Dan Brown já havia publicado outros romances com impacto comercial limitado. A virada aconteceu quando desenvolveu uma história que reunia elementos pelos quais ele próprio se interessava: arte, códigos, religião, história, sociedades secretas, enigmas e perseguição. Brown declarou que procurou escrever o tipo de livro que gostaria de encontrar como leitor.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p>A Doubleday realizou uma campanha intensa para o lançamento, incluindo a distribuição de milhares de exemplares antecipados a livreiros e formadores de opinião. O conjunto de romances de Brown ultrapassou 250 milhões de exemplares em circulação e foi publicado em 56 idiomas.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>Uma boa editora não apenas imprime o livro. Ela trabalha o posicionamento, os canais, a distribuição e a construção do lançamento. Até mesmo um bom livro pode desaparecer quando não recebe estratégia suficiente para ser descoberto.</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de Dan Brown é esta:"</em> o leitor precisa compreender rapidamente por que deve entrar na história e encontrar motivos constantes para não sair dela.</p>
+        </div>
+      </div>
+
+      <!-- E.L. JAMES -->
+      <div class="art-author">
+        <p class="art-author__num">09</p>
+        <h2 class="art-author__name">E.L. James</h2>
+        <div class="art-author__meta">
+          <span>Reino Unido</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Fifty Shades of Grey</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>The Writers' Coffee Shop · Vintage Books</span>
+        </div>
+
+        <p class="art-author__section">O chamado</p>
+        <p>E.L. James não iniciou sua trajetória enviando um romance convencional para grandes editoras. A história que daria origem a <em>Fifty Shades of Grey</em> começou como uma fanfiction publicada na internet. A autora encontrou leitores em comunidades digitais, percebeu o interesse despertado pela narrativa e, posteriormente, transformou o material em uma obra independente.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p>Depois do rápido crescimento das vendas e das recomendações, a Vintage Books adquiriu a obra e lançou a trilogia em grande escala a partir de 2012. A série ultrapassou 150 milhões de exemplares vendidos mundialmente.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>Comunidades de leitores podem exercer um papel decisivo no desenvolvimento e na validação inicial de uma obra. Livro digital, impressão sob demanda, audiobook e edição física podem funcionar como diferentes portas de entrada para o mesmo conteúdo.</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de E.L. James é esta:"</em> em alguns casos, o público pode descobrir o livro antes que o mercado editorial compreenda o tamanho da oportunidade.</p>
+        </div>
+      </div>
+
+      <!-- COLLEEN HOOVER -->
+      <div class="art-author">
+        <p class="art-author__num">10</p>
+        <h2 class="art-author__name">Colleen Hoover</h2>
+        <div class="art-author__meta">
+          <span>Estados Unidos</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>It Ends with Us</span>
+          <span class="art-author__meta-sep">·</span>
+          <span>Atria Books</span>
+        </div>
+
+        <p class="art-author__section">O chamado</p>
+        <p>Colleen Hoover começou a escrever <em>Slammed</em> sem imaginar a dimensão que sua carreira alcançaria — ela autopublicou o livro inicialmente para que sua mãe pudesse lê-lo em um dispositivo Kindle. A obra começou a receber avaliações de leitores e blogueiros, as recomendações aumentaram, e a Atria Books adquiriu os direitos ainda em 2012.</p>
+
+        <p class="art-author__section">A reviravolta</p>
+        <p>A explosão comercial mais intensa de Hoover aconteceria anos depois, quando títulos anteriores começaram a circular no TikTok e no BookTok — livros que já estavam publicados voltaram às listas de mais vendidos como se fossem lançamentos. <em>It Ends with Us</em> ultrapassou dez milhões de exemplares vendidos mundialmente.</p>
+
+        <p class="art-author__section">O que novos autores podem aprender</p>
+        <p>O leitor contemporâneo não é apenas consumidor. Ele também pode ser divulgador, crítico, influenciador e criador de comunidade. As pessoas não dizem apenas que o livro é bom — elas contam como se sentiram ao lê-lo. O autor não deve considerar o livro encerrado depois das primeiras semanas.</p>
+
+        <div class="art-quote">
+          <p><em>"A grande lição de Colleen Hoover é esta:"</em> um livro pode permanecer silencioso por algum tempo e voltar a falar quando uma nova geração de leitores encontra motivos para recomendá-lo.</p>
+        </div>
+      </div>
+
+      <figure class="art-image-slot art-image-slot--photo">
+        <div class="art-image-slot__frame">
+          <img class="art-image-slot__image" src="./uploads/blog/artigo-escritores-mapa-padroes.jpg" alt="Mapa editorial com manuscritos, revisão, livros e catálogo conectados por linhas douradas." loading="lazy" decoding="async">
+        </div>
+        <figcaption>Manuscrito, editora, leitores, catálogo e permanência formam o caminho de uma obra.</figcaption>
+      </figure>
+
+      <!-- PADRÕES -->
+      <h2 class="art-h2">O que essas dez jornadas <em>têm em comum?</em></h2>
+
+      <div class="art-pattern-list">
+        <div class="art-pattern-item">
+          <span class="art-pattern-item__num">1.</span>
+          <div class="art-pattern-item__body">
+            <p class="art-pattern-item__title">Eles terminaram o livro</p>
+            <p class="art-pattern-item__text">Antes das vendas, das editoras, das capas e das campanhas, existia um manuscrito concluído. Ideias não podem ser comercializadas como livros enquanto permanecem somente na mente do autor.</p>
+          </div>
+        </div>
+        <div class="art-pattern-item">
+          <span class="art-pattern-item__num">2.</span>
+          <div class="art-pattern-item__body">
+            <p class="art-pattern-item__title">Eles suportaram a distância entre escrever e ser reconhecido</p>
+            <p class="art-pattern-item__text">Agatha Christie esperou anos pela publicação. J.K. Rowling enfrentou diferentes recusas. James Patterson recebeu 31 respostas negativas. O reconhecimento não acompanhou imediatamente o esforço.</p>
+          </div>
+        </div>
+        <div class="art-pattern-item">
+          <span class="art-pattern-item__num">3.</span>
+          <div class="art-pattern-item__body">
+            <p class="art-pattern-item__title">Eles não dependeram de um único livro</p>
+            <p class="art-pattern-item__text">Mesmo quando uma obra provocou a grande virada, ela não surgiu isoladamente. O autor já havia escrito, aprendido, testado, errado e desenvolvido recursos narrativos.</p>
+          </div>
+        </div>
+        <div class="art-pattern-item">
+          <span class="art-pattern-item__num">4.</span>
+          <div class="art-pattern-item__body">
+            <p class="art-pattern-item__title">Eles encontraram aliados</p>
+            <p class="art-pattern-item__text">Tabitha King retirou Carrie do lixo. Editores assumiram riscos. Agentes insistiram. Livreiros recomendaram. Blogueiros escreveram avaliações. Leitores gravaram vídeos. Nenhuma grande carreira editorial é construída completamente sozinha.</p>
+          </div>
+        </div>
+        <div class="art-pattern-item">
+          <span class="art-pattern-item__num">5.</span>
+          <div class="art-pattern-item__body">
+            <p class="art-pattern-item__title">Eles criaram uma experiência reconhecível</p>
+            <p class="art-pattern-item__text">Agatha Christie entrega mistério. Stephen King entrega tensão e medo. Dan Brown entrega enigmas e urgência. O leitor compreende, com relativa rapidez, o tipo de experiência que encontrará.</p>
+          </div>
+        </div>
+        <div class="art-pattern-item">
+          <span class="art-pattern-item__num">6.</span>
+          <div class="art-pattern-item__body">
+            <p class="art-pattern-item__title">Eles compreenderam a força do catálogo</p>
+            <p class="art-pattern-item__text">Um livro pode levar o leitor ao próximo. Um novo sucesso pode recuperar obras antigas. Uma adaptação pode apresentar o autor a pessoas que nunca entraram em uma livraria procurando por ele.</p>
+          </div>
+        </div>
+        <div class="art-pattern-item">
+          <span class="art-pattern-item__num">7.</span>
+          <div class="art-pattern-item__body">
+            <p class="art-pattern-item__title">Eles se adaptaram a diferentes caminhos de publicação</p>
+            <p class="art-pattern-item__text">Grandes editoras, pequenas casas editoriais, autopublicação, livros digitais, impressão sob demanda e adaptações fazem parte dessas trajetórias. Não existe apenas um caminho legítimo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FECHAMENTO -->
+      <div class="art-pull" style="margin-top: 56px;">
+        <p>Todo grande escritor já foi uma pessoa desconhecida diante de uma página em branco. A diferença começou quando decidiu continuar a jornada.</p>
+      </div>
+
+      <p>As histórias são diferentes, mas o que essas dez trajetórias revelam é algo mais realista e mais valioso: o sucesso de um livro é construído pela combinação entre escrita, persistência, posicionamento, profissionalização, oportunidade, leitores e decisões editoriais.</p>
+
+      <p>Os grandes escritores não nos ensinam que o caminho será fácil. Eles nos ensinam que o caminho pode mudar. Um manuscrito recusado pode encontrar outra editora. Um livro ignorado pode preparar o próximo. Uma pequena comunidade pode se transformar em milhões de leitores. Uma história retirada do lixo pode iniciar uma carreira.</p>
+
+      <p>Mas nada disso acontece enquanto o autor permanece apenas imaginando o livro que poderia escrever.</p>
+
+      <!-- NAV -->
+      <nav class="art-nav" aria-label="Navegação entre artigos">
+        <a class="art-nav__prev" href="/artigo-como-comecar-meu-livro">← Tenho uma boa ideia, mas não sei como começar meu livro</a>
+        <a class="art-nav__back" href="/blog">Voltar ao blog →</a>
+      </nav>
+
+    </article>
+
+    <!-- BANNER RODAPÉ -->
+    <section class="art-footer-banner">
+      <p class="art-footer-banner__label">Editora Aslan</p>
+      <h2 class="art-footer-banner__title">Ajudamos você a escrever <em>o seu livro.</em></h2>
+      <p class="art-footer-banner__sub">Do Zero ao Lançamento.</p>
+      <a class="button button--bronze" href="/publique-o-seu-livro">Quero publicar meu livro →</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <img class="site-footer__logo" src="./uploads/logos/ASLAN_Logo_V2_W.png" alt="Editora Aslan" width="200" height="50">
+      </div>
+      <div class="site-footer__addresses">
+        <address class="site-footer__address">
+          <strong class="site-footer__address-title">Editora Aslan, Lda 🇵🇹</strong>
+          <span>Rua Almirante Cândido dos Reis, nº25, B</span>
+          <span>Glória e Vera Cruz · Aveiro – Portugal</span>
+          <a class="site-footer__link site-footer__phone" href="https://wa.me/351935402570">+351 935 402 570</a>
+          <a class="site-footer__link" href="mailto:ericpereira@editoraaslan.com">ericpereira@editoraaslan.com</a>
+        </address>
+        <address class="site-footer__address">
+          <strong class="site-footer__address-title">Editora Aslan Ltda 🇧🇷</strong>
+          <span>Alameda Rio Negro, 503 · Sala 2020</span>
+          <span>Alphaville Centro Industrial e Empresarial</span>
+          <span>Barueri · São Paulo · Brasil</span>
+          <a class="site-footer__link site-footer__phone" href="https://wa.me/5511984663444">(11) 98466-3444</a>
+          <a class="site-footer__link" href="mailto:ericpereira@editoraaslan.com">ericpereira@editoraaslan.com</a>
+        </address>
+      </div>
+      <div class="site-footer__social-col">
+        <a class="site-footer__link site-footer__social" href="https://www.instagram.com/editoraaslan/" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @editoraaslan
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/site.js"></script>
+</body>
+</html>
