@@ -28,14 +28,14 @@
         <img class="brand__logo" src="./uploads/logos/ASLAN_Logo_V2_W.png" alt="Editora Aslan" width="220" height="55">
       </a>
       <nav class="nav" id="nav" aria-label="Navegação principal">
-        <a class="nav__item nav__item--active" href="/" aria-current="page">Editora Aslan</a>
-        <a class="nav__item" href="/publique-o-seu-livro">Publique o seu livro</a>
-        <a class="nav__item" href="/mentorias">Mentorias</a>
-        <a class="nav__item" href="/coautoria">Coautoria</a>
-        <a class="nav__item" href="/loja">Loja Virtual</a>
-        <a class="nav__item" href="/cursos">Cursos Online</a>
-        <a class="nav__item" href="/blog">Blog</a>
-        <a class="nav__cta" href="/contato">Contato</a>
+        <a class="nav__item nav__item--active" href="./index.html" aria-current="page">Editora Aslan</a>
+        <a class="nav__item" href="./publique-o-seu-livro.html">Publique o seu livro</a>
+        <a class="nav__item" href="./mentorias.html">Mentorias</a>
+        <a class="nav__item" href="./coautoria.html">Coautoria</a>
+        <a class="nav__item" href="./loja.html">Loja Virtual</a>
+        <a class="nav__item" href="./cursos.html">Cursos Online</a>
+        <a class="nav__item" href="./blog.html">Blog</a>
+        <a class="nav__cta" href="./contato.html">Contato</a>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
         <span class="nav-toggle__bar"></span>
@@ -846,7 +846,7 @@
               <li>Estrutura da ideia, capítulos, narrativa, título e subtítulo</li>
             </ul>
             <div class="program-card__footer">
-              <a class="button button--outline" href="/mentorias#candidatura">Candidatar-me</a>
+              <a class="button button--outline" href="./mentorias.html#candidatura">Candidatar-me</a>
             </div>
           </article>
 
@@ -865,7 +865,7 @@
               <li>Áudio exclusivo de indução hipnótica</li>
             </ul>
             <div class="program-card__footer">
-              <a class="button button--bronze" href="/mentorias#candidatura">Candidatar-me</a>
+              <a class="button button--bronze" href="./mentorias.html#candidatura">Candidatar-me</a>
             </div>
           </article>
         </div>
@@ -1032,7 +1032,7 @@
             <a class="contact__channel" href="mailto:ericpereira@editoraaslan.com">ericpereira@editoraaslan.com <span>E-mail</span></a>
           </div>
         </div>
-        <form class="contact__form reveal reveal--late" action="mailto:ericpereira@editoraaslan.com" method="post" enctype="text/plain">
+        <form class="contact__form reveal reveal--late" method="post" data-mailto-form data-mailto-to="ericpereira@editoraaslan.com" data-mailto-subject="Solicitacao pelo site - Editora Aslan">
           <p class="contact__form-title">Solicite uma avaliação ou candidatura</p>
           <label class="field">
             <span>Nome</span>
@@ -1144,6 +1144,7 @@
     </div>
   </footer>
 
+  <script src="./assets/forms.js?v=20260724-3"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>

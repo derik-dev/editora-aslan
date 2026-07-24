@@ -1089,18 +1089,18 @@ body.page.co2 .site-header .nav__item { color: var(--co2-ink-soft) !important; }
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="/">
+      <a class="brand" href="./index.html">
         <img class="brand__logo" src="./uploads/logos/ASLAN_Logo_V2_W.png" alt="Editora Aslan" width="220" height="55">
       </a>
       <nav class="nav" id="nav" aria-label="Navegação principal">
-        <a class="nav__item" href="/">Editora Aslan</a>
-        <a class="nav__item" href="/publique-o-seu-livro">Publique o seu livro</a>
-        <a class="nav__item" href="/mentorias">Mentorias</a>
-        <a class="nav__item nav__item--active" href="/coautoria" aria-current="page">Coautoria</a>
-        <a class="nav__item" href="/loja">Loja Virtual</a>
-        <a class="nav__item" href="/cursos">Cursos Online</a>
-        <a class="nav__item" href="/blog">Blog</a>
-        <a class="nav__cta" href="/contato">Contato</a>
+        <a class="nav__item" href="./index.html">Editora Aslan</a>
+        <a class="nav__item" href="./publique-o-seu-livro.html">Publique o seu livro</a>
+        <a class="nav__item" href="./mentorias.html">Mentorias</a>
+        <a class="nav__item nav__item--active" href="./coautoria.html" aria-current="page">Coautoria</a>
+        <a class="nav__item" href="./loja.html">Loja Virtual</a>
+        <a class="nav__item" href="./cursos.html">Cursos Online</a>
+        <a class="nav__item" href="./blog.html">Blog</a>
+        <a class="nav__cta" href="./contato.html">Contato</a>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
         <span class="nav-toggle__bar"></span>
@@ -1533,7 +1533,7 @@ body.page.co2 .site-header .nav__item { color: var(--co2-ink-soft) !important; }
           </ul>
         </div>
 
-        <form class="co2-form" action="mailto:ericpereira@editoraaslan.com" method="post" enctype="text/plain">
+        <form class="co2-form" method="post" data-mailto-form data-mailto-to="ericpereira@editoraaslan.com" data-mailto-subject="Candidatura de coautoria - Editora Aslan">
           <div class="co2-form__grid">
             <label class="co2-field co2-field--full"><span>Nome completo</span><input type="text" name="nome" required></label>
             <label class="co2-field"><span>Profissão</span><input type="text" name="profissao" required></label>
@@ -1625,6 +1625,7 @@ body.page.co2 .site-header .nav__item { color: var(--co2-ink-soft) !important; }
     </div>
   </footer>
 
+  <script src="./assets/forms.js?v=20260724-3"></script>
   <script src="./assets/site.js"></script>
 </body>
 </html>

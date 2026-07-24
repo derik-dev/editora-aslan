@@ -970,18 +970,18 @@
 
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="brand" href="/">
+      <a class="brand" href="./index.html">
         <img class="brand__logo" src="./uploads/logos/ASLAN_Logo_V2_W.png" alt="Editora Aslan" width="220" height="55">
       </a>
       <nav class="nav" id="nav" aria-label="Navegação principal">
-        <a class="nav__item" href="/">Editora Aslan</a>
-        <a class="nav__item" href="/publique-o-seu-livro">Publique o seu livro</a>
-        <a class="nav__item nav__item--active" href="/mentorias" aria-current="page">Mentorias</a>
-        <a class="nav__item" href="/coautoria">Coautoria</a>
-        <a class="nav__item" href="/loja">Loja Virtual</a>
-        <a class="nav__item" href="/cursos">Cursos Online</a>
-        <a class="nav__item" href="/blog">Blog</a>
-        <a class="nav__cta" href="/contato">Contato</a>
+        <a class="nav__item" href="./index.html">Editora Aslan</a>
+        <a class="nav__item" href="./publique-o-seu-livro.html">Publique o seu livro</a>
+        <a class="nav__item nav__item--active" href="./mentorias.html" aria-current="page">Mentorias</a>
+        <a class="nav__item" href="./coautoria.html">Coautoria</a>
+        <a class="nav__item" href="./loja.html">Loja Virtual</a>
+        <a class="nav__item" href="./cursos.html">Cursos Online</a>
+        <a class="nav__item" href="./blog.html">Blog</a>
+        <a class="nav__cta" href="./contato.html">Contato</a>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
         <span class="nav-toggle__bar"></span>
@@ -1388,25 +1388,25 @@
           <p class="mn-apply__lead">Preencha o formulário abaixo para receber informações completas e agendar uma conversa. Retornamos em até 48 horas úteis pelo e-mail e WhatsApp cadastrados.</p>
         </div>
 
-        <form class="mn-form" onsubmit="event.preventDefault(); alert('Obrigado! Sua candidatura foi enviada. Retornaremos em até 48h.');">
+        <form class="mn-form" method="post" data-mailto-form data-mailto-to="ericpereira@editoraaslan.com" data-mailto-subject="Candidatura de mentoria - Editora Aslan">
           <div class="mn-form__row">
             <div class="mn-form__group">
               <label class="mn-form__label" for="mn-nome">Nome completo</label>
-              <input class="mn-form__input" id="mn-nome" type="text" required>
+              <input class="mn-form__input" id="mn-nome" name="nome" type="text" required>
             </div>
             <div class="mn-form__group">
               <label class="mn-form__label" for="mn-email">E-mail</label>
-              <input class="mn-form__input" id="mn-email" type="email" required>
+              <input class="mn-form__input" id="mn-email" name="email" type="email" required>
             </div>
           </div>
           <div class="mn-form__row">
             <div class="mn-form__group">
               <label class="mn-form__label" for="mn-wpp">WhatsApp (com DDI)</label>
-              <input class="mn-form__input" id="mn-wpp" type="tel" placeholder="+351 ou +55…" required>
+              <input class="mn-form__input" id="mn-wpp" name="whatsapp" type="tel" placeholder="+351 ou +55…" required>
             </div>
             <div class="mn-form__group">
               <label class="mn-form__label" for="mn-programa">Programa de interesse</label>
-              <select class="mn-form__select" id="mn-programa" required>
+              <select class="mn-form__select" id="mn-programa" name="programa" required>
                 <option value="">Selecione…</option>
                 <option>Programa I · Do Zero ao Lançamento</option>
                 <option>Programa II · Desbloqueio Criativo</option>
@@ -1417,7 +1417,7 @@
           <div class="mn-form__row">
             <div class="mn-form__group mn-form__group--full">
               <label class="mn-form__label" for="mn-msg">Conte um pouco sobre a sua ideia ou situação atual</label>
-              <textarea class="mn-form__textarea" id="mn-msg" placeholder="Do que se trata o livro? Em que ponto você está? O que espera desta mentoria?"></textarea>
+              <textarea class="mn-form__textarea" id="mn-msg" name="mensagem" placeholder="Do que se trata o livro? Em que ponto você está? O que espera desta mentoria?"></textarea>
             </div>
           </div>
           <div class="mn-form__footer">
@@ -1475,6 +1475,7 @@
     </div>
   </footer>
 
+  <script src="./assets/forms.js?v=20260724-3"></script>
   <script src="./assets/site.js"></script>
 </body>
 </html>
